@@ -104,8 +104,10 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat">
 
         <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:id="@+id/lockImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="lock"
             android:src="@drawable/ic_baseline_lock_24" />
 
         <View
@@ -184,9 +186,11 @@
         app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2" />
 
     <com.google.android.material.circularreveal.CircularRevealRelativeLayout
-        android:id="@+id/circularRevealRelativeLayout"
+        android:id="@+id/LogInButton"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:clickable="true"
+        android:focusable="true"
         android:background="@color/orange"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
