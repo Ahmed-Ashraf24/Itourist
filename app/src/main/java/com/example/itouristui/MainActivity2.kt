@@ -1,5 +1,6 @@
 package com.example.itouristui
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
@@ -20,7 +21,10 @@ class MainActivity2 : AppCompatActivity() {
             checkedRadioButton = radioGroup.checkedRadioButtonId
             when(i){
                 HomeRadioButton.id->HomeRadioButton.text = "Home"
-                SearchRadioButton.id->SearchRadioButton.text = "Search"
+                SearchRadioButton.id->{
+                    SearchRadioButton.text = "Search"
+                    startActivity(Intent(this , MainActivity3::class.java))
+                }
                 ProfileRadioButton.id->ProfileRadioButton.text = "Profile"
                 ChatRadioButton.id->ChatRadioButton.text = "Chat"
             }
