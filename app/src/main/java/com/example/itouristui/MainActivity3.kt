@@ -29,9 +29,7 @@ class MainActivity3 : AppCompatActivity() {
         showCustomUI()
 
 
-        println("test number 1")
-        println("test number 2")
-        println("test number 3")
+
         val popularSearch = listOf<String>("Chicken" , "Pi" , "Burger" , "Mcdonalds" , "Shawrma","Pasta","Crape","Dessert")
 
         with(SearchRecView){
