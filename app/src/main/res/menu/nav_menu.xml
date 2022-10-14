@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Tours">
+        <menu>
+            <item android:title="Favourite Places"
+                android:icon="@drawable/ic_baseline_favorite_24"
+                android:id="@+id/nav_fav_places"/>
+            <item android:title="Places To Visit"
+                android:icon="@drawable/ic_baseline_navigation_24"
+                android:id="@+id/nav_places_to_visit"/>
+            <item android:title="Interesting Places"
+                android:icon="@drawable/ic_baseline_interests_24"
+                android:id="@+id/nav_inter_places"/>
+        </menu>
+    </item>
+
+    <item android:title="Special">
+        <menu>
+            <item android:title="Today's Places"
+                android:icon="@drawable/ic_baseline_star_24"
+                android:id="@+id/nav_today_places"/>
+            <item android:title="Recommended For You"
+                android:icon="@drawable/ic_baseline_how_to_reg_24"
+                android:id="@+id/nav_recommended_for_u"/>
+        </menu>
+    </item>
+
+    <item android:title="Others">
+        <menu>
+            <item android:title="About"
+                android:icon="@drawable/ic_baseline_info_24"
+                android:id="@+id/nav_about"/>
+            <item android:title="Contact us"
+                android:icon="@drawable/ic_baseline_contact_support_24"
+                android:id="@+id/nav_contact_us"/>
+        </menu>
+    </item>
+
+</menu>

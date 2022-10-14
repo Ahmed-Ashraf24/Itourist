@@ -62,8 +62,8 @@
         android:id="@+id/RecViewLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginBottom="10dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="10dp"
         android:orientation="vertical"
         android:paddingHorizontal="12dp"
         app:layout_constraintBottom_toTopOf="@+id/SearchAnyEditText"
@@ -86,4 +86,6 @@
             android:layout_marginTop="12dp" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
