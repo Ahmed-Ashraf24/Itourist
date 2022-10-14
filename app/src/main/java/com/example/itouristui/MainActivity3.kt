@@ -27,7 +27,9 @@ class MainActivity3 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main3)
         showCustomUI()
-        
+
+
+        println("test number 1")
         val popularSearch = listOf<String>("Chicken" , "Pi" , "Burger" , "Mcdonalds" , "Shawrma","Pasta","Crape","Dessert")
 
         with(SearchRecView){
