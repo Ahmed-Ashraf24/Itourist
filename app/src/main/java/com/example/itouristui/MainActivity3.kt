@@ -30,6 +30,7 @@ class MainActivity3 : AppCompatActivity() {
 
 
         println("test number 1")
+        println("test number 2")
         val popularSearch = listOf<String>("Chicken" , "Pi" , "Burger" , "Mcdonalds" , "Shawrma","Pasta","Crape","Dessert")
 
         with(SearchRecView){
