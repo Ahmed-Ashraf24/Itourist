@@ -90,14 +90,14 @@
     <LinearLayout
         android:id="@+id/linearLayoutId"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="244dp"
+        android:layout_height="70dp"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="250dp"
         android:background="@drawable/costum_search"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="@+id/upperBackgroundId"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/upperBackgroundId"
         app:layout_constraintTop_toTopOf="@+id/upperBackgroundId">
 
@@ -140,3 +140,42 @@
             tools:ignore="TouchTargetSizeCheck" />
 
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RVsuggestedPlacesId"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tVId4" />
+
+    <TextView
+        android:id="@+id/tVId4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Suggested places in Geneva"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/RVsuggestedPlacesId"
+        app:layout_constraintHorizontal_bias="0.145"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutId" />
+
+    <TextView
+        android:id="@+id/tVId5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:gravity="center"
+        android:text="See more"
+        android:textColor="#FC6A00"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tVId4"
+        app:layout_constraintStart_toEndOf="@+id/tVId4"
+        app:layout_constraintTop_toTopOf="@+id/tVId4"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
