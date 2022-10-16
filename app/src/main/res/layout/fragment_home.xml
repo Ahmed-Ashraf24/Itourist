@@ -105,14 +105,15 @@
             android:id="@+id/searchIconId"
             android:layout_width="50dp"
             android:layout_height="35dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             app:srcCompat="@drawable/searchhh" />
 
         <ImageView
             android:id="@+id/blackLineId"
             android:layout_width="wrap_content"
-            android:layout_height="70dp"
-            android:layout_marginLeft="-12dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="-15dp"
+
             app:srcCompat="@drawable/black_line" />
 
         <TextView
@@ -123,7 +124,7 @@
             android:layout_marginTop="-12dp"
             android:text="Where do you want to go?"
             android:textColor="#FC6A00"
-            android:textSize="16dp" />
+            android:textSize="15dp" />
 
         <EditText
             android:id="@+id/eTId1"
@@ -145,6 +146,8 @@
         android:id="@+id/RVsuggestedPlacesId"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="-10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

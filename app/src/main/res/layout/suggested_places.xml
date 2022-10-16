@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="130dp"
     android:layout_height="190dp"
-    android:layout_marginTop="90dp"
-    android:layout_marginLeft="60dp"
-    android:layout_marginRight="-30dp"
+    android:layout_marginStart="30dp"
     android:background="@drawable/costum_suggested_places" >
 
         <com.google.android.material.card.MaterialCardView
