@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_logo2"
+
+    tools:context=".SplashScreenActivity">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title_splashscreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:alpha="0.0"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing=".06"
+        android:text="iTourist"
+        android:textColor="#EAEAEA"
+        android:textSize="42sp"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@+id/sublogo_splashscreen"
+        app:layout_constraintTop_toTopOf="@+id/sublogo_splashscreen" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/subtitle_splashscreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:alpha="0.0"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing=".03"
+        android:text="Your Tour Friend"
+        android:textColor="#EAEAEA"
+        android:gravity="center|top"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/title_splashscreen"
+        app:layout_constraintStart_toEndOf="@+id/sublogo_splashscreen"
+        app:layout_constraintTop_toBottomOf="@+id/title_splashscreen" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/sublogo_splashscreen"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:alpha="0.0"
+        android:translationX="100dp"
+        android:src="@drawable/sublogo_itourists"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.241" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
