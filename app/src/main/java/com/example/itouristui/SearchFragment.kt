@@ -3,37 +3,38 @@ package com.example.itouristui
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
-import android.graphics.Point
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
-import android.view.WindowManager
+import android.view.ViewGroup
 import android.widget.ViewAnimator
 import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
-import com.google.android.flexbox.JustifyContent
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main3.*
+import kotlinx.android.synthetic.main.fragment_search.*
 
-class MainActivity3 : AppCompatActivity() {
+
+class SearchFragment : Fragment() {
 
     private var readyToAnimate = true
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main3)
-        showCustomUI()
 
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_search, container, false)
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val popularSearch = listOf<String>("Chicken" , "Pi" , "Burger" , "Mcdonalds" , "Shawrma","Pasta","Crape","Dessert")
 
         with(SearchRecView){
-            layoutManager = FlexboxLayoutManager(this@MainActivity3).apply {
+            layoutManager = FlexboxLayoutManager(requireContext()).apply {
                 flexDirection = FlexDirection.ROW
 
             }
@@ -44,12 +45,25 @@ class MainActivity3 : AppCompatActivity() {
 
 
 
-       ActualAnySearchEditText.addTextChangedListener(textWatcherAnimator)
+        ActualAnySearchEditText.addTextChangedListener(textWatcherAnimator)
     }
+    val textWatcherAnimator = object: TextWatcher {
+        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
-    private fun showCustomUI(){
-        window.decorView.apply {
-            systemUiVisibility =  View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+        }
+
+        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            if (p0.isNullOrBlank().not() && readyToAnimate){
+                goUpViews()
+                readyToAnimate = false
+            }else if (p0.isNullOrBlank()){
+                goDownViews()
+                readyToAnimate = true
+            }
+        }
+
+        override fun afterTextChanged(p0: Editable?) {
+
         }
     }
 
@@ -89,23 +103,5 @@ class MainActivity3 : AppCompatActivity() {
         })
     }
 
-    val textWatcherAnimator = object:TextWatcher{
-        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
-        }
-
-        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            if (p0.isNullOrBlank().not() && readyToAnimate){
-                goUpViews()
-                readyToAnimate = false
-            }else if (p0.isNullOrBlank()){
-                goDownViews()
-                readyToAnimate = true
-            }
-        }
-
-        override fun afterTextChanged(p0: Editable?) {
-
-        }
-    }
 }

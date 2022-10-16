@@ -6,8 +6,10 @@ import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.RadioButton
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main2.*
 
@@ -17,20 +19,33 @@ class MainActivity2 : AppCompatActivity() , NavigationView.OnNavigationItemSelec
         setContentView(R.layout.activity_main2)
         MainAct3NavView.setNavigationItemSelectedListener(this)
         MainAct3NavView.itemIconTintList = null
+        showCustomUI()
+
+        supportFragmentManager.beginTransaction().add(R.id.FragmentContainerMain , HomeFragment()).commit()
 
         var checkedRadioButton = RadioGroupMainOptionsView.checkedRadioButtonId
         RadioGroupMainOptionsView.setOnCheckedChangeListener { radioGroup, i ->
             val wasChecked = findViewById<RadioButton>(checkedRadioButton)
             wasChecked.text = ""
             checkedRadioButton = radioGroup.checkedRadioButtonId
+            var selectedFragment : Fragment? = null
             when(i){
-                HomeRadioButton.id->HomeRadioButton.text = "Home"
+                HomeRadioButton.id->{
+                    HomeRadioButton.text = "Home"
+                    selectedFragment = HomeFragment()
+                }
+
                 SearchRadioButton.id->{
                     SearchRadioButton.text = "Search"
-                    startActivity(Intent(this , MainActivity3::class.java))
+                    selectedFragment = SearchFragment()
                 }
+
                 ProfileRadioButton.id->ProfileRadioButton.text = "Profile"
+
                 ChatRadioButton.id->ChatRadioButton.text = "Chat"
+            }
+            selectedFragment?.let {
+                supportFragmentManager.beginTransaction().replace(R.id.FragmentContainerMain , selectedFragment).commit()
             }
         }
     }
@@ -41,4 +56,12 @@ class MainActivity2 : AppCompatActivity() , NavigationView.OnNavigationItemSelec
         }
         return true
     }
+
+    private fun showCustomUI(){
+        window.decorView.apply {
+            systemUiVisibility =  View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+        }
+    }
+
+
 }
