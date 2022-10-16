@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="upperBackgroundId" type="id" />
+    <item name="tVId1" type="id" />
+    <item name="tVId2" type="id" />
+    <item name="arrowButtonId" type="id" />
+    <item name="textView2" type="id" />
+    <item name="textView" type="id" />
+    <item name="linearLayoutId" type="id" />
+    <item name="searchIconId" type="id" />
+    <item name="blackLineId" type="id" />
+    <item name="tVId3" type="id" />
+    <item name="eTId1" type="id" />
+    <item name="circularRevealRelativeLayout" type="id" />
+    <item name="RVsuggestedPlacesId" type="id" />
+    <item name="tVId4" type="id" />
+    <item name="tVId5" type="id" />
+</resources>
