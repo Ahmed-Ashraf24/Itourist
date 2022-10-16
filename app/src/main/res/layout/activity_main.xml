@@ -16,7 +16,7 @@
         android:text="iTourist"
         android:layout_marginTop="50dp"
         android:fontFamily="sans-serif"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textStyle="bold"
         android:letterSpacing="0.07"
         android:textSize="45sp"
@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Your tour guide friend"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/appCompatTextView"
         app:layout_constraintStart_toStartOf="@+id/appCompatTextView"
@@ -73,17 +73,15 @@
                 android:text="E-mail"
                 android:letterSpacing="0.05"
                 android:textColor="@color/orange"/>
-
             <androidx.appcompat.widget.AppCompatEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@null"
-                android:gravity="top"
-                android:hint="iTourist@gmail.com"
-                android:textColor="@color/white"
-                android:textColorHint="#9F9F9F"
                 android:textSize="16dp"
-                tools:ignore="TouchTargetSizeCheck" />
+                android:gravity="top"
+                android:textColorHint="#9F9F9F"
+                android:textColor="@color/white"
+                android:hint="iTourist@gmail.com"/>
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -110,8 +108,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="lock"
-            android:src="@drawable/ic_baseline_lock_24"
-            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+            android:src="@drawable/ic_baseline_lock_24" />
 
         <View
             android:layout_width="1dp"
@@ -139,11 +136,10 @@
                 android:layout_height="match_parent"
                 android:background="@null"
                 android:gravity="top"
+                android:textColorHint="#9F9F9F"
                 android:hint="xxxxxxxxxx"
                 android:textColor="@color/white"
-                android:textColorHint="#9F9F9F"
-                android:textSize="16dp"
-                tools:ignore="TouchTargetSizeCheck" />
+                android:textSize="16dp" />
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>
