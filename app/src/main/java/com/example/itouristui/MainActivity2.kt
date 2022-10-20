@@ -23,7 +23,7 @@ class MainActivity2 : AppCompatActivity() , NavigationView.OnNavigationItemSelec
 
         supportFragmentManager.beginTransaction().add(R.id.FragmentContainerMain , HomeFragment()).commit()
 
-        var checkedRadioButton = RadioGroupMainOptionsView.checkedRadioButtonId
+        /*var checkedRadioButton = RadioGroupMainOptionsView.checkedRadioButtonId
         RadioGroupMainOptionsView.setOnCheckedChangeListener { radioGroup, i ->
             val wasChecked = findViewById<RadioButton>(checkedRadioButton)
             wasChecked.text = ""
@@ -47,7 +47,7 @@ class MainActivity2 : AppCompatActivity() , NavigationView.OnNavigationItemSelec
             selectedFragment?.let {
                 supportFragmentManager.beginTransaction().replace(R.id.FragmentContainerMain , selectedFragment).commit()
             }
-        }
+        }*/
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
