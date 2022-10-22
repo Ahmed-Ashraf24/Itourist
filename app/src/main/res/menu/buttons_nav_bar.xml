@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navHomeId"
+        android:title="Home"
+        android:icon="@drawable/ic_baseline_home_24_selected"
+        app:cnb_iconColor="#FC6A00" />
+
+    <item
+        android:id="@+id/navSearchId"
+        android:title="Search"
+        android:icon="@drawable/ic_baseline_search_24_selected"
+        app:cnb_iconColor="#FC6A00" />
+
+    <item
+        android:id="@+id/navProfileId"
+        android:title="Profile"
+        android:icon="@drawable/ic_baseline_account_circle_24_selected"
+        app:cnb_iconColor="#FC6A00" />
+
+</menu>

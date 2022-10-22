@@ -4,11 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent" >
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity2">
+        tools:context=".MainActivity2" >
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/FragmentContainerMain"
@@ -25,73 +26,32 @@
             android:layout_height="100dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent" >
 
-            <RadioGroup
+            <LinearLayout
                 android:id="@+id/RadioGroupMainOptionsView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="#F0F0F0"
                 android:gravity="center"
-                android:orientation="horizontal"
+                android:orientation="horizontal" >
 
-                >
+                <com.ismaeldivita.chipnavigation.ChipNavigationBar
+                    android:id="@+id/buttonsNavBarId"
+                    android:layout_width="300dp"
+                    android:layout_height="70dp"
+                    app:cnb_menuResource="@menu/buttons_nav_bar"
+                    android:elevation="8dp"
+                    android:background="@drawable/custom_buttons_nav_bar"
+                    app:cnb_unselectedColor="#7A7A7A"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/RVsuggestedPlacesId"
+                    app:layout_constraintVertical_bias="0.411" />
 
-                <RadioButton
-                    android:id="@+id/HomeRadioButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:background="@drawable/radio_selector"
-                    android:button="@android:color/transparent"
-                    android:checked="true"
-                    android:drawableStart="@drawable/home_icon_selector"
-                    android:drawablePadding="8dp"
-                    android:padding="12dp"
-                    android:text="Home"
-                    android:textColor="@color/white" />
-
-                <RadioButton
-                    android:id="@+id/SearchRadioButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:background="@drawable/radio_selector"
-                    android:button="@android:color/transparent"
-                    android:drawableStart="@drawable/search_icon_selector"
-                    android:drawablePadding="8dp"
-                    android:gravity="center"
-                    android:padding="12dp"
-                    android:textColor="@color/white" />
-
-                <RadioButton
-                    android:id="@+id/ProfileRadioButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:background="@drawable/radio_selector"
-                    android:button="@android:color/transparent"
-                    android:drawableStart="@drawable/profile_icon_selector"
-                    android:drawablePadding="8dp"
-                    android:gravity="center"
-                    android:padding="12dp"
-                    android:textColor="@color/white" />
-
-                <RadioButton
-                    android:id="@+id/ChatRadioButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:background="@drawable/radio_selector"
-                    android:button="@android:color/transparent"
-                    android:drawableStart="@drawable/chat_icon_selector"
-                    android:drawablePadding="8dp"
-                    android:gravity="center"
-                    android:padding="12dp"
-                    android:textColor="@color/white" />
-
-            </RadioGroup>
+            </LinearLayout>
         </com.google.android.material.circularreveal.CircularRevealRelativeLayout>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -104,7 +64,6 @@
         android:background="@drawable/nav_background"
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header"
-        app:itemTextColor="#4A4A4A"/>
-
+        app:itemTextColor="#4A4A4A" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
