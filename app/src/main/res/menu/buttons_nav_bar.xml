@@ -3,19 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+
         android:id="@+id/navHomeButtonId"
         android:title="Home"
         android:icon="@drawable/ic_baseline_home_24_selected"
         app:cnb_iconColor="#FC6A00" />
 
     <item
+
         android:id="@+id/navSearchButtonId"
+
         android:title="Search"
         android:icon="@drawable/ic_baseline_search_24_selected"
         app:cnb_iconColor="#FC6A00" />
 
     <item
+
         android:id="@+id/navProfileButtonId"
+
+
         android:title="Profile"
         android:icon="@drawable/ic_baseline_account_circle_24_selected"
         app:cnb_iconColor="#FC6A00" />

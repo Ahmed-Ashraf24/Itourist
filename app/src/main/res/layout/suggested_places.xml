@@ -5,6 +5,8 @@
     android:layout_width="130dp"
     android:layout_height="190dp"
     android:layout_marginStart="30dp"
+
+
     android:background="@drawable/custom_suggested_places" >
 
         <com.google.android.material.card.MaterialCardView

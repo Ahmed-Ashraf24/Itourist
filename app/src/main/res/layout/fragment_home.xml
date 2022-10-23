@@ -144,14 +144,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RVsuggestedPlacesId"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="-10dp"
+        android:layout_width="330dp"
+        android:layout_height="228dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tVId4" />
+        app:layout_constraintTop_toBottomOf="@+id/tVId4"
+        app:layout_constraintVertical_bias="0.021" />
 
     <TextView
         android:id="@+id/tVId4"

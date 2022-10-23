@@ -23,8 +23,10 @@ class MainActivity2 : AppCompatActivity() , NavigationView.OnNavigationItemSelec
 
         supportFragmentManager.beginTransaction().add(R.id.FragmentContainerMain , HomeFragment()).commit()
 
+
         CustomBottomNavBar.setItemSelected(R.id.navHomeButtonId)
         CustomBottomNavBar.setOnItemSelectedListener { selectedNavButtonID->
+
             var selectedFragment : Fragment? = null
            when(selectedNavButtonID){
                R.id.navHomeButtonId -> selectedFragment = HomeFragment()
@@ -36,7 +38,9 @@ class MainActivity2 : AppCompatActivity() , NavigationView.OnNavigationItemSelec
             selectedFragment?.let {
                 supportFragmentManager.beginTransaction().replace(R.id.FragmentContainerMain , selectedFragment).commit()
             }
+
         }
+
 
     }
 
