@@ -23,31 +23,25 @@ class MainActivity2 : AppCompatActivity() , NavigationView.OnNavigationItemSelec
 
         supportFragmentManager.beginTransaction().add(R.id.FragmentContainerMain , HomeFragment()).commit()
 
-        /*var checkedRadioButton = RadioGroupMainOptionsView.checkedRadioButtonId
-        RadioGroupMainOptionsView.setOnCheckedChangeListener { radioGroup, i ->
-            val wasChecked = findViewById<RadioButton>(checkedRadioButton)
-            wasChecked.text = ""
-            checkedRadioButton = radioGroup.checkedRadioButtonId
+
+        CustomBottomNavBar.setItemSelected(R.id.navHomeButtonId)
+        CustomBottomNavBar.setOnItemSelectedListener { selectedNavButtonID->
+
             var selectedFragment : Fragment? = null
-            when(i){
-                HomeRadioButton.id->{
-                    HomeRadioButton.text = "Home"
-                    selectedFragment = HomeFragment()
-                }
+           when(selectedNavButtonID){
+               R.id.navHomeButtonId -> selectedFragment = HomeFragment()
 
-                SearchRadioButton.id->{
-                    SearchRadioButton.text = "Search"
-                    selectedFragment = SearchFragment()
-                }
+               R.id.navSearchButtonId -> selectedFragment = SearchFragment()
 
-                ProfileRadioButton.id->ProfileRadioButton.text = "Profile"
-
-                ChatRadioButton.id->ChatRadioButton.text = "Chat"
-            }
+               R.id.navProfileButtonId -> selectedFragment = ProfileFragment()
+           }
             selectedFragment?.let {
                 supportFragmentManager.beginTransaction().replace(R.id.FragmentContainerMain , selectedFragment).commit()
             }
-        }*/
+
+        }
+
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
