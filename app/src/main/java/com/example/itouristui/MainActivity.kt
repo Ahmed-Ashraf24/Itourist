@@ -25,11 +25,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-       showCustomUI()
+        showCustomUI()
 
         LogInButton.setOnClickListener{
             startActivity(Intent(this , MainActivity2::class.java))
+        }
+
+        RegisterMainButton.setOnClickListener {
+            startActivity(Intent(this , RegisterActivity::class.java))
         }
     }
 
