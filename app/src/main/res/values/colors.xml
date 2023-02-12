@@ -10,6 +10,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#FF6600</color>
     <color name="statebarColor">#F4AF96</color>
+    <color name="blue">#D8F1FD</color>
 
 
 </resources>
