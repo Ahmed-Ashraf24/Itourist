@@ -32,7 +32,6 @@ class HomeFragment : Fragment() {
 
         with(RVsuggestedPlacesId){
             layoutManager = LinearLayoutManager(requireContext() , LinearLayoutManager.HORIZONTAL , false)
-            adapter = horizontal_recyclerview_adapter()
         }
 
         val ss: SpannableString = SpannableString("See More")
