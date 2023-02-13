@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+
     android:layout_height="match_parent">
+
+    
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity2">
+
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/FragmentContainerMain"
@@ -17,8 +22,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout="@android:layout/simple_gallery_item" />
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <com.ismaeldivita.chipnavigation.ChipNavigationBar
             android:id="@+id/CustomBottomNavBar"
@@ -31,11 +36,14 @@
             android:layout_marginBottom="20dp"
             android:paddingHorizontal="6dp"
             app:cnb_menuResource="@menu/buttons_nav_bar"
+
             app:cnb_textAppearance="@style/TextAppearance.Material3.LabelSmall"
-            app:cnb_unselectedColor="#50100D4C"
+            app:cnb_unselectedColor="#785649"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+
             app:layout_constraintStart_toStartOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -49,5 +57,8 @@
         app:itemIconPadding="40dp"
         app:itemTextColor="#4A4A4A"
         app:menu="@menu/nav_menu" />
+
+
+
 
 </androidx.drawerlayout.widget.DrawerLayout>
