@@ -4,21 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F0F0"
-   >
+    android:background="#ECF6F9">
 
     <ImageView
         android:id="@+id/upperBackgroundId"
         android:layout_width="412dp"
         android:layout_height="290dp"
-        android:layout_marginTop="0dp"
         android:padding="0dp"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/homebackground" />
+        app:srcCompat="@drawable/main_background" />
 
     <TextView
         android:id="@+id/tVId1"
@@ -26,7 +24,7 @@
         android:layout_height="20dp"
         android:layout_marginTop="35dp"
         android:text="You are in"
-        android:textColor="#949090"
+        android:textColor="@color/white"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="@+id/upperBackgroundId"
         app:layout_constraintHorizontal_bias="0.05"
@@ -37,10 +35,10 @@
         android:id="@+id/tVId2"
         android:layout_width="130dp"
         android:layout_height="20dp"
-        android:layout_marginTop="4dp"
         android:layout_marginLeft="2dp"
+        android:layout_marginTop="4dp"
         android:text="Your current location"
-        android:textColor="@color/black"
+        android:textColor="#072C3D"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tVId1"
@@ -48,17 +46,15 @@
 
     <ImageButton
         android:id="@+id/arrowButtonId"
-        android:layout_width="22dp"
-        android:layout_height="15dp"
-        android:layout_marginTop="3dp"
+        android:layout_width="25dp"
+        android:layout_height="30dp"
         android:layout_marginLeft="3dp"
         android:background="@null"
         android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="@+id/upperBackgroundId"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toBottomOf="@+id/tVId2"
         app:layout_constraintStart_toEndOf="@+id/tVId2"
         app:layout_constraintTop_toTopOf="@+id/tVId2"
-        app:srcCompat="@drawable/arrow1"
+        app:srcCompat="@drawable/new_arrow_down"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <TextView
@@ -106,7 +102,7 @@
             android:layout_width="50dp"
             android:layout_height="35dp"
             android:layout_marginLeft="10dp"
-            app:srcCompat="@drawable/searchhh" />
+            app:srcCompat="@drawable/white_search" />
 
         <ImageView
             android:id="@+id/blackLineId"
@@ -123,7 +119,7 @@
             android:layout_marginLeft="-7dp"
             android:layout_marginTop="-12dp"
             android:text="Where do you want to go?"
-            android:textColor="#FC6A00"
+            android:textColor="@color/white"
             android:textSize="15dp" />
 
         <EditText
@@ -131,55 +127,152 @@
             android:layout_width="130dp"
             android:layout_height="40dp"
             android:layout_marginLeft="-200dp"
-            android:layout_marginTop="19dp"
+            android:layout_marginTop="21dp"
             android:background="@null"
             android:gravity="top"
             android:hint="Ex. Mountains"
             android:textColor="@color/black"
-            android:textColorHint="#9F9F9F"
+            android:textColorHint="#8F000000"
             android:textSize="16dp"
             tools:ignore="TouchTargetSizeCheck" />
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RVsuggestedPlacesId"
-        android:layout_width="330dp"
-        android:layout_height="228dp"
-        android:layout_marginTop="30dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="408dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tVId4"
-        app:layout_constraintVertical_bias="0.021" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutId">
 
-    <TextView
-        android:id="@+id/tVId4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Suggested places in Geneva"
-        android:textSize="16dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/RVsuggestedPlacesId"
-        app:layout_constraintHorizontal_bias="0.145"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutId" />
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="330dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp">
 
-    <TextView
-        android:id="@+id/tVId5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:gravity="center"
-        android:text="See more"
-        android:textColor="#FC6A00"
-        android:textSize="14dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tVId4"
-        app:layout_constraintStart_toEndOf="@+id/tVId4"
-        app:layout_constraintTop_toTopOf="@+id/tVId4"
-        app:layout_constraintVertical_bias="0.0" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tVId4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Suggested places in Geneva"
+                    android:textColor="#072C3D"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/RVsuggestedPlacesId"
+                    app:layout_constraintStart_toStartOf="@+id/RVsuggestedPlacesId" />
+
+
+                <TextView
+                    android:id="@+id/tVId5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="65dp"
+                    android:gravity="center"
+                    android:text="See more"
+                    android:textColor="#072C3D"
+                    android:textSize="14dp"
+                    app:layout_constraintStart_toEndOf="@+id/tVId4"
+                    app:layout_constraintTop_toTopOf="@+id/tVId4" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/RVsuggestedPlacesId"
+                    android:layout_width="339dp"
+                    android:layout_height="195dp"
+                    android:layout_marginTop="36dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.492"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tVId6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Popular places in Geneva"
+                    android:textColor="#072C3D"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/RVpopularPlacesId"
+                    app:layout_constraintStart_toStartOf="@+id/RVpopularPlacesId"
+                    app:layout_constraintTop_toBottomOf="@+id/RVsuggestedPlacesId" />
+
+                <TextView
+                    android:id="@+id/tVId7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="87dp"
+                    android:gravity="center"
+                    android:text="See more"
+                    android:textColor="#072C3D"
+                    android:textSize="14dp"
+                    app:layout_constraintStart_toEndOf="@+id/tVId6"
+                    app:layout_constraintTop_toTopOf="@+id/tVId6" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/RVpopularPlacesId"
+                    android:layout_width="339dp"
+                    android:layout_height="198dp"
+                    android:layout_marginTop="40dp"
+                    app:layout_constraintEnd_toEndOf="@+id/RVsuggestedPlacesId"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/RVsuggestedPlacesId"
+                    app:layout_constraintTop_toBottomOf="@+id/RVsuggestedPlacesId" />
+
+
+
+                <TextView
+                    android:id="@+id/tVId9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="92dp"
+                    android:gravity="center"
+                    android:text="See more"
+                    android:textColor="#072C3D"
+                    android:textSize="14dp"
+                    app:layout_constraintStart_toEndOf="@+id/tVId8"
+                    app:layout_constraintTop_toTopOf="@+id/tVId8" />
+
+                <TextView
+                    android:id="@+id/tVId8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="15dp"
+                    android:text="Nearby places in Geneva"
+                    android:textColor="#072C3D"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/RVnearbyPlacesId"
+                    app:layout_constraintStart_toStartOf="@+id/RVnearbyPlacesId" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/RVnearbyPlacesId"
+                    android:layout_width="339dp"
+                    android:layout_height="198dp"
+                    android:layout_marginTop="48dp"
+                    app:layout_constraintEnd_toEndOf="@+id/RVpopularPlacesId"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/RVpopularPlacesId"
+                    app:layout_constraintTop_toBottomOf="@+id/RVpopularPlacesId" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

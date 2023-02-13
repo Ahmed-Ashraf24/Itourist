@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main2.*
+import kotlinx.android.synthetic.main.fragment_profile_v2.*
 
 class MainActivity2 : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +23,6 @@ class MainActivity2 : AppCompatActivity() , NavigationView.OnNavigationItemSelec
         showCustomUI()
 
         supportFragmentManager.beginTransaction().add(R.id.FragmentContainerMain , HomeFragment()).commit()
-
 
         CustomBottomNavBar.setItemSelected(R.id.navHomeButtonId)
         CustomBottomNavBar.setOnItemSelectedListener { selectedNavButtonID->
@@ -36,11 +36,12 @@ class MainActivity2 : AppCompatActivity() , NavigationView.OnNavigationItemSelec
                R.id.navProfileButtonId -> selectedFragment = ProfileFragment()
            }
             selectedFragment?.let {
-                supportFragmentManager.beginTransaction().replace(R.id.FragmentContainerMain , selectedFragment).commit()
+                supportFragmentManager.beginTransaction().replace(R.id.FragmentContainerMain ,
+                    selectedFragment!!
+                ).commit()
             }
 
         }
-
 
     }
 
@@ -56,6 +57,4 @@ class MainActivity2 : AppCompatActivity() , NavigationView.OnNavigationItemSelec
             systemUiVisibility =  View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         }
     }
-
-
 }

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -34,12 +35,23 @@ class HomeFragment : Fragment() {
             layoutManager = LinearLayoutManager(requireContext() , LinearLayoutManager.HORIZONTAL , false)
         }
 
+        with(RVpopularPlacesId){
+            layoutManager = LinearLayoutManager(requireContext() , LinearLayoutManager.HORIZONTAL , false)
+            adapter = horizontal_recyclerview_adapter()
+        }
+
+        with(RVnearbyPlacesId){
+            layoutManager = LinearLayoutManager(requireContext() , LinearLayoutManager.HORIZONTAL , false)
+            adapter = horizontal_recyclerview_adapter()
+        }
+
         val ss: SpannableString = SpannableString("See More")
         val underLineSpan = UnderlineSpan()
 
         ss.setSpan(underLineSpan, 0, 8, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
         tVId5.text = ss
+        tVId7.text = ss
+        tVId9.text = ss
     }
-
 }
