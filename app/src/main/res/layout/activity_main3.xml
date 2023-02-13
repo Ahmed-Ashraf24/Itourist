@@ -8,46 +8,37 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity2">
+        tools:context=".MainActivity3">
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/FragmentContainerMain"
+            android:id="@+id/FragmentContainerProfile"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
             tools:layout="@android:layout/simple_gallery_item" />
 
         <com.ismaeldivita.chipnavigation.ChipNavigationBar
-            android:id="@+id/CustomBottomNavBar"
+            android:id="@+id/CustomProfileNavBar"
             android:layout_width="0dp"
             android:layout_height="60dp"
+            android:layout_marginTop="5dp"
             android:layout_centerInParent="true"
+            android:layout_marginHorizontal="20dp"
             android:background="@drawable/custom_buttons_nav_bar"
             android:elevation="4dp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginBottom="20dp"
-            android:paddingHorizontal="6dp"
-            app:cnb_menuResource="@menu/buttons_nav_bar"
+            android:paddingHorizontal="3dp"
+            app:cnb_menuResource="@menu/buttons_profile_nav_bar"
             app:cnb_textAppearance="@style/TextAppearance.Material3.LabelSmall"
             app:cnb_unselectedColor="#50100D4C"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/FragmentContainerProfile" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/MainAct3NavView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="@drawable/nav_background"
-        app:headerLayout="@layout/nav_header"
-        app:itemIconPadding="40dp"
-        app:itemTextColor="#4A4A4A"
-        app:menu="@menu/nav_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
