@@ -17,7 +17,11 @@ class SplashScreenActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
         showCustomUI()
 
-        val subLogoAlphaAnimator : ObjectAnimator = ObjectAnimator.ofFloat(sublogo_splashscreen , ViewAnimator.ALPHA , 1.0f).apply {
+        val backgroundAnimator : ObjectAnimator = ObjectAnimator.ofFloat(SplashScreenBG,ViewAnimator.ALPHA,1.0f).apply {
+            duration = 700
+        }
+
+        val logoAlphaAnimator : ObjectAnimator = ObjectAnimator.ofFloat(sublogo_splashscreen , ViewAnimator.ALPHA , 1.0f).apply {
             duration = 700
             startDelay = 500
         }
@@ -25,16 +29,17 @@ class SplashScreenActivity : AppCompatActivity() {
             duration = 700
         }
 
-        subLogoAlphaAnimator.addListener(object : AnimatorListenerAdapter() {
+        logoAlphaAnimator.addListener(object : AnimatorListenerAdapter() {
             override fun onAnimationEnd(animation: Animator?) {
+                backgroundAnimator.start()
                 subLogoTransAnimator.start()
             }
         })
         val titleAlphaAnimator : ObjectAnimator = ObjectAnimator.ofFloat(title_splashscreen , ViewAnimator.ALPHA , 1.0f).apply {
-            duration = 1200
+            duration = 1700
         }
         val subTitleAlphasAnimator : ObjectAnimator = ObjectAnimator.ofFloat(subtitle_splashscreen , ViewAnimator.ALPHA , 1.0f).apply {
-            duration = 1200
+            duration = 1700
         }
 
         subLogoTransAnimator.addListener(object : AnimatorListenerAdapter() {
@@ -62,7 +67,7 @@ class SplashScreenActivity : AppCompatActivity() {
         /**
          * Start the Animation Process
         * */
-        subLogoAlphaAnimator.start()
+        logoAlphaAnimator.start()
 
     }
 

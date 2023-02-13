@@ -34,6 +34,11 @@ class MainActivity : AppCompatActivity() {
         RegisterMainButton.setOnClickListener {
             startActivity(Intent(this , RegisterActivity::class.java))
         }
+        ForgotPassword.setOnClickListener {
+            startActivity(Intent(this , VerificationActivity::class.java))
+
+        }
+
     }
 
 

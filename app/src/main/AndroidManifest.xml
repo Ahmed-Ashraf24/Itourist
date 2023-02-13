@@ -9,8 +9,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ItouristUi">
         <activity
+
             android:name=".MainActivity3"
             android:exported="false" />
+
+            android:name=".VerificationActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ItemActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".RegisterActivity"
             android:exported="false">
@@ -18,8 +33,12 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
             android:name=".SplashScreenActivity"
+
+        <activity android:name=".SplashScreenActivity"
+
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,6 +48,10 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".MainActivity2" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

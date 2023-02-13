@@ -22,6 +22,12 @@ class RegisterActivity : AppCompatActivity() {
                 BirthdayRegisterEditText.text = dateOfBirth.toString()
             }.show(supportFragmentManager ,"DatePickerTag")
         }
+
+        SignUpButton.setOnClickListener{
+            Intent(this , ItemActivity::class.java).also {
+                startActivity(it)
+            }
+        }
     }
 
     private fun showCustomUI(){
