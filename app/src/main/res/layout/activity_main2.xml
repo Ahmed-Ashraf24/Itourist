@@ -38,7 +38,7 @@
             app:cnb_menuResource="@menu/buttons_nav_bar"
 
             app:cnb_textAppearance="@style/TextAppearance.Material3.LabelSmall"
-            app:cnb_unselectedColor="#785649"
+            app:cnb_unselectedColor="#50100D4C"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
 
