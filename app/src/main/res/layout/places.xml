@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentgroup"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center_vertical"
+    android:orientation="horizontal"
+    tools:context=".MainActivity"
+    android:background="@android:color/transparent"
+    android:gravity="center"
+    android:backgroundTint="#D9D9D9"
+    android:layout_marginTop="15dp"
+    android:layout_marginBottom="15dp">
+<com.google.android.material.circularreveal.cardview.CircularRevealCardView
+    android:layout_width="153dp"
+    android:layout_height="match_parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent">
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/place_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/caption" />
+</com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:background="@drawable/edittext_with_icon"
+    android:backgroundTint="#D9D9D9"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingHorizontal="15dp"
+    android:paddingVertical="6dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintRight_toRightOf="parent">
+
+    >
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="243dp"
+        android:layout_height="150dp"
+        android:background="@android:color/transparent"
+        android:backgroundTint="#D9D9D9"
+        android:gravity="center"
+        android:layout_marginRight="15dp"
+        android:orientation="vertical"
+        android:paddingVertical="6dp"
+        android:paddingLeft="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/place_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:letterSpacing="0.05"
+            android:text="pizza pino"
+            android:textColor="@color/black" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="4dp"
+            android:paddingVertical="5dp">
+
+            <androidx.constraintlayout.utils.widget.ImageFilterView
+                android:id="@+id/star1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:src="@drawable/ic_baseline_star_24" />
+
+            <androidx.constraintlayout.utils.widget.ImageFilterView
+                android:id="@+id/star2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:src="@drawable/ic_baseline_star_24" />
+
+            <androidx.constraintlayout.utils.widget.ImageFilterView
+                android:id="@+id/star3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:src="@drawable/ic_baseline_star_24" />
+
+            <androidx.constraintlayout.utils.widget.ImageFilterView
+                android:id="@+id/star4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:src="@drawable/ic_baseline_star_24" />
+
+            <androidx.constraintlayout.utils.widget.ImageFilterView
+                android:id="@+id/star5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:src="@drawable/ic_baseline_star_border_24" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="4dp"
+            android:paddingVertical="5dp">
+
+            <androidx.constraintlayout.utils.widget.ImageFilterView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:src="@drawable/ic_baseline_access_time_24" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/work_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:letterSpacing="0.05"
+
+                android:text="open"
+                android:textColor="@color/black" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="4dp"
+            android:paddingVertical="5dp">
+
+            <androidx.constraintlayout.utils.widget.ImageFilterView
+                android:id="@+id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:src="@drawable/ic_baseline_location_on_24" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:letterSpacing="0.05"
+
+                android:text="200"
+                android:textColor="@color/black" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:letterSpacing="0.05"
+
+                android:text="m away"
+                android:textColor="@color/black" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
