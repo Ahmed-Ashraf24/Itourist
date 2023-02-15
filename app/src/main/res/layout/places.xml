@@ -7,7 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center_vertical"
     android:orientation="horizontal"
-    tools:context=".MainActivity"
+    tools:context=".UI.Authentication.AuthenticationActivity"
     android:background="@android:color/transparent"
     android:gravity="center"
     android:backgroundTint="#D9D9D9"

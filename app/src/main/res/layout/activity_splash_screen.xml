@@ -7,7 +7,7 @@
     android:background="@drawable/splash_screen_picture"
 
 
-    tools:context=".SplashScreenActivity">
+    tools:context=".UI.Intro.SplashScreenActivity">
 
     <com.google.android.material.circularreveal.CircularRevealFrameLayout
         android:id="@+id/SplashScreenBG"

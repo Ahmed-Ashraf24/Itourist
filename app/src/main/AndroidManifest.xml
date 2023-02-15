@@ -17,28 +17,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".VerificationActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".ItemActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".RegisterActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".SplashScreenActivity"
+            android:name=".UI.Intro.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,8 +25,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".MainActivity2" />
+        <activity android:name=".UI.Authentication.AuthenticationActivity" />
+        <activity android:name=".UI.GeneralPage.GeneralActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

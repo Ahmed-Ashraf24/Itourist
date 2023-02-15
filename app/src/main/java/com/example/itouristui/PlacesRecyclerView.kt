@@ -3,8 +3,8 @@ package com.example.itouristui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.itouristui.places
-import com.example.itouristui.places_adapter
+import com.example.itouristui.Adapters.places_adapter
+import com.example.itouristui.models.places
 import kotlinx.android.synthetic.main.activity_places_recycler_view.*
 
 class PlacesRecyclerView : AppCompatActivity() {

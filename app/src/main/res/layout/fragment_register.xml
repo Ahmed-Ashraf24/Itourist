@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ai_generated_home"
+
     android:fitsSystemWindows="true"
    >
 
@@ -104,6 +104,7 @@
                             android:textColor="@color/white" />
 
                         <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/SignUpFullNameEditText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
@@ -162,6 +163,7 @@
                             android:textColor="@color/white" />
 
                         <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/SignUpEmailEditText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
@@ -221,6 +223,7 @@
                             android:textColor="@color/white" />
 
                         <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/SignUpPhoneEditText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
@@ -279,7 +282,7 @@
                             android:textColor="@color/white" />
 
                         <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/BirthdayRegisterEditText"
+                            android:id="@+id/SignUpBirthdayEditText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:clickable="true"
@@ -311,7 +314,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/PickDateView">
 
                     <androidx.constraintlayout.utils.widget.ImageFilterView
-                        android:id="@+id/lockImage"
+                        android:id="@+id/SignUpHideShowPasswordButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:onClick="lock"
@@ -341,6 +344,7 @@
                             android:textColor="@color/white" />
 
                         <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/SignUpPasswordEditText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
@@ -372,7 +376,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat3">
 
                     <androidx.constraintlayout.utils.widget.ImageFilterView
-                        android:id="@+id/lockImage3"
+                        android:id="@+id/SignUpHideShowConfirmPasswordButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:onClick="lock"
@@ -402,6 +406,7 @@
                             android:textColor="@color/white" />
 
                         <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/SignUpConfirmPasswordEditText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
