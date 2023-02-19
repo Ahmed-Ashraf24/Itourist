@@ -183,7 +183,7 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/linearLayoutCompat7"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="90dp"
                     android:layout_marginHorizontal="30dp"
                     android:background="@drawable/edittext_with_icon"
                     android:backgroundTint="#00858787"
@@ -192,7 +192,7 @@
 
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat4">
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat6">
 
 
                     <androidx.constraintlayout.utils.widget.ImageFilterView
@@ -205,7 +205,7 @@
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
                         android:layout_marginHorizontal="9dp"
-                        android:layout_marginVertical="15dp"
+                        android:layout_marginVertical="18dp"
                         android:background="#1E1E1E" />
 
                     <androidx.appcompat.widget.LinearLayoutCompat
@@ -221,22 +221,109 @@
                             android:letterSpacing="0.05"
                             android:text="Phone Number"
                             android:textColor="@color/white" />
-
-                        <androidx.appcompat.widget.AppCompatEditText
-                            android:id="@+id/SignUpPhoneEditText"
+                        <androidx.appcompat.widget.LinearLayoutCompat
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@null"
-                            android:gravity="top"
-                            android:hint="+20xxxxxxxxx"
-                            android:textColor="@color/white"
-                            android:textColorHint="#535353"
-                            android:textSize="16dp"
-                            tools:ignore="TouchTargetSizeCheck" />
+                            android:orientation="horizontal">
+
+                            <com.hbb20.CountryCodePicker
+                                android:id="@+id/SignUpCCP"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="@null"
+                                app:ccp_autoDetectCountry="true"
+                                app:ccp_contentColor="#E8E8E8"
+                                app:ccp_arrowColor="@color/white"
+                                app:ccp_textGravity="LEFT"
+
+                                app:ccp_defaultNameCode="BR"
+                                app:ccp_textSize="12sp"
+                                android:gravity="center"
+                                android:hint="+20xxxxxxxxx"
+                                android:textColor="@color/white"
+                                android:textColorHint="#535353"
+
+                                tools:ignore="TouchTargetSizeCheck" />
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/SignUpPhoneEditText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:hint="Enter phone no."
+
+                                android:background="@null"
+                                android:gravity="center|left"
+                                android:textColor="@color/white"
+                                android:textColorHint="#C5C5C5"
+                                android:textSize="14sp"/>
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
 
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/SignUpPasswrodValidation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="50dp"
+                    app:layout_constraintTop_toBottomOf="@id/linearLayoutCompat3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/SignUp8Char"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textSize="12sp"
+                        android:textColor="#CDCDCD"
+                        android:text="8 characters or more"
+                        android:fontFamily="@font/roboto_medium"
+                        android:drawablePadding="10dp"
+                        android:drawableStart="@drawable/ic_baseline_radio_button_checked_24"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/SignUp1Cap"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginTop="4dp"
+                        android:textColor="#CDCDCD"
+                        android:textSize="12sp"
+                        android:text="At least 1 capital letter"
+                        android:fontFamily="@font/roboto_medium"
+                        android:drawablePadding="10dp"
+                        android:drawableStart="@drawable/ic_baseline_radio_button_checked_24"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/SignUp1Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textSize="12sp"
+                        android:textColor="#CDCDCD"
+                        android:layout_marginTop="4dp"
+                        android:text="At least 1 small letter"
+                        android:fontFamily="@font/roboto_medium"
+                        android:drawablePadding="10dp"
+                        android:drawableStart="@drawable/ic_baseline_radio_button_checked_24"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/SignUp1Digit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textSize="12sp"
+                        android:textColor="#CDCDCD"
+                        android:layout_marginVertical="4dp"
+                        android:text="At least 1 digit"
+                        android:fontFamily="@font/roboto_medium"
+                        android:drawablePadding="10dp"
+                        android:drawableStart="@drawable/ic_baseline_radio_button_checked_24"/>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -290,7 +377,7 @@
                             android:hint="Enter your birthday"
                             android:letterSpacing="0.05"
                             android:textColor="@color/white"
-                            android:textColorHint="#535353"
+                            android:textColorHint="#C5C5C5"
                             android:textSize="16dp" />
 
 
@@ -311,7 +398,7 @@
                     app:layout_constraintEnd_toEndOf="@+id/linearLayoutCompat"
                     app:layout_constraintHorizontal_bias="0.585"
                     app:layout_constraintStart_toStartOf="@+id/linearLayoutCompat"
-                    app:layout_constraintTop_toBottomOf="@+id/PickDateView">
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat4">
 
                     <androidx.constraintlayout.utils.widget.ImageFilterView
                         android:id="@+id/SignUpHideShowPasswordButton"
@@ -373,7 +460,7 @@
                     app:layout_constraintEnd_toEndOf="@+id/linearLayoutCompat"
                     app:layout_constraintHorizontal_bias="0.585"
                     app:layout_constraintStart_toStartOf="@+id/linearLayoutCompat"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat3">
+                    app:layout_constraintTop_toBottomOf="@+id/SignUpPasswrodValidation">
 
                     <androidx.constraintlayout.utils.widget.ImageFilterView
                         android:id="@+id/SignUpHideShowConfirmPasswordButton"
@@ -438,7 +525,7 @@
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat6" />
+                    app:layout_constraintTop_toBottomOf="@+id/PickDateView" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

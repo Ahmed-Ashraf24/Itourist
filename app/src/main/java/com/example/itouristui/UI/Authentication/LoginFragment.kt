@@ -5,10 +5,13 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import android.widget.ViewAnimator
 import com.example.itouristui.*
 import com.example.itouristui.UI.GeneralPage.GeneralActivity
@@ -36,7 +39,21 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         LogInButton.setOnClickListener{
-            startActivity(Intent(requireContext() , GeneralActivity::class.java))
+
+            Pair(LogInEmailEditText.text.toString().trim(),LogInPasswordEditText.text.toString())
+                .takeIf {
+                    it.first.isNotBlank() && it.second.isNotBlank()
+                }?.let { credential->
+                    LogInButton.isEnabled = false
+                    FirebaseObj.auth.signInWithEmailAndPassword(credential.first,credential.second)
+                        .addOnSuccessListener {
+                            startActivity(Intent(requireContext() , GeneralActivity::class.java))
+                        }
+                        .addOnFailureListener {
+                            LogInButton.isEnabled = true
+                            Toast.makeText(requireContext(),it.message,Toast.LENGTH_SHORT).show()
+                        }
+                }
         }
 
 
@@ -49,7 +66,7 @@ class LoginFragment : Fragment() {
 
         ForgotPasswordButton.setOnClickListener {
             parentFragmentManager.beginTransaction()
-                .replace(R.id.AuthenticationFragmentContainerView, VerificationFragment())
+                .replace(R.id.AuthenticationFragmentContainerView, ForgotPasswordEmailFragment())
                 .addToBackStack(null)
                 .commit()
         }
@@ -57,9 +74,11 @@ class LoginFragment : Fragment() {
         LoginHideShowPasswordButton.setOnClickListener {
             val picResID: Int = if (lockIndex == 0) {
                 lockIndex = 1
+                LogInPasswordEditText.transformationMethod = HideReturnsTransformationMethod.getInstance()
                 LockState.UNLOCK.value
             } else {
                 lockIndex = 0
+                LogInPasswordEditText.transformationMethod = PasswordTransformationMethod.getInstance()
                 LockState.LOCK.value
             }
             val lockAnimator: ObjectAnimator =
@@ -70,6 +89,13 @@ class LoginFragment : Fragment() {
             lockAnimator.start()
         }
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        FirebaseObj.auth.currentUser?.let {
+            startActivity(Intent(requireContext() , GeneralActivity::class.java))
+        }
     }
 
     private fun ObjectAnimator.delayUntilDone(resID: Int) {

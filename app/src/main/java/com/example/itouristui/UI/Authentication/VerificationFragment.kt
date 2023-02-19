@@ -21,7 +21,7 @@ class VerificationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        VerificationCodeEditText.setOnClickListener{
+        ForgotPasswordEmailEditText.setOnClickListener{
             val dialog= VerificationCodeDialog()
             dialog.show(this.childFragmentManager,"verificationDialog")
         }

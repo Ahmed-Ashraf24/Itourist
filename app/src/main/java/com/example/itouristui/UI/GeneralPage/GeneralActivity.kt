@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import com.example.itouristui.FirebaseObj
 import com.example.itouristui.R
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_general.*
@@ -17,6 +18,7 @@ class GeneralActivity : AppCompatActivity() , NavigationView.OnNavigationItemSel
         showCustomUI()
 
         supportFragmentManager.beginTransaction().add(R.id.GeneralFragmentContainerView, HomeFragment()).commit()
+        FirebaseObj.auth.signOut()
 
 
         CustomBottomNavBar.setItemSelected(R.id.navHomeButtonId)
