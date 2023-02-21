@@ -9,15 +9,28 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.itouristui.Adapters.CategoriesPlaceHolderRecViewAdapter
+import com.example.itouristui.Adapters.CitiesSearchRecViewAdapter
+import com.example.itouristui.Data.Remote.CityCountryApiObject
 import com.example.itouristui.R
+import com.example.itouristui.Utilities.CategoriesPlaceHolders
+import com.example.itouristui.Utilities.CustomTextWatcher
 import com.example.itouristui.models.CategoriesOfPlaces
+import com.example.itouristui.models.CityDetails
 import kotlinx.android.synthetic.main.fragment_search.*
+import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.collectLatest
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.net.URLEncoder
 
 
 class SearchFragment : Fragment() {
 
-    private var readyToAnimate = true
+    lateinit var queryStateFlow: MutableStateFlow<String>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,47 +41,45 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        queryStateFlow = MutableStateFlow("")
 
-        val categoriesPlaceHolders = listOf(
-            CategoriesOfPlaces("shopping", R.drawable.shopping_illustr_undraw),
-            CategoriesOfPlaces("restaurant", R.drawable.restaurent_illustr_undraw),
-            CategoriesOfPlaces("market", R.drawable.markets_illustr_undraw),
-            CategoriesOfPlaces("coffee", R.drawable.coffe_illustr_undraw),
-            CategoriesOfPlaces("points of interest", R.drawable.poi_illustr_undraw),
-            CategoriesOfPlaces("gardens", R.drawable.gardens_illustr_undraw),
-            CategoriesOfPlaces("studio", R.drawable.studio_illustr_undraw),
-            CategoriesOfPlaces("technological", R.drawable.electronics_illustr_undraw),
-            CategoriesOfPlaces("hospital", R.drawable.hospital_illustr_undraw),
-            CategoriesOfPlaces("jewels", R.drawable.jewllery_illust_undraw),
-            CategoriesOfPlaces("governmental", R.drawable.govenmental_illust_undraw),
-        )
+        SearchCityCountryRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        SearchCityCountryRecyclerView.itemAnimator = DefaultItemAnimator()
 
-        with(CategoriesRecyclerView){
-            layoutManager = GridLayoutManager(requireContext() , 2 )
+
+        with(CategoriesRecyclerView) {
+            layoutManager = GridLayoutManager(requireContext(), 2)
             itemAnimator = DefaultItemAnimator()
-            adapter = CategoriesPlaceHolderRecViewAdapter(categoriesPlaceHolders)
+            adapter = CategoriesPlaceHolderRecViewAdapter(CategoriesPlaceHolders.categoriesOfPlaces)
         }
 
         GeneralSearchEditText.addTextChangedListener(textWatcherAnimator)
-    }
-
-    val textWatcherAnimator = object: TextWatcher {
-        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-        }
-
-        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            if (p0.isNullOrBlank().not() && readyToAnimate){
-
-            }else if (p0.isNullOrBlank()){
-
+        CoroutineScope(Dispatchers.Main).launch{
+            queryStateFlow.collectLatest {
+                delay(1500)
+                if (it.isNotBlank()){
+                    CityCountryApiObject.cityCountryApiInterface.getCities(prefixName = it)
+                        .enqueue(object : Callback<List<CityDetails>> {
+                            override fun onResponse(call: Call<List<CityDetails>>, response: Response<List<CityDetails>>) {
+                                if (response.isSuccessful) {
+                                    SearchCityCountryRecyclerView.adapter = CitiesSearchRecViewAdapter(response.body()!!)
+                                }
+                            }
+                            override fun onFailure(call: Call<List<CityDetails>>, t: Throwable) {
+                                println("Error ${t.message}")
+                            }
+                        })
+                }else{
+                    SearchCityCountryRecyclerView.adapter = CitiesSearchRecViewAdapter(emptyList())
+                }
             }
         }
-
-        override fun afterTextChanged(p0: Editable?) {
-
-        }
     }
 
+    private val textWatcherAnimator = CustomTextWatcher{ typedText->
+        runBlocking {
+            queryStateFlow.emit(typedText)
+        }
+    }
 
 }

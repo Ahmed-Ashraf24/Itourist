@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="20dp"
+    android:layout_marginTop="12dp"
+    android:layout_marginBottom="7dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="?attr/selectableItemBackground"
+    >
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/SearchResCityNameTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/dm_sans"
+        android:letterSpacing="0.05"
+        android:text="PortSaid"
+        android:gravity="center|start"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/SearchResCountryNameTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:letterSpacing="0.1"
+        android:layout_marginStart="5dp"
+        android:text="Egypt"
+        android:gravity="center|start"
+        android:textColor="#8C8C8C"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/SearchResCityNameTextView"/>
+   <!-- <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="4dp"
+        android:background="#303030"
+        app:layout_constraintTop_toBottomOf="@id/SearchResCountryNameTextView"/>-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

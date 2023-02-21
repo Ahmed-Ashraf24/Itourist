@@ -15,6 +15,7 @@ import com.example.itouristui.FirebaseObj
 import com.example.itouristui.UI.Dialogs.DatePickerDialog
 import com.example.itouristui.R
 import com.example.itouristui.UI.GeneralPage.GeneralActivity
+import com.example.itouristui.Utilities.CustomTextWatcher
 import com.example.itouristui.models.UserPlainData
 import kotlinx.android.synthetic.main.fragment_register.*
 
@@ -38,7 +39,7 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        SignUpPasswordEditText.addTextChangedListener(passwrodWatcher)
+        SignUpPasswordEditText.addTextChangedListener(passwordWatcher)
         SignUpCCP.registerCarrierNumberEditText(SignUpPhoneEditText)
 
         val dateOfBirth = StringBuilder()
@@ -102,27 +103,17 @@ class RegisterFragment : Fragment() {
         return hasSmall&&hasCap&&hasDigit&&has8Char
     }
 
-    private val passwrodWatcher = object : TextWatcher {
-        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-        }
+    private val passwordWatcher = CustomTextWatcher{ input->
 
-        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            p0?.let {input->
-                has8Char = (input.length>=8)
-                hasDigit = input.any { it.isDigit() }
-                hasCap = input.any { it.isUpperCase() }
-                hasSmall = input.any { it.isLowerCase() }
-            }
-            (if (has8Char) "#A5D6A7" else "#D3D3D3").also { SignUp8Char.compoundDrawables[0].setTint(Color.parseColor(it)) }
-            (if (hasDigit) "#A5D6A7" else "#D3D3D3").also { SignUp1Digit.compoundDrawables[0].setTint(Color.parseColor(it)) }
-            (if (hasCap) "#A5D6A7" else "#D3D3D3").also { SignUp1Cap.compoundDrawables[0].setTint(Color.parseColor(it)) }
-            (if (hasSmall) "#A5D6A7" else "#D3D3D3").also { SignUp1Small.compoundDrawables[0].setTint(Color.parseColor(it)) }
+        has8Char = (input.length>=8)
+        hasDigit = input.any { it.isDigit() }
+        hasCap = input.any { it.isUpperCase() }
+        hasSmall = input.any { it.isLowerCase() }
 
-        }
-
-        override fun afterTextChanged(p0: Editable?) {
-
-        }
+        (if (has8Char) "#A5D6A7" else "#D3D3D3").also { SignUp8Char.compoundDrawables[0].setTint(Color.parseColor(it)) }
+        (if (hasDigit) "#A5D6A7" else "#D3D3D3").also { SignUp1Digit.compoundDrawables[0].setTint(Color.parseColor(it)) }
+        (if (hasCap) "#A5D6A7" else "#D3D3D3").also { SignUp1Cap.compoundDrawables[0].setTint(Color.parseColor(it)) }
+        (if (hasSmall) "#A5D6A7" else "#D3D3D3").also { SignUp1Small.compoundDrawables[0].setTint(Color.parseColor(it)) }
     }
 
 }

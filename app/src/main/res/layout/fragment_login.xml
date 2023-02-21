@@ -121,6 +121,8 @@
                     android:layout_height="match_parent"
                     android:background="@null"
                     android:gravity="top"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
                     android:hint="iTourist@gmail.com"
                     android:textColor="@color/white"
                     android:textColorHint="#535353"
