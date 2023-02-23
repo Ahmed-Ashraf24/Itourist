@@ -15,6 +15,7 @@ import com.example.itouristui.Adapters.CitiesSearchRecViewAdapter
 import com.example.itouristui.Data.Remote.CityCountryApiObject
 import com.example.itouristui.R
 import com.example.itouristui.Utilities.CategoriesPlaceHolders
+import com.example.itouristui.Utilities.CustomRetrofitCallBack
 import com.example.itouristui.Utilities.CustomTextWatcher
 import com.example.itouristui.models.CategoriesOfPlaces
 import com.example.itouristui.models.CityDetails
@@ -30,6 +31,7 @@ import java.net.URLEncoder
 
 class SearchFragment : Fragment() {
 
+    lateinit var coroScope : CoroutineScope
     lateinit var queryStateFlow: MutableStateFlow<String>
 
     override fun onCreateView(
@@ -41,6 +43,8 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        coroScope = CoroutineScope(Dispatchers.Main)
         queryStateFlow = MutableStateFlow("")
 
         SearchCityCountryRecyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -54,26 +58,25 @@ class SearchFragment : Fragment() {
         }
 
         GeneralSearchEditText.addTextChangedListener(textWatcherAnimator)
-        CoroutineScope(Dispatchers.Main).launch{
+        coroScope.launch{
             queryStateFlow.collectLatest {
                 delay(1500)
                 if (it.isNotBlank()){
                     CityCountryApiObject.cityCountryApiInterface.getCities(prefixName = it)
-                        .enqueue(object : Callback<List<CityDetails>> {
-                            override fun onResponse(call: Call<List<CityDetails>>, response: Response<List<CityDetails>>) {
-                                if (response.isSuccessful) {
-                                    SearchCityCountryRecyclerView.adapter = CitiesSearchRecViewAdapter(response.body()!!)
-                                }
-                            }
-                            override fun onFailure(call: Call<List<CityDetails>>, t: Throwable) {
-                                println("Error ${t.message}")
-                            }
+                        .enqueue(CustomRetrofitCallBack<List<CityDetails>>{successfulRes->
+                            SearchCityCountryRecyclerView.adapter = CitiesSearchRecViewAdapter(successfulRes.body()!!)
                         })
                 }else{
                     SearchCityCountryRecyclerView.adapter = CitiesSearchRecViewAdapter(emptyList())
                 }
             }
         }
+    }
+
+    override fun onDestroy() {
+        coroScope.cancel()
+        super.onDestroy()
+
     }
 
     private val textWatcherAnimator = CustomTextWatcher{ typedText->

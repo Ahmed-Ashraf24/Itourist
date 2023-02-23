@@ -24,6 +24,9 @@ class GeneralActivity : AppCompatActivity() , NavigationView.OnNavigationItemSel
         showCustomUI()
 
         val homeFragment = HomeFragment()
+        val searchFragment = SearchFragment()
+        val profileFragment = ProfileFragment()
+
         val locationBundle = Bundle()
         val gpsNotEnabledDialog = GpsNotEnabledDialog()
 
@@ -46,6 +49,7 @@ class GeneralActivity : AppCompatActivity() , NavigationView.OnNavigationItemSel
                     putDouble("LAT",p0.lastLocation!!.longitude)
                 }
 
+                searchFragment.apply { arguments = locationBundle }
                 homeFragment.apply { arguments = locationBundle }
                     .also {
                         supportFragmentManager.beginTransaction().add(R.id.GeneralFragmentContainerView, it).commit()
@@ -68,10 +72,10 @@ class GeneralActivity : AppCompatActivity() , NavigationView.OnNavigationItemSel
            when(selectedNavButtonID){
                R.id.navHomeButtonId ->  homeFragment
 
-               R.id.navSearchButtonId -> SearchFragment().apply { arguments = locationBundle }
+               R.id.navSearchButtonId -> searchFragment
 
-               R.id.navProfileButtonId -> ProfileFragment()
-               else -> HomeFragment()
+               R.id.navProfileButtonId -> profileFragment
+               else -> homeFragment
            }.also{
                 supportFragmentManager.beginTransaction().replace(R.id.GeneralFragmentContainerView, it).commit()
             }

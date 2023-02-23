@@ -11,7 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.itouristui.Adapters.horizontal_recyclerview_adapter
+import com.example.itouristui.Adapters.GeneralPageRecViewAdapter
 import com.example.itouristui.R
 import kotlinx.android.synthetic.main.fragment_home.*
 class HomeFragment : Fragment(){
@@ -37,19 +37,19 @@ class HomeFragment : Fragment(){
             CurrentLocationTextView.text = it.getString("CURRENT_LOCATION")
         }?:Toast.makeText(requireContext(),"A Problem has occurred,You may need to restart",Toast.LENGTH_LONG).show()
 
-        with(SuggestedPlacesRecyclerView){
+        with(NearbyPlacesRecyclerView){
             layoutManager = LinearLayoutManager(requireContext() , LinearLayoutManager.HORIZONTAL , false)
-            adapter = horizontal_recyclerview_adapter()
+            adapter = GeneralPageRecViewAdapter(emptyList())
         }
 
         with(PopularPlacesRecyclerView){
             layoutManager = LinearLayoutManager(requireContext() , LinearLayoutManager.HORIZONTAL , false)
-            adapter = horizontal_recyclerview_adapter()
+            adapter = GeneralPageRecViewAdapter(emptyList())
         }
 
-        with(NearbyPlacesRecyclerView){
+        with(SuggestedPlacesRecyclerView){
             layoutManager = LinearLayoutManager(requireContext() , LinearLayoutManager.HORIZONTAL , false)
-            adapter = horizontal_recyclerview_adapter()
+            adapter = GeneralPageRecViewAdapter(emptyList())
         }
 
         val ss: SpannableString = SpannableString("See More")
