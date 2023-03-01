@@ -6,12 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+<include
+    android:id="@+id/IncludedLocationPlaceHolder"
+    layout="@layout/getting_location_placeholder_layout"/>
+
     
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/GeneralActivityMainConstraint"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".UI.GeneralPage.GeneralActivity">
+        tools:context=".UI.GeneralPage.GeneralActivity"
+        android:visibility="gone">
 
 
         <androidx.fragment.app.FragmentContainerView

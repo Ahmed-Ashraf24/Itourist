@@ -13,15 +13,32 @@ import com.example.itouristui.UI.Dialogs.GpsNotEnabledDialog
 import com.google.android.gms.location.*
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_general.*
+import kotlinx.android.synthetic.main.getting_location_placeholder_layout.*
+import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import java.util.*
 
 class GeneralActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener {
+
+    private lateinit var locationPlaceHolderStateFlow : MutableStateFlow<Char>
+    lateinit var coroScope : CoroutineScope
+    private val gettingLocationPlaceHolderText = "Getting Your Current Location . ."
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_general)
         MainAct3NavView.setNavigationItemSelectedListener(this)
         MainAct3NavView.itemIconTintList = null
         showCustomUI()
+        coroScope = CoroutineScope(Dispatchers.Main + Job())
+        locationPlaceHolderStateFlow = MutableStateFlow('/')
+        coroScope.launch {
+            locationPlaceHolderStateFlow.collectLatest {
+                GettingYourLocaPlaceHolderTV.append("$it")
+            }
+        }
+        animateLocationGettingText()
 
         val homeFragment = HomeFragment()
         val searchFragment = SearchFragment()
@@ -42,11 +59,10 @@ class GeneralActivity : AppCompatActivity() , NavigationView.OnNavigationItemSel
                 }
                 val geoCoding = Geocoder(this@GeneralActivity , Locale.getDefault())
                     .getFromLocation(p0.lastLocation!!.latitude,p0.lastLocation!!.longitude,1)
-
                 locationBundle.apply {
                     putString("CURRENT_LOCATION",geoCoding[0].adminArea)
                     putDouble("LAT",p0.lastLocation!!.latitude)
-                    putDouble("LAT",p0.lastLocation!!.longitude)
+                    putDouble("LON",p0.lastLocation!!.longitude)
                 }
 
                 searchFragment.apply { arguments = locationBundle }
@@ -85,6 +101,18 @@ class GeneralActivity : AppCompatActivity() , NavigationView.OnNavigationItemSel
 
     }
 
+    private fun animateLocationGettingText(){
+        coroScope.launch {
+            for (char in gettingLocationPlaceHolderText){
+                delay(100)
+                locationPlaceHolderStateFlow.emit(char)
+            }
+            delay(200)
+            IncludedLocationPlaceHolder.visibility = View.GONE
+            GeneralActivityMainConstraint.visibility = View.VISIBLE
+        }
+    }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
 
@@ -96,6 +124,11 @@ class GeneralActivity : AppCompatActivity() , NavigationView.OnNavigationItemSel
         window.decorView.apply {
             systemUiVisibility =  View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         }
+    }
+
+    override fun onDestroy() {
+        coroScope.cancel()
+        super.onDestroy()
     }
 
 

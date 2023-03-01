@@ -12,9 +12,8 @@ import java.util.ArrayList
 
 class places_adapter(var data: ArrayList<places>): RecyclerView.Adapter<places_adapter.ViewHolder>() {
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){
-        var placename= view.place_name
-        var worktime=view.work_time
-        var distance =view.distance
+        var placename= view.ItemListPlaceNameTV
+        var distance =view.ItemListDistTextView
 
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -24,7 +23,6 @@ class places_adapter(var data: ArrayList<places>): RecyclerView.Adapter<places_a
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.placename.text=data[position].Name
-        holder.worktime.text=data[position].worktime
         holder.distance.text=data[position].away
     }
 

@@ -1,361 +1,382 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ItemFragment">
+    android:layout_height="match_parent">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView5"
-        style="@style/MyCardView"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="6dp"
-        android:layout_marginTop="6dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        tools:context=".UI.DisplayMore.PlaceInfoFragment">
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView5"
+            style="@style/MyCardView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:cropToPadding="true"
-            android:paddingBottom="15dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/mountain_with_camp" />
-    </androidx.cardview.widget.CardView>
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="6dp"
+            android:layout_marginTop="6dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:cropToPadding="true"
+                android:paddingBottom="15dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/mountain_with_camp" />
+        </androidx.cardview.widget.CardView>
 
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3" />
+        <View
+            android:id="@+id/guideline2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView12"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:text="The Great wall of China"
-        android:textColor="@color/black"
-        android:textSize="26sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias=".41"
+            app:layout_constraintBottom_toTopOf="@id/appCompatTextView17"/>
 
-        app:fontFamily="@font/roboto_black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/PlaceInfoFragmentNameTV"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="The Great wall of China"
+            android:textColor="@color/black"
+            android:textSize="26sp"
 
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/appCompatImageButton4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_baseline_share_24"
-        app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView12"
-        app:layout_constraintEnd_toEndOf="@+id/cardView5"
-        app:layout_constraintHorizontal_bias=".8"
-        app:layout_constraintStart_toEndOf="@+id/appCompatTextView12" />
-
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/appCompatImageButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="35dp"
-        android:background="@android:color/transparent"
-        android:clickable="false"
-        android:focusable="false"
-        android:src="@drawable/ic_baseline_gps_fixed_24"
-        android:tint="#969696"
-        app:layout_constraintStart_toStartOf="@+id/appCompatTextView12"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView12" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView13"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginLeft="8dp"
-        android:gravity="center"
-        android:text="Distance"
-        android:textColor="#969696"
-        android:textSize="16sp"
-        app:fontFamily="@font/open_sans_semibold"
-        app:layout_constraintBottom_toBottomOf="@+id/appCompatImageButton3"
-        app:layout_constraintStart_toEndOf="@+id/appCompatImageButton3"
-        app:layout_constraintTop_toTopOf="@+id/appCompatImageButton3" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView15"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:paddingLeft="8dp"
-        android:text="1000 km"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:fontFamily="@font/roboto_bold"
-        app:layout_constraintEnd_toEndOf="@+id/appCompatTextView13"
-        app:layout_constraintStart_toStartOf="@+id/appCompatImageButton3"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView13" />
-
-    <androidx.appcompat.widget.AppCompatImageButton
-
-        android:id="@+id/appCompatImageButton6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_marginTop="38dp"
-
-        android:background="@android:color/transparent"
-        android:clickable="false"
-        android:focusable="false"
-        android:src="@drawable/ic_outline_rate_review_24"
-        android:tint="#969696"
-        app:layout_constraintStart_toEndOf="@+id/appCompatTextView12"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView12" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-
-        android:id="@+id/appCompatTextView14"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginLeft="8dp"
-        android:gravity="center"
-        android:text="No.Reviews"
-        android:textColor="#969696"
-        android:textSize="16sp"
-        app:fontFamily="@font/open_sans_semibold"
-        app:layout_constraintBottom_toBottomOf="@+id/appCompatImageButton6"
-        app:layout_constraintStart_toEndOf="@+id/appCompatImageButton6"
-        app:layout_constraintTop_toTopOf="@+id/appCompatImageButton6" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:paddingLeft="8dp"
-        android:text="385 Reviews"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:fontFamily="@font/roboto_bold"
-        app:layout_constraintEnd_toEndOf="@+id/appCompatTextView14"
-        app:layout_constraintStart_toStartOf="@+id/appCompatImageButton6"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView14" />
-
-
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/LocationIcon"
-
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="40dp"
-        android:background="@android:color/transparent"
-        android:clickable="false"
-        android:focusable="false"
-        android:src="@drawable/ic_outline_location_on_24"
-        android:tint="#969696"
-        app:layout_constraintStart_toStartOf="@+id/appCompatTextView12"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView15" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-
-        android:id="@+id/appCompatTextView18"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginLeft="8dp"
-        android:gravity="center"
-        android:text="Location's Address"
-        android:textColor="#969696"
-        android:textSize="16sp"
-        app:fontFamily="@font/open_sans_semibold"
-        app:layout_constraintBottom_toBottomOf="@+id/LocationIcon"
-        app:layout_constraintStart_toEndOf="@+id/LocationIcon"
-        app:layout_constraintTop_toTopOf="@+id/LocationIcon" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView16"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:paddingLeft="8dp"
-        android:text="Shingahi, Tokyo near aqr, China"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:fontFamily="@font/roboto_bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/LocationIcon"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView18" />
-
-    <android.widget.Button
-        android:id="@+id/button2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:background="@drawable/map_route_button"
-        android:drawableStart="@drawable/ic_baseline_map_24"
-        android:drawablePadding="10dp"
-        android:layout_marginHorizontal="18dp"
-        android:fontFamily="@font/roboto_medium"
-
-        android:paddingHorizontal="20dp"
-        android:text="On Map"
-        android:textAllCaps="false"
-        android:textColor="#092D47"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView16" />
-
-    <android.widget.Button
-        android:id="@+id/button3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:background="@drawable/map_route_button"
-        android:drawableStart="@drawable/ic_outline_directions_24"
-        android:drawablePadding="10dp"
-        android:fontFamily="@font/roboto_medium"
-        android:paddingHorizontal="20dp"
-        android:layout_marginHorizontal="18dp"
-
-        android:text="Route"
-        android:textAllCaps="false"
-        android:textColor="#092D47"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView16" />
-
-    <androidx.appcompat.widget.AppCompatImageButton
-
-        android:id="@+id/appCompatImageButton12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:layout_marginTop="40dp"
-        android:clickable="false"
-        android:layout_marginLeft="15dp"
-        android:focusable="false"
-        android:src="@drawable/ic_round_star_half_24"
-        android:tint="#969696"
-        app:layout_constraintStart_toStartOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-
-        android:id="@+id/appCompatTextView17"
-        android:layout_width="wrap_content"
-
-        android:layout_height="0dp"
-        android:gravity="center"
-        android:text="Overall Rate"
-        android:textColor="#969696"
-        android:textSize="16sp"
-        app:fontFamily="@font/open_sans_semibold"
-        app:layout_constraintBottom_toBottomOf="@+id/appCompatImageButton12"
-        app:layout_constraintEnd_toEndOf="@+id/button3"
-        app:layout_constraintHorizontal_bias=".5"
-        app:layout_constraintStart_toEndOf="@+id/appCompatImageButton12"
-        app:layout_constraintTop_toTopOf="@+id/appCompatImageButton12" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/OverallRateTextView"
-
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingLeft="8dp"
-        android:text="4.5"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/black"
-        android:textSize="22sp"
-        app:fontFamily="@font/roboto_bold"
-        app:layout_constraintEnd_toEndOf="@+id/appCompatTextView17"
-        app:layout_constraintStart_toStartOf="@+id/appCompatImageButton12"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView17" />
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/linearLayoutCompat2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@+id/OverallRateTextView"
-        app:layout_constraintStart_toStartOf="@+id/OverallRateTextView"
-        app:layout_constraintTop_toBottomOf="@+id/OverallRateTextView">
+            app:fontFamily="@font/roboto_black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
         <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/appCompatImageButton4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_baseline_star_24" />
+            android:src="@drawable/ic_baseline_share_24"
+            app:layout_constraintBottom_toBottomOf="@+id/PlaceInfoFragmentNameTV"
+            app:layout_constraintEnd_toEndOf="@+id/cardView5"
+            app:layout_constraintHorizontal_bias=".8"
+            app:layout_constraintStart_toEndOf="@+id/PlaceInfoFragmentNameTV" />
 
         <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/appCompatImageButton3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="35dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_baseline_star_24" />
+            android:clickable="false"
+            android:focusable="false"
+            android:src="@drawable/ic_baseline_gps_fixed_24"
+            android:tint="#969696"
+            app:layout_constraintStart_toStartOf="@+id/PlaceInfoFragmentNameTV"
+            app:layout_constraintTop_toBottomOf="@+id/PlaceInfoFragmentNameTV" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView13"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginLeft="8dp"
+            android:gravity="center"
+            android:text="Distance"
+            android:textColor="#969696"
+            android:textSize="16sp"
+            app:fontFamily="@font/open_sans_semibold"
+            app:layout_constraintBottom_toBottomOf="@+id/appCompatImageButton3"
+            app:layout_constraintStart_toEndOf="@+id/appCompatImageButton3"
+            app:layout_constraintTop_toTopOf="@+id/appCompatImageButton3" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/PlaceInfoFragmentDistanceTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:paddingLeft="8dp"
+            android:text="1000 km"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:fontFamily="@font/roboto_bold"
+            app:layout_constraintEnd_toEndOf="@+id/appCompatTextView13"
+            app:layout_constraintStart_toStartOf="@+id/appCompatImageButton3"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView13" />
 
         <androidx.appcompat.widget.AppCompatImageButton
+
+            android:id="@+id/appCompatImageButton6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
+            android:layout_marginTop="38dp"
+
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_baseline_star_24" />
+            android:clickable="false"
+            android:focusable="false"
+            android:src="@drawable/ic_outline_rate_review_24"
+            android:tint="#969696"
+            app:layout_constraintStart_toEndOf="@+id/PlaceInfoFragmentNameTV"
+            app:layout_constraintTop_toBottomOf="@+id/PlaceInfoFragmentNameTV" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+
+            android:id="@+id/appCompatTextView14"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginLeft="8dp"
+            android:gravity="center"
+            android:text="No.Reviews"
+            android:textColor="#969696"
+            android:textSize="16sp"
+            app:fontFamily="@font/open_sans_semibold"
+            app:layout_constraintBottom_toBottomOf="@+id/appCompatImageButton6"
+            app:layout_constraintStart_toEndOf="@+id/appCompatImageButton6"
+            app:layout_constraintTop_toTopOf="@+id/appCompatImageButton6" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:paddingLeft="8dp"
+            android:text="385 Reviews"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:fontFamily="@font/roboto_bold"
+            app:layout_constraintEnd_toEndOf="@+id/appCompatTextView14"
+            app:layout_constraintStart_toStartOf="@+id/appCompatImageButton6"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView14" />
+
 
         <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/LocationIcon"
+
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="40dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_baseline_star_24" />
+            android:clickable="false"
+            android:focusable="false"
+            android:src="@drawable/ic_outline_location_on_24"
+            android:tint="#969696"
+            app:layout_constraintStart_toStartOf="@+id/PlaceInfoFragmentNameTV"
+            app:layout_constraintTop_toBottomOf="@+id/PlaceInfoFragmentDistanceTV" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+
+            android:id="@+id/appCompatTextView18"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginLeft="8dp"
+            android:gravity="center"
+            android:text="Location's Address"
+            android:textColor="#969696"
+            android:textSize="16sp"
+            app:fontFamily="@font/open_sans_semibold"
+            app:layout_constraintBottom_toBottomOf="@+id/LocationIcon"
+            app:layout_constraintStart_toEndOf="@+id/LocationIcon"
+            app:layout_constraintTop_toTopOf="@+id/LocationIcon" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/PlaceInfoFragmentAddressTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:paddingLeft="8dp"
+            android:textDirection="ltr"
+            android:text="Shingahi, Tokyo near aqr, China"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:fontFamily="@font/roboto_bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/LocationIcon"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView18" />
+
+        <android.widget.Button
+            android:id="@+id/PlaceInfoFragmentOnMapButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginTop="52dp"
+            android:background="@drawable/map_route_button"
+            android:drawableStart="@drawable/ic_baseline_map_24"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/roboto_medium"
+
+            android:paddingHorizontal="20dp"
+            android:text="On Map"
+            android:textAllCaps="false"
+            android:textColor="#092D47"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/PlaceInfoFragmentRouteButton"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PlaceInfoFragmentAddressTV" />
+
+        <android.widget.Button
+            android:id="@+id/PlaceInfoFragmentRouteButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginTop="52dp"
+            android:background="@drawable/map_route_button"
+            android:drawableStart="@drawable/ic_outline_directions_24"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/roboto_medium"
+            android:paddingHorizontal="20dp"
+
+            android:text="Route"
+            android:textAllCaps="false"
+            android:textColor="#092D47"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/PlaceInfoFragmentOnMapButton"
+            app:layout_constraintTop_toBottomOf="@+id/PlaceInfoFragmentAddressTV" />
 
         <androidx.appcompat.widget.AppCompatImageButton
+
+            android:id="@+id/appCompatImageButton12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="40dp"
             android:background="@android:color/transparent"
+            android:clickable="false"
+            android:focusable="false"
             android:src="@drawable/ic_round_star_half_24"
-            android:tint="#072C3D" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
+            android:tint="#969696"
+            app:layout_constraintStart_toStartOf="@+id/PlaceInfoFragmentRouteButton"
+            app:layout_constraintTop_toBottomOf="@+id/PlaceInfoFragmentRouteButton" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView6"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="35dp"
-        app:cardCornerRadius="999dp"
-        app:layout_constraintStart_toStartOf="@+id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/button2">
+        <androidx.appcompat.widget.AppCompatTextView
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/man_pic" />
+            android:id="@+id/appCompatTextView17"
+            android:layout_width="wrap_content"
 
-    </androidx.cardview.widget.CardView>
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="Overall Rate"
+            android:textColor="#969696"
+            android:textSize="16sp"
+            app:fontFamily="@font/open_sans_semibold"
+            app:layout_constraintBottom_toBottomOf="@+id/appCompatImageButton12"
+            app:layout_constraintEnd_toEndOf="@+id/PlaceInfoFragmentRouteButton"
+            app:layout_constraintHorizontal_bias=".5"
+            app:layout_constraintStart_toEndOf="@+id/appCompatImageButton12"
+            app:layout_constraintTop_toTopOf="@+id/appCompatImageButton12" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="18dp"
-        android:fontFamily="@font/dm_sans"
-        android:text="A Place where Everyone can see the greatness of Chinese people who have dedicated their lives to buil such a massive structurethat would .."
-        android:textColor="@color/black"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/OverallRateTextView"
 
-        app:layout_constraintEnd_toStartOf="@+id/OverallRateTextView"
-        app:layout_constraintStart_toEndOf="@+id/cardView6"
-        app:layout_constraintTop_toTopOf="@+id/cardView6" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:paddingLeft="8dp"
+            android:text="4.5"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            app:fontFamily="@font/roboto_bold"
+            app:layout_constraintEnd_toEndOf="@+id/appCompatTextView17"
+            app:layout_constraintStart_toStartOf="@+id/appCompatImageButton12"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView17" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearLayoutCompat2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/OverallRateTextView"
+            app:layout_constraintStart_toStartOf="@+id/OverallRateTextView"
+            app:layout_constraintTop_toBottomOf="@+id/OverallRateTextView">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_baseline_star_24" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_baseline_star_24" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_baseline_star_24" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_baseline_star_24" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_round_star_half_24"
+                android:tint="#072C3D" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView6"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="35dp"
+            app:cardCornerRadius="999dp"
+            app:layout_constraintStart_toStartOf="@+id/PlaceInfoFragmentOnMapButton"
+            app:layout_constraintTop_toBottomOf="@+id/PlaceInfoFragmentOnMapButton">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/man_pic" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/bestrev"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="18dp"
+            android:fontFamily="@font/dm_sans"
+            android:text="A Place where Everyone can see the greatness of Chinese people who have dedicated their lives to buil such a massive structure that would Live as long as the people of china will"
+            android:textColor="@color/black"
+
+            app:layout_constraintEnd_toStartOf="@+id/OverallRateTextView"
+            app:layout_constraintStart_toEndOf="@+id/cardView6"
+            app:layout_constraintTop_toTopOf="@+id/cardView6" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ReviewsRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            app:layout_constraintTop_toBottomOf="@id/bestrev"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
 
 

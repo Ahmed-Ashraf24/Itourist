@@ -1,32 +1,29 @@
 package com.example.itouristui.UI.GeneralPage
 
+import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.itouristui.Adapters.CategoriesPlaceHolderRecViewAdapter
 import com.example.itouristui.Adapters.CitiesSearchRecViewAdapter
 import com.example.itouristui.Data.Remote.CityCountryApiObject
+import com.example.itouristui.UI.DisplayMore.PlacesListFragment
 import com.example.itouristui.R
+import com.example.itouristui.UI.DisplayMore.DisplayActivity
 import com.example.itouristui.Utilities.CategoriesPlaceHolders
 import com.example.itouristui.Utilities.CustomRetrofitCallBack
 import com.example.itouristui.Utilities.CustomTextWatcher
-import com.example.itouristui.models.CategoriesOfPlaces
 import com.example.itouristui.models.CityDetails
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.net.URLEncoder
 
 
 class SearchFragment : Fragment() {
@@ -47,14 +44,29 @@ class SearchFragment : Fragment() {
         coroScope = CoroutineScope(Dispatchers.Main)
         queryStateFlow = MutableStateFlow("")
 
+
         SearchCityCountryRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         SearchCityCountryRecyclerView.itemAnimator = DefaultItemAnimator()
 
-
+        val displayListOfPlacesIntent = Intent(requireContext(), DisplayActivity::class.java).apply {
+            putExtra("SELECTED_DISPLAY_FRAGMENT", "PLACES_LIST")
+        }
         with(CategoriesRecyclerView) {
             layoutManager = GridLayoutManager(requireContext(), 2)
             itemAnimator = DefaultItemAnimator()
-            adapter = CategoriesPlaceHolderRecViewAdapter(CategoriesPlaceHolders.categoriesOfPlaces)
+            adapter = CategoriesPlaceHolderRecViewAdapter(CategoriesPlaceHolders.categoriesOfPlaces){
+
+                arguments?.let { args->
+                    displayListOfPlacesIntent.apply {
+                        putExtra("SELECTED_CATEGORY",it)
+                        putExtra("LAT",args.getDouble("LAT"))
+                        putExtra("LON",args.getDouble("LON"))
+                    }
+
+                    startActivity(displayListOfPlacesIntent)
+
+                }?: Toast.makeText(requireContext(),"An Error Occurred",Toast.LENGTH_SHORT).show()
+            }
         }
 
         GeneralSearchEditText.addTextChangedListener(textWatcherAnimator)
