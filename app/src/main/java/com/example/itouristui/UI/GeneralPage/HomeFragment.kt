@@ -15,7 +15,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.itouristui.Adapters.GeneralPageRecViewAdapter
 import com.example.itouristui.R
 import com.example.itouristui.UI.DisplayMore.DisplayActivity
+import com.example.itouristui.Utilities.CustomTextWatcher
 import com.example.itouristui.Utilities.CustomTomtomCallback
+import com.example.itouristui.iToursit
 import com.example.itouristui.models.PlaceImportantData
 import com.tomtom.sdk.common.location.GeoPoint
 import com.tomtom.sdk.search.SearchOptions
@@ -23,11 +25,18 @@ import com.tomtom.sdk.search.model.geometry.CircleGeometry
 import com.tomtom.sdk.search.model.result.SearchResult
 import com.tomtom.sdk.search.online.OnlineSearch
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.collectLatest
+import okhttp3.Dispatcher
 import java.util.*
 
 class HomeFragment : Fragment(){
 
-    var wasPreviouslyCreated = false
+    var nearbyAdapter : GeneralPageRecViewAdapter? = null
+    var suggestedAdapter : GeneralPageRecViewAdapter? = null
+    lateinit var coroScope : CoroutineScope
+    lateinit var searchStateFlow : MutableStateFlow<String>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +48,11 @@ class HomeFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        coroScope = CoroutineScope(Dispatchers.Main+ Job())
+        searchStateFlow = MutableStateFlow("")
+
+        HomeFragmentShimmer.startShimmerAnimation()
 
         NearbyPlacesRecyclerView.layoutManager = LinearLayoutManager(requireContext() , LinearLayoutManager.HORIZONTAL , false)
         PopularPlacesRecyclerView.layoutManager = LinearLayoutManager(requireContext() , LinearLayoutManager.HORIZONTAL , false)
@@ -53,12 +67,13 @@ class HomeFragment : Fragment(){
         tVId5.text = ss
 
 
+
+
         arguments?.let {args->
 
-            wasPreviouslyCreated=true
-            val currentPlace = args.getString("CURRENT_LOCATION")
-            val currentLat = args.getDouble("LAT")
-            val currentLon = args.getDouble("LON")
+            val currentPlace = iToursit.lastAddedCity.cityName
+            val currentLat = iToursit.lastAddedCity.lat
+            val currentLon = iToursit.lastAddedCity.lon
 
             CurrentLocationTextView.text = currentPlace
 
@@ -66,27 +81,54 @@ class HomeFragment : Fragment(){
             val circleGeometry = CircleGeometry(GeoPoint(currentLat,currentLon) ,500)
             val lang = Locale("ar")
 
-            val searchOptionsNearby = SearchOptions(query = "store",searchAreas = setOf(circleGeometry), limit = 20)
-            search.search(searchOptionsNearby, CustomTomtomCallback{ results->
-                NearbyPlacesRecyclerView.adapter = GeneralPageRecViewAdapter(results.results){
-                    getImportantPlaceData(it)
+            coroScope.launch {
+                searchStateFlow.collectLatest {
+                    delay(1500)
+                    if (it.isNotBlank()){
+                        val searchOptions = SearchOptions(query = it,searchAreas = setOf(circleGeometry), limit = 6)
+                        search.search(searchOptions , CustomTomtomCallback{
+
+                        })
+                    }
                 }
+            }
+
+            if (nearbyAdapter==null||iToursit.newSelectedCity){
+                val searchOptionsNearby = SearchOptions(query = "store",searchAreas = setOf(circleGeometry), limit = 20)
+                search.search(searchOptionsNearby, CustomTomtomCallback{ results->
+                    nearbyAdapter =  GeneralPageRecViewAdapter(results.results){ getImportantPlaceData(it) }
+                    NearbyPlacesRecyclerView.adapter =nearbyAdapter
+
+                    HomeFragmentShimmer.apply {
+                        stopShimmerAnimation()
+                        visibility = View.GONE
+                    }
+
+                    HomeFragmentNestedLayoutContainer.visibility = View.VISIBLE
+                    iToursit.newSelectedCity = false
+                })
+            }else{
                 HomeFragmentShimmer.apply {
                     stopShimmerAnimation()
                     visibility = View.GONE
                 }
-
                 HomeFragmentNestedLayoutContainer.visibility = View.VISIBLE
-            })
+                NearbyPlacesRecyclerView.adapter = nearbyAdapter
+            }
 
-            val searchOptionsPopular = SearchOptions(query = "Tourist Attraction",searchAreas = setOf(circleGeometry), limit = 20, locale = lang)
-            search.search(searchOptionsPopular, CustomTomtomCallback{ results->
-                println(results.results.first().toString())
-                PopularPlacesRecyclerView.adapter = GeneralPageRecViewAdapter(results.results){
-                    getImportantPlaceData(it)
-                }
 
-            })
+            if (suggestedAdapter==null||iToursit.newSelectedCity){
+                val searchOptionsPopular = SearchOptions(query = "Tourist Attraction",searchAreas = setOf(circleGeometry), limit = 20, locale = lang)
+                search.search(searchOptionsPopular, CustomTomtomCallback{ results->
+                    suggestedAdapter = GeneralPageRecViewAdapter(results.results){
+                        getImportantPlaceData(it)
+                    }
+                    PopularPlacesRecyclerView.adapter = suggestedAdapter
+                })
+            }else{
+                PopularPlacesRecyclerView.adapter = suggestedAdapter
+            }
+
 
         }?:Toast.makeText(requireContext(),"A Problem has occurred,You may need to restart",Toast.LENGTH_LONG).show()
     }
@@ -110,10 +152,12 @@ class HomeFragment : Fragment(){
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        HomeFragmentShimmer.startShimmerAnimation()
+    private val textWatcher = CustomTextWatcher{
+        runBlocking {
+            searchStateFlow.emit(it)
+        }
     }
+
 
     override fun onPause() {
         super.onPause()

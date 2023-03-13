@@ -17,6 +17,7 @@ import com.example.itouristui.R
 import com.example.itouristui.UI.GeneralPage.GeneralActivity
 import com.example.itouristui.Utilities.CustomTextWatcher
 import com.example.itouristui.models.UserPlainData
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_register.*
 
 
@@ -26,6 +27,8 @@ class RegisterFragment : Fragment() {
     private var hasCap = false
     private var hasSmall = false
     private var has8Char = false
+
+    private val dataBase: FirebaseFirestore = FirebaseFirestore.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -68,6 +71,13 @@ class RegisterFragment : Fragment() {
                         }.addOnFailureListener {
                             Toast.makeText(requireContext(),it.message,Toast.LENGTH_SHORT).show()
                         }
+
+                    val fullName = SignUpFullNameEditText.text.toString()
+                    val email = SignUpEmailEditText.text.toString()
+                    val phoneNumber = SignUpPhoneEditText.text.toString()
+                    val dateOfBirth = SignUpBirthdayEditText.text.toString()
+                    val person = UserPlainData(fullName, email, phoneNumber, dateOfBirth)
+                    savePerson(person)
                 }
             }
 
@@ -114,6 +124,17 @@ class RegisterFragment : Fragment() {
         (if (hasDigit) "#A5D6A7" else "#D3D3D3").also { SignUp1Digit.compoundDrawables[0].setTint(Color.parseColor(it)) }
         (if (hasCap) "#A5D6A7" else "#D3D3D3").also { SignUp1Cap.compoundDrawables[0].setTint(Color.parseColor(it)) }
         (if (hasSmall) "#A5D6A7" else "#D3D3D3").also { SignUp1Small.compoundDrawables[0].setTint(Color.parseColor(it)) }
+    }
+
+    private fun savePerson(userPlainData : UserPlainData){
+        dataBase.collection("persons").document().set(userPlainData)
+            .addOnSuccessListener {
+                Toast.makeText(requireActivity(), "Registration done", Toast.LENGTH_SHORT).show()
+            }
+
+            .addOnFailureListener {
+                Toast.makeText(requireActivity(), "Error!", Toast.LENGTH_SHORT).show()
+            }
     }
 
 }

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="220dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="10dp"
+    app:cardCornerRadius="16dp"
+    style="@style/MyCardView"
+    android:layout_gravity="center"
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/custom_reviews_card">
+
+            <TextView
+                android:id="@+id/TvReviewPlaceNameId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Place name"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/TvReviewDateId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="3 March 2023"
+                android:textColor="#737070"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/TvReviewPlaceNameId"
+                app:layout_constraintTop_toBottomOf="@+id/TvReviewPlaceNameId" />
+
+            <TextView
+                android:id="@+id/TvReviewId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="The place was so good"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/TvReviewDateId" />
+
+            <ImageView
+                android:id="@+id/ReviewStarNum1Id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="@+id/TvReviewDateId"
+                app:layout_constraintStart_toEndOf="@+id/TvReviewDateId"
+                app:layout_constraintTop_toBottomOf="@+id/TvReviewPlaceNameId"
+                app:srcCompat="@drawable/review_star" />
+
+            <ImageView
+                android:id="@+id/ReviewStarNum2Id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:layout_marginStart="5dp"
+                app:layout_constraintStart_toEndOf="@+id/ReviewStarNum1Id"
+                app:layout_constraintTop_toTopOf="@+id/ReviewStarNum1Id"
+                app:srcCompat="@drawable/review_star" />
+
+            <ImageView
+                android:id="@+id/ReviewStarNum3Id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:layout_marginStart="5dp"
+                app:layout_constraintStart_toEndOf="@+id/ReviewStarNum2Id"
+                app:layout_constraintTop_toTopOf="@+id/ReviewStarNum2Id"
+                app:srcCompat="@drawable/review_star" />
+
+            <ImageView
+                android:id="@+id/ReviewStarNum4Id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:layout_marginStart="5dp"
+                app:layout_constraintStart_toEndOf="@+id/ReviewStarNum3Id"
+                app:layout_constraintTop_toTopOf="@+id/ReviewStarNum3Id"
+                app:srcCompat="@drawable/review_star" />
+
+            <ImageView
+                android:id="@+id/ReviewStarNum5Id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:layout_marginStart="5dp"
+                app:layout_constraintStart_toEndOf="@+id/ReviewStarNum4Id"
+                app:layout_constraintTop_toTopOf="@+id/ReviewStarNum4Id"
+                app:srcCompat="@drawable/review_star_border" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -1,11 +1,13 @@
 package com.example.itouristui.UI.GeneralPage
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
@@ -19,7 +21,10 @@ import com.example.itouristui.UI.DisplayMore.DisplayActivity
 import com.example.itouristui.Utilities.CategoriesPlaceHolders
 import com.example.itouristui.Utilities.CustomRetrofitCallBack
 import com.example.itouristui.Utilities.CustomTextWatcher
+import com.example.itouristui.iToursit
 import com.example.itouristui.models.CityDetails
+import com.example.itouristui.models.SimpleCityDetail
+import kotlinx.android.synthetic.main.activity_general.*
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -76,10 +81,21 @@ class SearchFragment : Fragment() {
                 if (it.isNotBlank()){
                     CityCountryApiObject.cityCountryApiInterface.getCities(prefixName = it)
                         .enqueue(CustomRetrofitCallBack<List<CityDetails>>{successfulRes->
-                            SearchCityCountryRecyclerView.adapter = CitiesSearchRecViewAdapter(successfulRes.body()!!)
+                            SearchCityCountryRecyclerView.adapter = CitiesSearchRecViewAdapter(successfulRes.body()!!){
+                                iToursit.selectedCities.add(SimpleCityDetail(it.name,it.country.name,
+                                    it.coordinates.latitude,it.coordinates.longitude))
+                                iToursit.newSelectedCity=true
+
+                                val input = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                                input.hideSoftInputFromWindow(requireActivity().currentFocus!!.windowToken,0)
+                                Thread.sleep(500)
+                                requireActivity().CustomBottomNavBar.setItemSelected(R.id.navHomeButtonId)
+                            }
                         })
                 }else{
-                    SearchCityCountryRecyclerView.adapter = CitiesSearchRecViewAdapter(emptyList())
+                    SearchCityCountryRecyclerView.adapter = CitiesSearchRecViewAdapter(emptyList()){
+
+                    }
                 }
             }
         }

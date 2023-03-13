@@ -9,11 +9,17 @@ import com.example.itouristui.R
 import com.example.itouristui.models.CityDetails
 import kotlinx.android.synthetic.main.country_city_search_autocomplete.view.*
 
-class CitiesSearchRecViewAdapter(val cities : List<CityDetails>) : RecyclerView.Adapter<CitiesSearchRecViewAdapter.CitySearchViewHolder>() {
+class CitiesSearchRecViewAdapter(val cities : List<CityDetails>, val navToHome : (CityDetails)->(Unit)) : RecyclerView.Adapter<CitiesSearchRecViewAdapter.CitySearchViewHolder>() {
 
     class CitySearchViewHolder(val view : View) : ViewHolder(view){
         val cityNameTextView = view.SearchResCityNameTextView
         val countryNameTextView = view.SearchResCountryNameTextView
+
+        fun bind(cityDetails : CityDetails , action : (CityDetails)->(Unit)){
+            view.setOnClickListener {
+                action(cityDetails)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CitySearchViewHolder {
@@ -23,6 +29,8 @@ class CitiesSearchRecViewAdapter(val cities : List<CityDetails>) : RecyclerView.
     override fun onBindViewHolder(holder: CitySearchViewHolder, position: Int) {
         holder.cityNameTextView.text = cities[position].name
         holder.countryNameTextView.text = cities[position].country.name
+
+        holder.bind(cities[position],navToHome)
     }
 
     override fun getItemCount(): Int {

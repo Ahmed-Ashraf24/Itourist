@@ -144,6 +144,17 @@
 
     </LinearLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/HomeSearchRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:background="@drawable/semi_rounded"
+        android:backgroundTint="@color/white"
+        app:layout_constraintStart_toStartOf="@id/linearLayoutId"
+        app:layout_constraintEnd_toEndOf="@id/linearLayoutId"
+        app:layout_constraintTop_toBottomOf="@id/linearLayoutId"/>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"

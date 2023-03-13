@@ -35,7 +35,7 @@ class DisplayActivity : AppCompatActivity() {
 
             else-> PlacesListFragment()
         }
-        supportFragmentManager.beginTransaction().add(R.id.DisplayFragmnetContainerView,selectedDisplayFragment).commit()
+        supportFragmentManager.beginTransaction().add(R.id.DisplayFragmentContainerView,selectedDisplayFragment).commit()
     }
 
     private fun showCustomUI(){
