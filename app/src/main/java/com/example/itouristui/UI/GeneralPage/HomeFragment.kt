@@ -65,6 +65,7 @@ class HomeFragment : Fragment(){
         ss.setSpan(underLineSpan, 0, 8, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
         tVId5.text = ss
+        tVId7.text = ss
 
 
 
@@ -76,6 +77,7 @@ class HomeFragment : Fragment(){
             val currentLon = iToursit.lastAddedCity.lon
 
             CurrentLocationTextView.text = currentPlace
+            requireActivity().tVId6.append(currentPlace)
 
             val search= OnlineSearch.create(requireContext(),"iKKlcatVgAGyYIADEYdmhjYFE6DanMP5")
             val circleGeometry = CircleGeometry(GeoPoint(currentLat,currentLon) ,500)

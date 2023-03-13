@@ -106,8 +106,7 @@ class GeneralActivity : AppCompatActivity() , NavigationView.OnNavigationItemSel
 
 
 
-        //CustomBottomNavBar.setItemSelected(R.id.navHomeButtonId)
-
+        CustomBottomNavBar.setItemSelected(R.id.navHomeButtonId)
         CustomBottomNavBar.setOnItemSelectedListener { selectedNavButtonID->
 
            when(selectedNavButtonID){

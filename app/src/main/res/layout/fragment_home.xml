@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#ECF6F6">
 
     <ImageView
         android:id="@+id/upperBackgroundId"
@@ -46,15 +47,15 @@
 
     <ImageButton
         android:id="@+id/arrowButtonId"
-        android:layout_width="22dp"
-        android:layout_height="15dp"
+        android:layout_width="27dp"
+        android:layout_height="17dp"
         android:layout_marginLeft="6dp"
         android:background="@null"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="@+id/CurrentLocationTextView"
         app:layout_constraintStart_toEndOf="@+id/CurrentLocationTextView"
         app:layout_constraintTop_toTopOf="@+id/CurrentLocationTextView"
-        app:srcCompat="@drawable/arrow1"
+        app:srcCompat="@drawable/new_arrow_down"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <TextView
@@ -75,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:text="Your tour friend"
+        android:text="Your tour friend."
         android:textColor="@color/white"
         android:fontFamily="@font/open_sans_semibold"
         android:textSize="18sp"
@@ -151,6 +152,7 @@
         android:elevation="2dp"
         android:background="@drawable/semi_rounded"
         android:backgroundTint="@color/white"
+        tools:visibility="invisible"
         app:layout_constraintStart_toStartOf="@id/linearLayoutId"
         app:layout_constraintEnd_toEndOf="@id/linearLayoutId"
         app:layout_constraintTop_toBottomOf="@id/linearLayoutId"/>
@@ -243,14 +245,16 @@
 
                 <TextView
                     android:id="@+id/tVId6"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginHorizontal="10dp"
                     android:layout_marginTop="20dp"
-                    android:text="Popular places in Geneva"
+                    android:text="Popular places in "
                     android:textColor="#072C3D"
                     android:textSize="16dp"
                     android:textStyle="bold"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintEnd_toStartOf="@+id/tVId7"
                     app:layout_constraintStart_toStartOf="@+id/PopularPlacesRecyclerView"
                     app:layout_constraintTop_toBottomOf="@+id/NearbyPlacesRecyclerView" />
 
@@ -286,6 +290,7 @@
                     android:text="See more"
                     android:textColor="#072C3D"
                     android:textSize="14dp"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="@+id/tVId8"
                     app:layout_constraintEnd_toEndOf="@+id/SuggestedPlacesRecyclerView"
                     app:layout_constraintTop_toTopOf="@+id/tVId8" />
@@ -299,6 +304,7 @@
                     android:text="Suggested Places In Gunava"
                     android:textColor="#072C3D"
                     android:textSize="16dp"
+                    android:visibility="gone"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/SuggestedPlacesRecyclerView"
                     app:layout_constraintTop_toBottomOf="@+id/PopularPlacesRecyclerView" />
