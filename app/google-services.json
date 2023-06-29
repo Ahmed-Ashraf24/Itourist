@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "599916852767",
+    "project_id": "itourist-c5583",
+    "storage_bucket": "itourist-c5583.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:599916852767:android:22a5e34869aba1b784c72a",
+        "android_client_info": {
+          "package_name": "com.example.itouristui"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "599916852767-3l50qqhprs10qpu0rupjegovcfi2sf98.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDttvGXjcpC-iHrmeo16G_qwtKrEc4q7wk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "599916852767-3l50qqhprs10qpu0rupjegovcfi2sf98.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

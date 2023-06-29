@@ -78,6 +78,11 @@ dependencies {
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+    //for different screen sizes (margin and padding)
+    implementation 'com.intuit.sdp:sdp-android:1.1.0'
+
+    //custom seek bar
+    implementation 'com.github.oli107:material-range-bar:1.4.8'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

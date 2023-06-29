@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.30642954" />
+
+    <com.google.android.material.circularreveal.CircularRevealFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/portsaid" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/background_shadowed_gradient"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/rufina"
+                android:gravity="center_vertical"
+                android:letterSpacing="0.01"
+                android:paddingStart="@dimen/_16sdp"
+                android:paddingTop="@dimen/_15sdp"
+                android:text="PortSaid, Egypt"
+                android:textColor="@color/white"
+                android:textSize="22sp" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="5">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/_27sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:src="@drawable/heart" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </com.google.android.material.circularreveal.CircularRevealFrameLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.44" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:background="#333232"
+        app:layout_constraintBottom_toTopOf="@id/guideline4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline3">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:paddingHorizontal="@dimen/_5sdp"
+            android:src="@drawable/arrowcircleleft2"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="@dimen/_5sdp"
+            android:src="@drawable/arrowcircleleft2"
+            android:rotation="180"
+            android:layout_weight="5"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/TakenAndLikedLayout"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#F4F4F4"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline4" >
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="200 Tours Taken"
+            android:letterSpacing="0.03"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:gravity="center_vertical"
+            android:drawablePadding="@dimen/_10sdp"
+            android:drawableStart="@drawable/airplane"
+            android:textColor="#121212"
+            android:textSize="14sp"
+            android:fontFamily="@font/roboto_medium"
+            android:layout_weight="2"/>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent"
+            android:layout_weight="3.7">
+            <View
+                android:layout_gravity="center"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#9E9C9C"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="513 Love This Place"
+            android:letterSpacing="0.03"
+
+            android:gravity="center_vertical"
+            android:drawablePadding="@dimen/_10sdp"
+            android:drawableStart="@drawable/lovely"
+            android:textColor="#121212"
+            android:fontFamily="@font/roboto_medium"
+            android:layout_weight="2"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="#9E9C9C"
+        app:layout_constraintTop_toBottomOf="@id/TakenAndLikedLayout" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/CityOverViewTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:fontFamily="@font/roboto_medium"
+        android:letterSpacing="0.01"
+        android:text="City Overview"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintHorizontal_bias="0"
+        android:drawableEnd="@drawable/infocircle"
+        android:drawablePadding="@dimen/_10sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/TakenAndLikedLayout" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/NestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/CityOverViewTextView">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="15sp"
+                android:lineSpacingExtra="1dp"
+                android:letterSpacing=".01"
+                android:textColor="#535353"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Port Said is a city that lies in northeast Egypt extending about 30 km along the coast of the Mediterranean Sea, north of the Suez Canal. With an approximate population of 603,787, it is the fifth-largest city in Egypt. The city was established in 1859 during the building of the Suez Canal.
+There are numerous old houses with grand balconies on all floors, giving the city a distinctive look. Port Said's twin city is Port Fouad, which lies on the eastern bank of the Suez Canal. The two cities coexist, to the exte.. READ MORE."/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/NestedScrollView">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:cardCornerRadius="7dp"
+            app:strokeWidth="1dp"
+            app:cardElevation="5dp"
+            app:strokeColor="#080732"
+            android:paddingVertical="@dimen/_15sdp">
+            <android.widget.Button
+                android:id="@+id/RequestTourGuideButton"
+                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:fontFamily="@font/roboto_bold"
+                android:letterSpacing="0.04"
+                android:layout_height="match_parent"
+                android:background="null"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:textColor="#080732"
+                android:layout_weight="1"
+                android:paddingVertical="@dimen/_6sdp"
+                android:text="Request Tour Guide"/>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_weight="3.8"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            app:cardCornerRadius="7dp"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="#110F55"
+            app:cardElevation="5dp"
+            app:strokeColor="#080732">
+            <android.widget.ImageButton
+                android:id="@+id/NavToCityButton"
+                android:layout_width="match_parent"
+                android:src="@drawable/information"
+                android:background="null"
+                android:tint="@color/white"
+                android:paddingVertical="@dimen/_3sdp"
+                android:layout_height="match_parent"
+                />
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+<!---->
+</androidx.constraintlayout.widget.ConstraintLayout>
