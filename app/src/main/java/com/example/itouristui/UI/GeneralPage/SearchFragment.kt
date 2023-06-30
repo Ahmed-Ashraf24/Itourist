@@ -82,14 +82,23 @@ class SearchFragment : Fragment() {
                     CityCountryApiObject.cityCountryApiInterface.getCities(prefixName = it)
                         .enqueue(CustomRetrofitCallBack<List<CityDetails>>{successfulRes->
                             SearchCityCountryRecyclerView.adapter = CitiesSearchRecViewAdapter(successfulRes.body()!!){
-                                iToursit.selectedCities.add(SimpleCityDetail(it.name,it.country.name,
+                                val cityOverviewFragment = CityOverviewFragment().apply {
+                                    val bundle = Bundle()
+                                    bundle.putString("CITY","${it.name}, ${it.country.name}")
+                                    bundle.putDouble("LAT",it.coordinates.latitude)
+                                    bundle.putDouble("LON",it.coordinates.longitude)
+                                    arguments=bundle
+                                }
+                                requireActivity().CustomBottomNavBar.visibility = View.GONE
+                                parentFragmentManager.beginTransaction().replace(R.id.GeneralFragmentContainerView,cityOverviewFragment).addToBackStack(null).commit()
+                                /*iToursit.selectedCities.add(SimpleCityDetail(it.name,it.country.name,
                                     it.coordinates.latitude,it.coordinates.longitude))
                                 iToursit.newSelectedCity=true
 
                                 val input = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                                 input.hideSoftInputFromWindow(requireActivity().currentFocus!!.windowToken,0)
                                 Thread.sleep(500)
-                                requireActivity().CustomBottomNavBar.setItemSelected(R.id.navHomeButtonId)
+                                requireActivity().CustomBottomNavBar.setItemSelected(R.id.navHomeButtonId)*/
                             }
                         })
                 }else{

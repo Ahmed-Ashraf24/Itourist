@@ -20,10 +20,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/CityImageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/portsaid" />
+            android:scaleType="centerCrop" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -33,6 +33,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/CityNameTextView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -54,7 +55,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/_27sdp"
+                    android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:src="@drawable/heart" />
 
@@ -75,6 +76,7 @@
         android:layout_height="0dp"
         android:orientation="horizontal"
         android:background="#333232"
+        android:paddingHorizontal="@dimen/_2sdp"
         app:layout_constraintBottom_toTopOf="@id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,10 +84,12 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="5"
+            android:layout_weight="4.8"
+
             android:paddingHorizontal="@dimen/_5sdp"
             android:src="@drawable/arrowcircleleft2"/>
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/OtherImagesRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
@@ -95,7 +99,7 @@
             android:paddingHorizontal="@dimen/_5sdp"
             android:src="@drawable/arrowcircleleft2"
             android:rotation="180"
-            android:layout_weight="5"/>
+            android:layout_weight="4.8"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -186,15 +190,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
+                android:id="@+id/CityDetailsTextView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="15sp"
                 android:lineSpacingExtra="1dp"
                 android:letterSpacing=".01"
                 android:textColor="#535353"
-                android:fontFamily="@font/roboto_medium"
-                android:text="Port Said is a city that lies in northeast Egypt extending about 30 km along the coast of the Mediterranean Sea, north of the Suez Canal. With an approximate population of 603,787, it is the fifth-largest city in Egypt. The city was established in 1859 during the building of the Suez Canal.
-There are numerous old houses with grand balconies on all floors, giving the city a distinctive look. Port Said's twin city is Port Fouad, which lies on the eastern bank of the Suez Canal. The two cities coexist, to the exte.. READ MORE."/>
+                android:fontFamily="@font/roboto_medium"/>
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>
 
@@ -225,7 +228,7 @@ There are numerous old houses with grand balconies on all floors, giving the cit
                 android:fontFamily="@font/roboto_bold"
                 android:letterSpacing="0.04"
                 android:layout_height="match_parent"
-                android:background="null"
+                android:background="@null"
                 android:textAllCaps="false"
                 android:textSize="18sp"
                 android:textColor="#080732"
@@ -249,7 +252,7 @@ There are numerous old houses with grand balconies on all floors, giving the cit
                 android:id="@+id/NavToCityButton"
                 android:layout_width="match_parent"
                 android:src="@drawable/information"
-                android:background="null"
+                android:background="@null"
                 android:tint="@color/white"
                 android:paddingVertical="@dimen/_3sdp"
                 android:layout_height="match_parent"
