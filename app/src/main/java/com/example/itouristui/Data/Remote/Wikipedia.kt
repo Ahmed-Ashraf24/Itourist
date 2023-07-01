@@ -19,6 +19,9 @@ interface WikiAPIInterface{
     @GET("w/api.php?action=query&format=json&prop=extracts&formatversion=2&exsentences=9&exlimit=1&origin=*&explaintext=1")
     fun getCityDataByName(@Query("titles") name : String):Call<String>
 
+    @GET("w/api.php?action=opensearch&format=json&prop=extracts&formatversion=2&exsentences=9&exlimit=1&origin=*&explaintext=1")
+    fun getClosestResult(@Query("search") name : String) : Call<String>
+
     @GET("w/api.php?action=query&format=json&formatversion=2&prop=pageimages%7Cpageterms&piprop=thumbnail&pithumbsize=600&origin=*")
     fun getCityImage(@Query("titles") name : String):Call<String>
 

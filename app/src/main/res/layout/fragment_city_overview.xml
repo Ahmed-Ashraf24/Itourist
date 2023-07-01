@@ -23,10 +23,13 @@
             android:id="@+id/CityImageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:src="@drawable/loading_pana"
             android:scaleType="centerCrop" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/CityNameGradiantLayout"
             android:layout_width="match_parent"
+            android:visibility="invisible"
             android:layout_height="80dp"
             android:layout_gravity="bottom"
             android:background="@drawable/background_shadowed_gradient"
@@ -88,10 +91,19 @@
 
             android:paddingHorizontal="@dimen/_5sdp"
             android:src="@drawable/arrowcircleleft2"/>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/OtherImagesShimmer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <include layout="@layout/shimmer_citypictures_list"/>
+        </com.facebook.shimmer.ShimmerFrameLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/OtherImagesRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:visibility="gone"
             android:layout_weight="1"/>
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="match_parent"
@@ -187,8 +199,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/CityOverViewTextView">
         <androidx.appcompat.widget.LinearLayoutCompat
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/CityDetailsShimmer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <include layout="@layout/shimmer_cities_desc"/>
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
             <TextView
                 android:id="@+id/CityDetailsTextView"
                 android:layout_width="match_parent"
@@ -197,6 +217,7 @@
                 android:lineSpacingExtra="1dp"
                 android:letterSpacing=".01"
                 android:textColor="#535353"
+                android:visibility="gone"
                 android:fontFamily="@font/roboto_medium"/>
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>

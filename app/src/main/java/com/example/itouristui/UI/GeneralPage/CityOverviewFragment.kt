@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +21,7 @@ import com.example.itouristui.models.SimpleCityDetail
 import kotlinx.android.synthetic.main.activity_general.*
 import kotlinx.android.synthetic.main.fragment_city_overview.*
 import org.json.JSONArray
+import org.json.JSONException
 import org.json.JSONObject
 
 class CityOverviewFragment : Fragment() {
@@ -35,31 +37,66 @@ class CityOverviewFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        CityDetailsShimmer.startShimmerAnimation()
+        OtherImagesShimmer.startShimmerAnimation()
 
        arguments?.let {bundle->
            val cityName = bundle.getString("CITY","")
            CityNameTextView.text = cityName
 
-           WikipediaData.wikiApiImp.getCityDataByName(cityName.substringBefore(',')).enqueue(
+           WikipediaData.wikiApiImp.getClosestResult(cityName.substringBefore(',')).enqueue(
                CustomRetrofitCallBack<String>{
+                   val closestCityName = JSONArray(it.body()).getJSONArray(1).getString(0)
+                   WikipediaData.wikiApiImp.getCityDataByName(closestCityName).enqueue(
+                       CustomRetrofitCallBack<String>{
+                           CityDetailsShimmer.apply {
+                               stopShimmerAnimation()
+                               visibility = View.GONE
+                           }
+                           CityDetailsTextView.visibility = View.VISIBLE
 
-                   val cityPage = JSONObject(it.body()?:"").getJSONObject("query").getJSONArray("pages")
-                   val cityDescription = cityPage.getJSONObject(0).getString("extract")
-                   CityDetailsTextView.text = cityDescription
+                           println("API : inside CityDetails Callback , Response = ${it.body()}")
+                           try {
+                                val cityPage = JSONObject(it.body()?:"").getJSONObject("query").getJSONArray("pages")
+                                val cityDescription = cityPage.getJSONObject(0).getString("extract").takeIf { extract-> extract.isNotBlank() }?: throw JSONException("")
+                                CityDetailsTextView.text = cityDescription
+                            }catch (e:JSONException){
+                               println("API : inside CityDetails Callback , Exception")
+                               CityDetailsTextView.text = "Can not find Details of this city !"
+                            }
+                       }
+                   )
+
+                   WikipediaData.wikiApiImp.getCityImage(closestCityName).enqueue(
+                       CustomRetrofitCallBack<String>{
+                           CityNameGradiantLayout.visibility = View.VISIBLE
+
+                           println("API : inside CityImage Callback , Response = ${it.body()}")
+                           try {
+                               val cityImagePage = JSONObject(it.body()?:"").getJSONObject("query").getJSONArray("pages")
+                               val cityImage = cityImagePage.getJSONObject(0).getJSONObject("thumbnail").getString("source")
+                               Glide.with(requireContext()).load(cityImage).into(CityImageView)
+                           }catch (e:JSONException){
+                               println("API : inside CityImage Callback , Exception")
+                                CityImageView.setImageResource(R.drawable._404_error)
+                           }
+                       }
+                   )
+
                }
            )
 
-           WikipediaData.wikiApiImp.getCityImage(cityName.substringBefore(',')).enqueue(
-               CustomRetrofitCallBack<String>{
 
-                   val cityImagePage = JSONObject(it.body()?:"").getJSONObject("query").getJSONArray("pages")
-                   val cityImage = cityImagePage.getJSONObject(0).getJSONObject("thumbnail").getString("source")
-                   Glide.with(requireContext()).load(cityImage).into(CityImageView)
-               }
-           )
 
            UnsplashData.unsplashInterface.getCityImages(cityName.replace(',',' ')).enqueue(
                CustomRetrofitCallBack<String>{
+
+                   OtherImagesShimmer.apply {
+                       stopShimmerAnimation()
+                       visibility = View.GONE
+                   }
+                   OtherImagesRecyclerView.visibility = View.VISIBLE
+
                    val mutableListOfImages = mutableListOf<String>()
                    val imagesRes = JSONObject(it.body()?:"").getJSONArray("results")
                    for (i in 0 until imagesRes.length()){
