@@ -1,12 +1,9 @@
 package com.example.itouristui.UI.GeneralPage
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -78,7 +75,7 @@ class CityOverviewFragment : Fragment() {
                                Glide.with(requireContext()).load(cityImage).into(CityImageView)
                            }catch (e:JSONException){
                                println("API : inside CityImage Callback , Exception")
-                                CityImageView.setImageResource(R.drawable._404_error)
+                                CityImageView.setImageResource(R.drawable.notfound_404_error)
                            }
                        }
                    )
