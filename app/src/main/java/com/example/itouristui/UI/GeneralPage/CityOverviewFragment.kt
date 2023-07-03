@@ -1,5 +1,6 @@
 package com.example.itouristui.UI.GeneralPage
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import com.example.itouristui.Adapters.CityPicturesRecyclerViewAdapter
 import com.example.itouristui.Data.Remote.UnsplashData
 import com.example.itouristui.Data.Remote.WikipediaData
 import com.example.itouristui.R
+import com.example.itouristui.UI.Tours.ToursActivity
 import com.example.itouristui.Utilities.CustomRetrofitCallBack
 import com.example.itouristui.iToursit
 import com.example.itouristui.models.SimpleCityDetail
@@ -39,6 +41,7 @@ class CityOverviewFragment : Fragment() {
 
        arguments?.let {bundle->
            val cityName = bundle.getString("CITY","")
+           val cityImageExtra = StringBuilder()
            CityNameTextView.text = cityName
 
            WikipediaData.wikiApiImp.getClosestResult(cityName.substringBefore(',')).enqueue(
@@ -73,6 +76,7 @@ class CityOverviewFragment : Fragment() {
                                val cityImagePage = JSONObject(it.body()?:"").getJSONObject("query").getJSONArray("pages")
                                val cityImage = cityImagePage.getJSONObject(0).getJSONObject("thumbnail").getString("source")
                                Glide.with(requireContext()).load(cityImage).into(CityImageView)
+                               cityImageExtra.append(cityImage)
                            }catch (e:JSONException){
                                println("API : inside CityImage Callback , Exception")
                                 CityImageView.setImageResource(R.drawable.notfound_404_error)
@@ -112,7 +116,13 @@ class CityOverviewFragment : Fragment() {
            )
 
            RequestTourGuideButton.setOnClickListener {
-
+            Intent(requireContext().applicationContext,ToursActivity::class.java).apply {
+                putExtra("CITY_NAME",cityName)
+                putExtra("CITY_IMAGE",cityImageExtra.toString())
+                putExtra("SELECTED_TOURS_FRAGMENT","TOURS_REQUEST_FORM")
+            }.also {
+                startActivity(it)
+            }
            }
 
            NavToCityButton.setOnClickListener {

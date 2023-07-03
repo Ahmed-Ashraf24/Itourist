@@ -8,6 +8,8 @@
     <color name="black">#000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#D8F1FD</color>
-
+    <array name="pinColors">
+        <item>#FF7474</item>
+    </array>
 
 </resources>

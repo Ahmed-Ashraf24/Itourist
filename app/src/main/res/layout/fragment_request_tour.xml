@@ -37,9 +37,10 @@
                 app:layout_constraintTop_toBottomOf="@id/PrimaryOptionText">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/FormCityImageView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/mountain_with_camp"
+                    android:src="@drawable/notfound_404_error"
                     android:scaleType="centerCrop"/>
 
             </com.google.android.material.card.MaterialCardView>
@@ -68,14 +69,15 @@
                     android:layout_marginBottom="@dimen/_2sdp"/>
 
                 <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/FormCityNameEditText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginBottom="@dimen/_2sdp"
                     android:background="@null"
                     android:clickable="false"
+                    android:focusable="false"
                     android:fontFamily="@font/roboto_light"
-                    android:text="Port Said, Egypt"
                     android:textSize="15sp" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -203,6 +205,7 @@
                     android:layout_marginBottom="@dimen/_2sdp"/>
 
                 <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/FormRangeOfBudgetEditText"
                     android:layout_width="150dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_6sdp"
@@ -249,22 +252,34 @@
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/RangeOfBudgetSeekLayout"
                 android:layout_width="match_parent"
-                android:layout_height="8dp"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@id/RangeOfBudgetLayout"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:backgroundTint="#70BF82DC"
+                android:backgroundTint="#00FBFBFB"
+                android:paddingBottom="@dimen/_30sdp"
                 android:background="@drawable/background_transparent_4dp_corner"
                 android:layout_marginHorizontal="@dimen/_30sdp">
 
                 <com.appyvet.materialrangebar.RangeBar
+                    android:id="@+id/FormBudgetRangeBar"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:mrb_tickStart="5"
-                    app:mrb_tickEnd="23"
-                    app:mrb_tickInterval="1"/>
+                    app:mrb_tickStart="1"
+                    app:mrb_rangeBar_rounded="true"
+                    app:mrb_thumbSize="8dp"
+                    app:mrb_leftThumbColor="#110F55"
+                    app:mrb_rightThumbColor="#110F55"
+                    app:mrb_rangeBarColor="#70829CDC"
+                    app:mrb_barWeight="6dp"
+
+                    app:mrb_tickDefaultColor="#00110F55"
+                    app:mrb_pinColor="#70829CDC"
+
+                    android:layout_gravity="top"
+                    app:mrb_tickEnd="9999"
+                    app:mrb_tickInterval="10"/>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -277,7 +292,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_12sdp"
-                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_8sdp"
                 android:background="@drawable/background_transparent_4dp_corner"
                 android:paddingVertical="@dimen/_8sdp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -390,10 +405,11 @@
                 app:layout_constraintTop_toTopOf="@id/AccompaniedByLayout"
                 app:layout_constraintBottom_toBottomOf="@id/AccompaniedByLayout">
 
-                <androidx.appcompat.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageButton
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
+                    android:scaleType="fitCenter"
+                    android:background="@null"
                     android:layout_margin="8dp"
                     android:src="@drawable/male_vector"/>
             </com.google.android.material.card.MaterialCardView>
@@ -413,12 +429,13 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/AccompaniedByLayout">
 
-                <androidx.appcompat.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageButton
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_gravity="center"
                     android:scaleType="fitCenter"
-
+                    android:layout_margin="8dp"
+                    android:background="@null"
                     android:src="@drawable/female_vector" />
             </com.google.android.material.card.MaterialCardView>
 
@@ -527,12 +544,13 @@
                 app:layout_constraintTop_toTopOf="@id/CarIsPreferredLayout"
                 app:layout_constraintBottom_toBottomOf="@id/CarIsPreferredLayout">
 
-                <androidx.appcompat.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageButton
                     android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:background="#00000000"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/ticksquare"/>
+                    android:src="@drawable/ticksquare" />
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
@@ -550,10 +568,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/CarIsPreferredLayout">
 
-                <androidx.appcompat.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageButton
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:layout_gravity="center"
+                    android:background="#00000000"
                     android:scaleType="fitCenter"
                     android:src="@drawable/cross_vector" />
             </com.google.android.material.card.MaterialCardView>
