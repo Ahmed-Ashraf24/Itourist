@@ -107,11 +107,13 @@
                     android:layout_marginBottom="@dimen/_2sdp"/>
 
                 <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/IndividualCountEditText"
                     android:layout_width="150dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_6sdp"
                     android:layout_marginBottom="@dimen/_3sdp"
                     android:background="@null"
+                    android:inputType="number"
                     android:paddingStart="@dimen/_4sdp"
                     android:fontFamily="@font/roboto_light"
                     android:hint="Individuals Count"
@@ -151,11 +153,14 @@
                     android:layout_marginBottom="@dimen/_2sdp"/>
 
                 <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/DateOfArrivalEditText"
                     android:layout_width="150dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_6sdp"
                     android:layout_marginBottom="@dimen/_3sdp"
                     android:background="@null"
+                    android:clickable="false"
+                    android:focusable="false"
                     android:fontFamily="@font/roboto_light"
                     android:paddingStart="@dimen/_4sdp"
                     android:hint="Date Of Arrival"
@@ -164,6 +169,7 @@
                     android:textSize="15sp" />
 
                 <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/AddDateOfArrivalImageView"
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
@@ -205,7 +211,7 @@
                     android:layout_marginBottom="@dimen/_2sdp"/>
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/FormRangeOfBudgetEditText"
+                    android:id="@+id/RangeOfBudgetEditText"
                     android:layout_width="150dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_6sdp"
@@ -327,6 +333,7 @@
                         android:textSize="15sp" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
                 <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/DescriptionEditText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingStart="@dimen/_25sdp"
@@ -378,11 +385,14 @@
                     android:src="@drawable/profile2user" />
 
                 <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/AccompaniedByEditText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_6sdp"
                     android:layout_marginBottom="@dimen/_3sdp"
                     android:background="@null"
+                    android:clickable="false"
+                    android:focusable="false"
                     android:paddingStart="@dimen/_4sdp"
                     android:fontFamily="@font/roboto_light"
                     android:hint="Accompanied By"
@@ -464,6 +474,7 @@
                     android:layout_marginBottom="@dimen/_2sdp"/>
 
                 <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/SpokenLanguagesEditText"
                     android:layout_width="150dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_6sdp"
@@ -486,7 +497,7 @@
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:layout_weight="1"
-                        android:src="@drawable/plus_squared"/>
+                       />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -517,11 +528,14 @@
                     android:src="@drawable/car" />
 
                 <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/CarPreferenceEditText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_6sdp"
                     android:layout_marginBottom="@dimen/_3sdp"
                     android:background="@null"
+                    android:clickable="false"
+                    android:focusable="false"
                     android:paddingStart="@dimen/_4sdp"
                     android:fontFamily="@font/roboto_light"
                     android:hint="Car Is Preferred"
@@ -578,6 +592,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <android.widget.Button
+                android:id="@+id/SubmitRequestButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
