@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    tools:context=".UI.GeneralPage.ProfileViewPagerFragments.PersonalFragment">
+
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/imageFilterView"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_baseline_person_24"
+        android:tint="#9E100D4C"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/EmailID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingLeft="5dp"
+        android:text="Email"
+        android:textColor="#072C3D"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageFilterView"
+        app:layout_constraintStart_toEndOf="@+id/imageFilterView"
+        app:layout_constraintTop_toTopOf="@+id/imageFilterView" />
+
+    <TextView
+        android:id="@+id/ProfileEmailID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingRight="@dimen/_10sdp"
+        android:text="ITourist@gmail.com"
+        android:textColor="#072C3D"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="@+id/EmailID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/EmailID" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="350dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/ProfileEmailID"
+        app:layout_constraintStart_toStartOf="@+id/imageFilterView"
+        app:layout_constraintTop_toBottomOf="@+id/imageFilterView" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/imageFilterView1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_baseline_email_24"
+        android:tint="#9E100D4C"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    <TextView
+        android:id="@+id/PhoneID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingLeft="5dp"
+        android:text="Phone"
+        android:textColor="#072C3D"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageFilterView1"
+        app:layout_constraintStart_toEndOf="@+id/imageFilterView1"
+        app:layout_constraintTop_toTopOf="@+id/imageFilterView1" />
+
+    <TextView
+        android:id="@+id/ProfilePhoneID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingRight="@dimen/_10sdp"
+        android:text="+201299999999"
+        android:textColor="#072C3D"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="@+id/PhoneID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/PhoneID" />
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="350dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/ProfilePhoneID"
+        app:layout_constraintStart_toStartOf="@+id/imageFilterView1"
+        app:layout_constraintTop_toBottomOf="@+id/imageFilterView1" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/imageFilterView2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_baseline_date_range_24"
+        android:tint="#9E100D4C"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view1" />
+
+    <TextView
+        android:id="@+id/DOBID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingLeft="5dp"
+        android:text="Date of birth"
+        android:textColor="#072C3D"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageFilterView2"
+        app:layout_constraintStart_toEndOf="@+id/imageFilterView2"
+        app:layout_constraintTop_toTopOf="@+id/imageFilterView2" />
+
+    <TextView
+        android:id="@+id/ProfileDOBID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingRight="@dimen/_10sdp"
+        android:text="3/3/2002"
+        android:textColor="#072C3D"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="@+id/DOBID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/DOBID"
+        app:layout_constraintVertical_bias="0.368" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

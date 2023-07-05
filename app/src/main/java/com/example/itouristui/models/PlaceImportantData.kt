@@ -5,6 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class PlaceImportantData(
+    val id : String,
     val nameOfPlace : String,
     val address : String,
     val distanceAway : String,

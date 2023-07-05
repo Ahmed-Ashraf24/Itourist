@@ -53,31 +53,25 @@ class RegisterFragment : Fragment() {
                 isPasswordValid().not() -> showToast("Password doesn't match the rule")
                 SignUpCCP.isValidFullNumber.not()-> showToast("Phone number is not valid!")
                 else -> {
-                    val newUserPlainData = UserPlainData(
-                        SignUpFullNameEditText.text.toString().trim(),
-                        SignUpEmailEditText.text.toString().trim(),
-                        SignUpCCP.fullNumberWithPlus,
-                        SignUpBirthdayEditText.text.toString()
-                    )
+                    SignUpButton.isEnabled = false
 
                     FirebaseObj.auth.createUserWithEmailAndPassword(
                         SignUpEmailEditText.text.toString().trim(),SignUpPasswordEditText.text.toString().trim())
                         .addOnSuccessListener {
-                            Toast.makeText(requireContext(),"Registered Successfully",Toast.LENGTH_SHORT).show()
-                            /**
-                             * TODO WARDANY ADD DATA TO FIRESTORE
-                             * */
-                            parentFragmentManager.popBackStackImmediate()
+                            val newUserPlainData = UserPlainData(it.user!!.uid,
+                                SignUpFullNameEditText.text.toString().trim(),
+                                SignUpEmailEditText.text.toString().trim(),
+                                SignUpCCP.fullNumberWithPlus,
+                                SignUpBirthdayEditText.text.toString(),
+                                "","","",""
+                            )
+                            SignUpButton.isEnabled = true
+                            savePerson(newUserPlainData)
                         }.addOnFailureListener {
+                            SignUpButton.isEnabled = true
                             Toast.makeText(requireContext(),it.message,Toast.LENGTH_SHORT).show()
                         }
 
-                    val fullName = SignUpFullNameEditText.text.toString()
-                    val email = SignUpEmailEditText.text.toString()
-                    val phoneNumber = SignUpPhoneEditText.text.toString()
-                    val dateOfBirth = SignUpBirthdayEditText.text.toString()
-                    val person = UserPlainData(fullName, email, phoneNumber, dateOfBirth)
-                    savePerson(person)
                 }
             }
 
@@ -127,13 +121,9 @@ class RegisterFragment : Fragment() {
     }
 
     private fun savePerson(userPlainData : UserPlainData){
-        dataBase.collection("persons").document().set(userPlainData)
+        dataBase.collection("Users").document(userPlainData.uid!!).set(userPlainData)
             .addOnSuccessListener {
                 Toast.makeText(requireActivity(), "Registration done", Toast.LENGTH_SHORT).show()
-            }
-
-            .addOnFailureListener {
-                Toast.makeText(requireActivity(), "Error!", Toast.LENGTH_SHORT).show()
             }
     }
 

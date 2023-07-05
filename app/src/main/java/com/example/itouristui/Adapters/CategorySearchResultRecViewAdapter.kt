@@ -11,10 +11,11 @@ import kotlinx.android.synthetic.main.places.view.*
 import java.util.ArrayList
 
 
-class CategorySearchResultRecViewAdapter(var data: List<SearchResult>, val displayItemListener : (SearchResult)->(Unit)): RecyclerView.Adapter<CategorySearchResultRecViewAdapter.CategorySearchResultViewHolder>() {
+class CategorySearchResultRecViewAdapter(var data: List<SearchResult>,val resId : Int, val displayItemListener : (SearchResult)->(Unit)): RecyclerView.Adapter<CategorySearchResultRecViewAdapter.CategorySearchResultViewHolder>() {
     class CategorySearchResultViewHolder(val view: View): RecyclerView.ViewHolder(view){
         var placenameTV= view.ItemListPlaceNameTV
         var distanceTV =view.ItemListDistTextView
+        val placeImg = view.place_image
 
         fun bind(data : SearchResult , clickListener : (SearchResult)->(Unit) ){
             view.setOnClickListener{
@@ -29,7 +30,7 @@ class CategorySearchResultRecViewAdapter(var data: List<SearchResult>, val displ
     override fun onBindViewHolder(holder: CategorySearchResultViewHolder, position: Int) {
         holder.placenameTV.text=data[position].poi?.names?.first() ?: "UnKnown"
         holder.distanceTV.text=data[position].distance?.inKilometers().toString().dropLast(5)+" Km"
-
+        holder.placeImg.setImageResource(resId)
         holder.bind(data[position],displayItemListener)
     }
 

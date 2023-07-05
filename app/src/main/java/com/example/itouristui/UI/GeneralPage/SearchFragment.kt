@@ -59,13 +59,14 @@ class SearchFragment : Fragment() {
         with(CategoriesRecyclerView) {
             layoutManager = GridLayoutManager(requireContext(), 2)
             itemAnimator = DefaultItemAnimator()
-            adapter = CategoriesPlaceHolderRecViewAdapter(CategoriesPlaceHolders.categoriesOfPlaces){
+            adapter = CategoriesPlaceHolderRecViewAdapter(CategoriesPlaceHolders.categoriesOfPlaces){name,resId->
 
                 arguments?.let { args->
                     displayListOfPlacesIntent.apply {
-                        putExtra("SELECTED_CATEGORY",it)
+                        putExtra("SELECTED_CATEGORY",name)
                         putExtra("LAT",args.getDouble("LAT"))
                         putExtra("LON",args.getDouble("LON"))
+                        putExtra("RES_ID",resId)
                     }
 
                     startActivity(displayListOfPlacesIntent)

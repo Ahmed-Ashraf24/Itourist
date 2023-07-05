@@ -3,14 +3,19 @@ package com.example.itouristui.UI.Intro
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.widget.ViewAnimator
+import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.findNavController
 import com.example.itouristui.R
 import com.example.itouristui.UI.Authentication.AuthenticationActivity
+import com.example.itouristui.UI.Authentication.LoginFragment
+import com.example.itouristui.UI.OnBoarding.OnBoarding_FirstScreen
 import kotlinx.android.synthetic.main.activity_splash_screen.*
 
 class SplashScreenActivity : AppCompatActivity() {
@@ -70,7 +75,6 @@ class SplashScreenActivity : AppCompatActivity() {
          * Start the Animation Process
         * */
         logoAlphaAnimator.start()
-
     }
 
     private fun showCustomUI(){

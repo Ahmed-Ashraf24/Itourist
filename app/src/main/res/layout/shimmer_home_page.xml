@@ -7,8 +7,6 @@
     android:layout_marginEnd="30dp"
     android:elevation="4dp"
     android:layout_marginVertical="10dp"
-
-
     android:background="@drawable/custom_suggested_places" >
 
     <com.google.android.material.card.MaterialCardView
@@ -20,8 +18,7 @@
         app:cardCornerRadius="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/generalItemPictureIV"
@@ -30,19 +27,18 @@
             android:scaleType="centerCrop"
             android:background="#DDDDDD"
             android:cropToPadding="true"
-            android:paddingBottom="12dp"
+            android:paddingBottom="12dp" />
 
-            />
     </com.google.android.material.card.MaterialCardView>
 
     <TextView
         android:id="@+id/generalItemPlaceNameTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:gravity="center"
         android:maxLines="1"
-       android:background="#DDDDDD"
+        android:background="#DDDDDD"
+        android:textColor="#072C3D"
         android:fontFamily="@font/dm_sans"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
@@ -56,7 +52,7 @@
         android:layout_marginTop="8dp"
         android:gravity="center"
         android:background="#DDDDDD"
-
+        android:textColor="#072C3D"
         app:layout_constraintEnd_toEndOf="@+id/generalItemPlaceNameTV"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="@+id/generalItemPlaceNameTV"
@@ -68,9 +64,8 @@
         android:layout_height="15dp"
         android:layout_marginStart="15dp"
         android:gravity="center"
-
         android:background="#DDDDDD"
-
+        android:textColor="#072C3D"
         app:layout_constraintVertical_bias="0.6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,13 +77,11 @@
         android:layout_height="15dp"
         android:background="#DDDDDD"
         android:gravity="center"
-
         android:layout_marginEnd="15dp"
-
+        android:textColor="#072C3D"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_bias=".6"
-        app:layout_constraintTop_toBottomOf="@+id/generalItemDistTextView"
-       />
+        app:layout_constraintTop_toBottomOf="@+id/generalItemDistTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

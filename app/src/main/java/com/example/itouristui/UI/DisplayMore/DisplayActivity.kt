@@ -27,6 +27,7 @@ class DisplayActivity : AppCompatActivity() {
                     selectedFragmentBundle.putString("SELECTED_CATEGORY",getStringExtra("SELECTED_CATEGORY"))
                     selectedFragmentBundle.putDouble("LAT",getDoubleExtra("LAT",0.0))
                     selectedFragmentBundle.putDouble("LON",getDoubleExtra("LON",0.0))
+                    selectedFragmentBundle.putInt("RES_ID",getIntExtra("RES_ID",0))
                 }
                 PlacesListFragment().apply {
                     arguments = selectedFragmentBundle

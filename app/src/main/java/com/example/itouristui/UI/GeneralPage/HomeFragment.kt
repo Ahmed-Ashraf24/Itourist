@@ -98,7 +98,8 @@ class HomeFragment : Fragment(){
             if (nearbyAdapter==null||iToursit.newSelectedCity){
                 val searchOptionsNearby = SearchOptions(query = "store",searchAreas = setOf(circleGeometry), limit = 20)
                 search.search(searchOptionsNearby, CustomTomtomCallback{ results->
-                    nearbyAdapter =  GeneralPageRecViewAdapter(results.results){ getImportantPlaceData(it) }
+                    val picturesPlaceHolders = arrayOf(R.drawable.closed_stores_pana,R.drawable.closed_stores_cuate)
+                    nearbyAdapter =  GeneralPageRecViewAdapter(results.results,picturesPlaceHolders){ getImportantPlaceData(it) }
                     NearbyPlacesRecyclerView.adapter =nearbyAdapter
 
                     HomeFragmentShimmer.apply {
@@ -122,7 +123,8 @@ class HomeFragment : Fragment(){
             if (suggestedAdapter==null||iToursit.newSelectedCity){
                 val searchOptionsPopular = SearchOptions(query = "Tourist Attraction",searchAreas = setOf(circleGeometry), limit = 20, locale = lang)
                 search.search(searchOptionsPopular, CustomTomtomCallback{ results->
-                    suggestedAdapter = GeneralPageRecViewAdapter(results.results){
+                    val picturesPlaceHolders = arrayOf(R.drawable.travel_selfie_bro,R.drawable.bike_trial_amico)
+                    suggestedAdapter = GeneralPageRecViewAdapter(results.results,picturesPlaceHolders){
                         getImportantPlaceData(it)
                     }
                     PopularPlacesRecyclerView.adapter = suggestedAdapter
@@ -136,7 +138,8 @@ class HomeFragment : Fragment(){
     }
 
     private fun getImportantPlaceData(searchResult : SearchResult){
-        PlaceImportantData(searchResult.poi?.names?.first()?:"UnKnown Place Name",
+        PlaceImportantData(searchResult.searchResultId.id,
+            searchResult.poi?.names?.first()?:"UnKnown Place Name",
             searchResult.address?.run { "$streetName, $localName, $country" }?:"Unknown Address",
             searchResult.distance?.inKilometers().toString().dropLast(5)+" Km",
             searchResult.position.latitude,

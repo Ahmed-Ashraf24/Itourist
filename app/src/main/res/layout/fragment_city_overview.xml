@@ -55,6 +55,7 @@
                 android:layout_weight="5">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/favoriteImageViewID"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center_vertical"
@@ -88,7 +89,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="4.8"
-
             android:paddingHorizontal="@dimen/_5sdp"
             android:src="@drawable/arrowcircleleft2"/>
 

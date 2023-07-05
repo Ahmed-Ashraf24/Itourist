@@ -5,29 +5,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.itouristui.R
+import com.example.itouristui.models.ReviewData
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
+import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.review_item.view.*
 
-class ReviewsRecViewAdapter() : RecyclerView.Adapter<ReviewsRecViewAdapter.ReviewViewHolder>() {
-    var likeDislikeNotAllowed = false
-
-    constructor(likeDislikeNotAllowed : Boolean):this(){
-        this.likeDislikeNotAllowed = likeDislikeNotAllowed
-    }
-
-    inner class ReviewViewHolder(val view : View) : RecyclerView.ViewHolder(view){
+class ReviewsRecViewAdapter(val reviews : List<ReviewData>) : RecyclerView.Adapter<ReviewsRecViewAdapter.ReviewViewHolder>() {
 
 
+    class ReviewViewHolder(val view : View) : RecyclerView.ViewHolder(view){
+        val nameView = view.ReviewerNameTextView
+        val locationView = view.reviewlocation
+        val textReview = view.ReviewTextView
 
-        fun removeLikeDislike(){
-            if (likeDislikeNotAllowed){
-                view.apply {
-                    ReviewItemLikeButton.visibility = View.INVISIBLE
-                    ReviewItemDislikeButton.visibility = View.INVISIBLE
-                }
-            }
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewViewHolder {
@@ -35,10 +26,12 @@ class ReviewsRecViewAdapter() : RecyclerView.Adapter<ReviewsRecViewAdapter.Revie
     }
 
     override fun onBindViewHolder(holder: ReviewViewHolder, position: Int) {
-        holder.removeLikeDislike()
+        holder.nameView.text = reviews[position].reviewerName
+        holder.locationView.text = reviews[position].reviewerLocation
+        holder.textReview.text = reviews[position].review
     }
 
     override fun getItemCount(): Int {
-        return 3
+        return reviews.size
     }
 }

@@ -3,26 +3,20 @@
 
     <item android:title="Tours">
         <menu>
-            <item android:title="Favourite Places"
-                android:icon="@drawable/ic_baseline_favorite_24"
-                android:id="@+id/nav_fav_places"/>
-            <item android:title="Places To Visit"
-                android:icon="@drawable/ic_baseline_navigation_24"
-                android:id="@+id/nav_places_to_visit"/>
-            <item android:title="Interesting Places"
-                android:icon="@drawable/ic_baseline_interests_24"
-                android:id="@+id/nav_inter_places"/>
+            <item android:title="Your requests"
+                android:icon="@drawable/baseline_tour_24"
+                android:id="@+id/nav_tour_requests_ID"/>
+            <item android:title="Chat"
+                android:icon="@drawable/baseline_chat_24"
+                android:id="@+id/nav_chat_ID"/>
         </menu>
     </item>
 
-    <item android:title="Special">
+    <item android:title="User">
         <menu>
-            <item android:title="Today's Places"
-                android:icon="@drawable/ic_baseline_star_24"
-                android:id="@+id/nav_today_places"/>
-            <item android:title="Recommended For You"
-                android:icon="@drawable/ic_baseline_how_to_reg_24"
-                android:id="@+id/nav_recommended_for_u"/>
+            <item android:title="Settings"
+                android:icon="@drawable/baseline_settings_24"
+                android:id="@+id/nav_settings_ID"/>
         </menu>
     </item>
 
@@ -30,10 +24,10 @@
         <menu>
             <item android:title="About"
                 android:icon="@drawable/ic_baseline_info_24"
-                android:id="@+id/nav_about"/>
+                android:id="@+id/nav_about_ID"/>
             <item android:title="Contact us"
                 android:icon="@drawable/ic_baseline_contact_support_24"
-                android:id="@+id/nav_contact_us"/>
+                android:id="@+id/nav_contact_us_ID"/>
         </menu>
     </item>
 

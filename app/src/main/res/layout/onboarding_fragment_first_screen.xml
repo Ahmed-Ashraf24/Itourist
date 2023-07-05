@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:fitsSystemWindows="true"
+    tools:context=".UI.OnBoarding.OnBoarding_FirstScreen">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/FirstScreenAnimationID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:paddingBottom="65dp"
+        app:layout_constraintBottom_toTopOf="@+id/FirstScreenTextViewID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.285"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/the_travelers_walking_cycle_delivery"
+        app:lottie_url="REPLACE_JSON_URL" />
+
+    <TextView
+        android:id="@+id/FirstScreenTextViewID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:fontFamily="@font/ysabeau_semibolditalic"
+        android:gravity="center"
+        android:text="Explore the places around you."
+        android:textColor="#072C3D"
+        android:textSize="27sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/FirstScreenSecondTextViewID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/FirstScreenSecondTextViewID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="170dp"
+        android:fontFamily="@font/ysabeau_semibolditalic"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="You can easily find all the interesting places around you like hotels, restaurant and religious places."
+        android:textColor="#072C3D"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/OnBoardingNextButtonID1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/OnBoardingSkipButtonID1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="#00000000"
+        android:text="SKIP"
+        android:textColor="#100D4C"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/OnBoardingNextButtonID1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:text="NEXT"
+        android:textColor="#100D4C"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <LinearLayout
+        android:id="@id/OnBoardingNavigationDotsID1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/OnBoardingNextButtonID1"
+        app:layout_constraintTop_toTopOf="@+id/OnBoardingNextButtonID1" />
+
+    <me.relex.circleindicator.CircleIndicator3
+        android:id="@+id/OnBoardingCircleIndicator"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        app:ci_drawable="@drawable/onboarding_dot_indicator"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

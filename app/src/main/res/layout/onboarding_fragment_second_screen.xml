@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:fitsSystemWindows="true"
+    tools:context=".UI.OnBoarding.OnBoarding_SecondScreen">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/SecondScreenAnimationID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:paddingLeft="50dp"
+        android:paddingTop="20dp"
+        android:paddingRight="50dp"
+        android:paddingBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/SecondScreenTextViewID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.336"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/travelers_walking_using_travelrmap_application"
+        app:lottie_url="REPLACE_JSON_URL" />
+
+    <TextView
+        android:id="@+id/SecondScreenTextViewID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:fontFamily="@font/ysabeau_semibolditalic"
+        android:gravity="center"
+        android:text="Review and rate the places."
+        android:textColor="#072C3D"
+        android:textSize="27sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/SecondScreenSecondTextViewID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/SecondScreenSecondTextViewID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="170dp"
+        android:fontFamily="@font/ysabeau_semibolditalic"
+        android:gravity="center"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:text="You can also rate and write your opinion about the places you visited and see the opinions of others."
+        android:textColor="#072C3D"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/OnBoardingNextButtonID2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/OnBoardingSkipButtonID2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="#00000000"
+        android:text="SKIP"
+        android:textColor="#100D4C"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/OnBoardingNextButtonID2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:text="NEXT"
+        android:textColor="#100D4C"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/OnBoardingBackButtonID2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:text="BACK"
+        android:textColor="#100D4C"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@id/OnBoardingNavigationDotsID2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/OnBoardingNextButtonID2"
+        app:layout_constraintStart_toEndOf="@+id/OnBoardingBackButtonID2"
+        app:layout_constraintTop_toTopOf="@+id/OnBoardingNextButtonID2"
+        android:orientation="horizontal" />
+
+    <me.relex.circleindicator.CircleIndicator3
+        android:id="@+id/OnBoardingCircleIndicator"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        app:ci_drawable="@drawable/onboarding_dot_indicator"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

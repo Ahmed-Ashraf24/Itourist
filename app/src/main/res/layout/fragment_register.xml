@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    android:fitsSystemWindows="true"
-   >
+    android:fitsSystemWindows="true">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -113,6 +111,7 @@
                             android:gravity="top"
                             android:hint="Enter your full name"
                             android:textColor="@color/white"
+                            android:textColorHint="#535353"
                             android:textSize="16dp"
                             tools:ignore="TouchTargetSizeCheck" />
 

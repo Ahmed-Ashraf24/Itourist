@@ -19,7 +19,7 @@ class Places_adapter(var data: ArrayList<PlaceImportantData>): RecyclerView.Adap
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-            val view= LayoutInflater.from(parent.context).inflate(R.layout.places,parent,false)
+            val view= LayoutInflater.from(parent.context).inflate(R.layout.profile_tours_card,parent,false)
             return ViewHolder(view)
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

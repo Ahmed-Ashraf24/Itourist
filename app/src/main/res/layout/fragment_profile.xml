@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -18,14 +19,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
             <TextView
                 android:id="@+id/ProfileFullNameTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="56dp"
-                android:text="TATY SENPAI"
                 android:textColor="@color/white"
                 android:textSize="30dp"
                 app:layout_constraintHorizontal_bias="0.34"
@@ -47,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="1dp"
-                android:text="Port-Said, Egypt"
+
                 android:textColor="@color/white"
                 android:textSize="17dp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView5"
@@ -70,23 +69,24 @@
                 app:civ_circle_background_color="@color/white"/>
 
             <ImageButton
-                android:id="@+id/ProfileEditButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="72dp"
+                android:id="@+id/ProfileLogoutButtonID"
+                android:layout_width="19dp"
+                android:layout_height="25dp"
                 android:layout_marginLeft="5dp"
+                android:layout_marginTop="68dp"
                 android:background="@null"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.2"
                 app:layout_constraintStart_toEndOf="@+id/ProfilePictureImageView"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/white_edit" />
+                app:srcCompat="@drawable/profile_logout" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/ProfileTabLayout"
+        android:background="#F5F5F5"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginLeft="20dp"

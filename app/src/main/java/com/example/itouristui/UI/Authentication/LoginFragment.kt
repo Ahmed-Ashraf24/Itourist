@@ -15,6 +15,9 @@ import android.widget.Toast
 import android.widget.ViewAnimator
 import com.example.itouristui.*
 import com.example.itouristui.UI.GeneralPage.GeneralActivity
+import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : Fragment() {
@@ -45,7 +48,7 @@ class LoginFragment : Fragment() {
                     it.first.isNotBlank() && it.second.isNotBlank()
                 }?.let { credential->
                     startActivity(Intent(requireContext() , GeneralActivity::class.java))
-                   /* LogInButton.isEnabled = false
+                    LogInButton.isEnabled = false
                     FirebaseObj.auth.signInWithEmailAndPassword(credential.first,credential.second)
                         .addOnSuccessListener {
                             startActivity(Intent(requireContext() , GeneralActivity::class.java))
@@ -53,7 +56,7 @@ class LoginFragment : Fragment() {
                         .addOnFailureListener {
                             LogInButton.isEnabled = true
                             Toast.makeText(requireContext(),it.message,Toast.LENGTH_SHORT).show()
-                        }*/
+                        }
                 }
         }
 
@@ -95,7 +98,10 @@ class LoginFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         FirebaseObj.auth.currentUser?.let {
-            startActivity(Intent(requireContext() , GeneralActivity::class.java))
+            startActivity(Intent(requireContext() , GeneralActivity::class.java)
+                .apply {
+                    flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                })
         }
     }
 

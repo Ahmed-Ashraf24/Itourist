@@ -42,6 +42,7 @@ class PlacesListFragment : Fragment() {
             val query = args.getString("SELECTED_CATEGORY").also {
                 FragmentListCategoryNameTV.text = it!!.substring(0, min(17,it.length))
             }
+            val resId = args.getInt("RES_ID")
 
             val search= OnlineSearch.create(requireContext(),"iKKlcatVgAGyYIADEYdmhjYFE6DanMP5")
             val circleGeometry = CircleGeometry(GeoPoint(currentLat,currentLon) ,1000)
@@ -51,7 +52,7 @@ class PlacesListFragment : Fragment() {
             search.search(searchOptions,CustomTomtomCallback{result->
 
                 recyclerView1.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-                recyclerView1.adapter = CategorySearchResultRecViewAdapter(result.results){
+                recyclerView1.adapter = CategorySearchResultRecViewAdapter(result.results,resId){
                     getImportantPlaceData(it)
                 }
             })
@@ -60,7 +61,8 @@ class PlacesListFragment : Fragment() {
     }
 
     private fun getImportantPlaceData(searchResult : SearchResult){
-        PlaceImportantData(searchResult.poi?.names?.first()?:"UnKnown Place Name",
+        PlaceImportantData(searchResult.searchResultId.id,
+            searchResult.poi?.names?.first()?:"UnKnown Place Name",
             searchResult.address?.run { "$streetName, $localName, $country" }?:"Unknown Address",
             searchResult.distance?.inKilometers().toString().dropLast(5)+" Km",
             searchResult.position.latitude,

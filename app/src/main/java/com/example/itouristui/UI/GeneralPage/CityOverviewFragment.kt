@@ -1,10 +1,15 @@
 package com.example.itouristui.UI.GeneralPage
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,6 +22,9 @@ import com.example.itouristui.UI.Tours.ToursActivity
 import com.example.itouristui.Utilities.CustomRetrofitCallBack
 import com.example.itouristui.iToursit
 import com.example.itouristui.models.SimpleCityDetail
+import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_general.*
 import kotlinx.android.synthetic.main.fragment_city_overview.*
 import org.json.JSONArray
@@ -24,6 +32,14 @@ import org.json.JSONException
 import org.json.JSONObject
 
 class CityOverviewFragment : Fragment() {
+
+    private lateinit var favoriteImageView: AppCompatImageView
+    private var isLiked: Boolean = false
+    val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
+    val userDocumentRef: DocumentReference = firestore.collection("Users").document("CURRENT_USER_ID")
+    val likedCitiesCollectionRef: CollectionReference = userDocumentRef.collection("Liked Cities")
+    private lateinit var cityNameTextView: TextView
+    data class LikedCity(val name: String)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,13 +49,18 @@ class CityOverviewFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_city_overview,container,false)
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         CityDetailsShimmer.startShimmerAnimation()
         OtherImagesShimmer.startShimmerAnimation()
 
-       arguments?.let {bundle->
+        cityNameTextView = view.findViewById(R.id.CityNameTextView)
+        favoriteImageView = view.findViewById(R.id.favoriteImageViewID)
+        favoriteImageView.setOnClickListener {
+            onFavoriteClicked()
+        }
+
+        arguments?.let {bundle->
            val cityName = bundle.getString("CITY","")
            val cityImageExtra = StringBuilder()
            CityNameTextView.text = cityName
@@ -140,5 +161,43 @@ class CityOverviewFragment : Fragment() {
                }
            }
        }
+    }
+
+    fun onFavoriteClicked() {
+        isLiked = !isLiked
+        val heartDrawable = if (isLiked) R.drawable.full_heart else R.drawable.heart
+        favoriteImageView.setImageResource(heartDrawable)
+
+        if (isLiked) {
+            addToFavoritesList()
+            addToFirestore()
+        } else {
+            removeFromFavoritesList()
+            removeFromFirestore()
+        }
+    }
+
+    private fun addToFavoritesList() {
+
+    }
+
+    private fun addToFirestore() {
+        val newItem = LikedCity(cityNameTextView.toString())
+
+        likedCitiesCollectionRef
+            .add(newItem)
+            .addOnSuccessListener { documentReference ->
+                val newItemId = documentReference.id
+            }
+            .addOnFailureListener { e ->
+                Log.e(TAG, "Failed to add item to Firestore: ${e.message}")
+                Toast.makeText(requireContext(), "Failed to add item: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun removeFromFavoritesList() {
+    }
+
+    private fun removeFromFirestore() {
     }
 }

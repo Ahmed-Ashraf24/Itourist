@@ -13,7 +13,7 @@ import com.tomtom.sdk.search.model.result.SearchResult
 import kotlinx.android.synthetic.main.suggested_places.view.*
 import kotlin.math.min
 
-class GeneralPageRecViewAdapter(val dataSet : List<SearchResult> , val selectedListener : (SearchResult)->(Unit)): RecyclerView.Adapter<GeneralPageRecViewAdapter.GeneralPageViewHolder>() {
+class GeneralPageRecViewAdapter(val dataSet : List<SearchResult>,val pictures:Array<Int> , val selectedListener : (SearchResult)->(Unit)): RecyclerView.Adapter<GeneralPageRecViewAdapter.GeneralPageViewHolder>() {
 
     class GeneralPageViewHolder(val itemView: View,val context: Context): RecyclerView.ViewHolder(itemView) {
         val placeNameTextView = itemView.generalItemPlaceNameTV
@@ -35,17 +35,9 @@ class GeneralPageRecViewAdapter(val dataSet : List<SearchResult> , val selectedL
     override fun onBindViewHolder(holder: GeneralPageViewHolder, position: Int) {
         holder.placeNameTextView.text = dataSet[position].poi?.names?.first()?:"Unknown"
         holder.distanceAwayTextView.text = dataSet[position].distance?.inKilometers().toString().dropLast(5)+"Km"
+        val pic = if (position%2 == 0) pictures[0] else pictures[1]
+        holder.itemPicture.setImageResource(pic)
         holder.bind(dataSet[position],selectedListener)
-
-        val city = dataSet[position].address?.localName?.filter {
-            it!=' '}.toString()
-        PicturesAPI.pictureApiInterface.getCities(dataSet[position].poi?.names?.first()+"in "+city).enqueue(
-            CustomRetrofitCallBack<String>{
-                it.body()?.let{pic->
-                    Glide.with(holder.context).load(pic.trim('"')).into(holder.itemPicture)
-                }
-            }
-        )
     }
 
     override fun getItemCount(): Int {

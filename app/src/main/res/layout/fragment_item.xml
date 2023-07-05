@@ -8,6 +8,12 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/nestedconstraintLayout"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".UI.DisplayMore.PlaceInfoFragment">
 
@@ -287,7 +293,7 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:paddingLeft="8dp"
-            android:text="4.5"
+            android:text="0.0"
             android:textColor="@color/black"
             android:textSize="22sp"
             app:fontFamily="@font/roboto_bold"
@@ -307,34 +313,43 @@
             app:layout_constraintTop_toBottomOf="@+id/OverallRateTextView">
 
             <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/star1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
-                android:src="@drawable/ic_baseline_star_24" />
+                android:src="@drawable/ic_baseline_star_border_24" />
 
             <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/star2"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
-                android:src="@drawable/ic_baseline_star_24" />
+                android:src="@drawable/ic_baseline_star_border_24" />
 
             <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/star3"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
-                android:src="@drawable/ic_baseline_star_24" />
+                android:src="@drawable/ic_baseline_star_border_24" />
 
             <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/star4"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
-                android:src="@drawable/ic_baseline_star_24" />
+                android:src="@drawable/ic_baseline_star_border_24" />
 
             <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/star5"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
-                android:src="@drawable/ic_round_star_half_24"
+                android:src="@drawable/ic_baseline_star_border_24"
                 android:tint="#072C3D" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -355,27 +370,97 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/bestrev"
+            android:id="@+id/PlaceMyReviewTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginRight="18dp"
+            android:fontFamily="@font/dm_sans"
+            android:textColor="@color/black"
+            android:visibility="visible"
+            app:layout_constraintEnd_toStartOf="@+id/OverallRateTextView"
+            app:layout_constraintStart_toEndOf="@+id/cardView6"
+            app:layout_constraintTop_toTopOf="@+id/cardView6" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/PlaceMyReviewEditText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="18dp"
+            android:layout_marginTop="@dimen/_5sdp"
             android:fontFamily="@font/dm_sans"
-            android:text="A Place where Everyone can see the greatness of Chinese people who have dedicated their lives to buil such a massive structure that would Live as long as the people of china will"
-            android:textColor="@color/black"
+            android:padding="@dimen/_10sdp"
+            android:hint="Leave A review"
 
+            android:background="@drawable/background_transparent_4dp_corner"
+            android:textColor="@color/black"
+            android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/OverallRateTextView"
             app:layout_constraintStart_toEndOf="@+id/cardView6"
             app:layout_constraintTop_toTopOf="@+id/cardView6" />
+
+        <androidx.appcompat.widget.AppCompatRatingBar
+            android:id="@+id/MyRating"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp"
+            app:layout_constraintLeft_toLeftOf="@id/PlaceMyReviewEditText"
+            app:layout_constraintRight_toRightOf="@id/PlaceMyReviewEditText"
+            app:layout_constraintTop_toBottomOf="@id/PlaceMyReviewEditText"/>
+        <android.widget.Button
+            android:id="@+id/ConfirmMyReview"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:text="Confirm"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:fontFamily="@font/roboto_medium"
+            android:letterSpacing="0.02"
+            android:background="#092D47"
+            android:textColor="@color/white"
+            app:layout_constraintLeft_toLeftOf="@id/PlaceMyReviewEditText"
+            app:layout_constraintRight_toRightOf="@id/PlaceMyReviewEditText"
+            app:layout_constraintTop_toBottomOf="@id/MyRating"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/ReviewsTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:textSize="20sp"
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:text="Reviews For This Place"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nestedconstraintLayout"
+            android:fontFamily="@font/roboto_medium"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/ReviewsRecyclerView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            app:layout_constraintTop_toBottomOf="@id/bestrev"
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:layout_constraintTop_toBottomOf="@id/ReviewsTextView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+             />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/NoDateImageView"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/no_data_rafiki"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ReviewsTextView"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
 

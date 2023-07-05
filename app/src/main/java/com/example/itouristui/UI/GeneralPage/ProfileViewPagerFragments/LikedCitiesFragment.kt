@@ -9,11 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.itouristui.Adapters.Places_adapter
 import com.example.itouristui.R
 import com.example.itouristui.models.PlaceImportantData
-import kotlinx.android.synthetic.main.fragment_places_to_visit.*
+import kotlinx.android.synthetic.main.fragment_liked_cities.ProfileLikedCitiesRecyclerView
 
-
-class PlacesToVisitFragment : Fragment() {
-
+class LikedCitiesFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,19 +23,19 @@ class PlacesToVisitFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_places_to_visit, container, false)
+        return inflater.inflate(R.layout.fragment_liked_cities, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val places=ArrayList<PlaceImportantData>()
-        val place = PlaceImportantData("pizza pino","23 July St.,PortSaid,Egypt","5 Km" ,0.0,0.0)
+        val place = PlaceImportantData("","pizza pino","23 July St.,PortSaid,Egypt","5 Km" ,0.0,0.0)
         for (i in 1..10){
             places.add(place)
         }
 
-        with(ProfilePlacesToVisitRecyclerView){
+        with(ProfileLikedCitiesRecyclerView){
             layoutManager = LinearLayoutManager(requireContext() , LinearLayoutManager.VERTICAL , false)
             adapter = Places_adapter(places)
         }

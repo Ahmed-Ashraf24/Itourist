@@ -24,7 +24,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView4"
+        android:id="@+id/ReviewerNameTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -55,10 +55,19 @@
         android:drawableStart="@drawable/ic_outline_location_on_24"
         android:layout_marginTop="2dp"
         android:layout_marginStart="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/appCompatTextView4"
+        app:layout_constraintEnd_toEndOf="@+id/ReviewerNameTextView"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/appCompatTextView4"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView4" />
+        app:layout_constraintStart_toStartOf="@+id/ReviewerNameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/ReviewerNameTextView" />
+
+    <androidx.appcompat.widget.AppCompatRatingBar
+        android:id="@+id/ReviewerRatingBar"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/revDisc"
+        app:layout_constraintTop_toBottomOf="@id/reviewlocation" />
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/revDisc"
         android:layout_width="0dp"
@@ -70,8 +79,9 @@
         android:layout_marginEnd="15dp"
         app:layout_constraintStart_toEndOf="@id/materialCardView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/reviewlocation">
+        app:layout_constraintTop_toBottomOf="@id/ReviewerRatingBar">
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/ReviewTextView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginVertical="10dp"
@@ -91,6 +101,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="10dp"
         android:background="@null"
+        android:visibility="invisible"
         android:src="@drawable/ic_outline_thumb_up_24"
         app:layout_constraintEnd_toEndOf="@+id/revDisc"
         app:layout_constraintTop_toBottomOf="@id/revDisc" />
@@ -101,6 +112,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:background="@null"
+        android:visibility="invisible"
         android:layout_marginEnd="20dp"
         android:src="@drawable/ic_outline_thumb_down_24"
         app:layout_constraintEnd_toStartOf="@+id/ReviewItemLikeButton"

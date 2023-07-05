@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentgroup"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center_vertical"
+    android:background="@android:color/transparent"
+    android:gravity="center"
+    android:backgroundTint="@color/white"
+    android:layout_marginTop="15dp"
+    android:layout_marginBottom="15dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/infoConstraint"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/semi_rounded_white"
+        android:elevation="3dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+            android:id="@+id/circularRevealCardView"
+            android:layout_width="140dp"
+            app:cardCornerRadius="20dp"
+            android:elevation="2dp"
+            android:layout_marginLeft="10dp"
+            android:layout_height="145dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.utils.widget.ImageFilterView
+                android:id="@+id/person_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/caption" />
+
+        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+
+        <TextView
+            android:id="@+id/ItemListPlaceNameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/dm_sans"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="Place name"
+            android:textColor="@color/black"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/circularRevealCardView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/ItemListDistTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="15dp"
+            android:drawableStart="@drawable/ic_baseline_route_24"
+            android:drawablePadding="8dp"
+            android:drawableTint="@color/black"
+            android:fontFamily="@font/open_sans_semibold"
+            android:gravity="center"
+            android:text="4km away"
+            android:textColor="@color/black"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/StaticItemNoRevsTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="15dp"
+            android:drawableStart="@drawable/ic_outline_feed_24"
+            android:drawablePadding="8dp"
+            android:drawableTint="@color/black"
+            android:fontFamily="@font/open_sans_semibold"
+            android:gravity="center"
+            android:text="Reviews"
+            android:textColor="@color/black"
+            android:textSize="10dp"
+            app:layout_constraintStart_toEndOf="@+id/circularRevealCardView"
+            app:layout_constraintTop_toBottomOf="@+id/ItemListPlaceNameTV" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center"
+            android:text="345"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="@+id/StaticItemNoRevsTV"
+            app:layout_constraintStart_toStartOf="@+id/StaticItemNoRevsTV"
+            app:layout_constraintTop_toBottomOf="@+id/StaticItemNoRevsTV" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/StaticItemRateTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="15dp"
+            android:drawableStart="@drawable/ic_twotone_star_half_24"
+            android:drawablePadding="6dp"
+            android:drawableTint="@color/black"
+            android:fontFamily="@font/open_sans_semibold"
+            android:gravity="center"
+            android:text="Rating"
+            android:textColor="@color/black"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.628"
+            app:layout_constraintStart_toEndOf="@+id/StaticItemNoRevsTV"
+            app:layout_constraintTop_toBottomOf="@+id/ItemListPlaceNameTV" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center"
+            android:text="4.5"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="@+id/StaticItemRateTV"
+            app:layout_constraintStart_toStartOf="@+id/StaticItemRateTV"
+            app:layout_constraintTop_toBottomOf="@+id/StaticItemRateTV" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -30,8 +30,7 @@ class ReviewsFragment : Fragment() {
 
         with(ProfileReviewsRecyclerView){
             layoutManager = LinearLayoutManager(requireContext() , LinearLayoutManager.VERTICAL , false)
-            adapter = ReviewsRecViewAdapter(true)
+            adapter = ReviewsRecViewAdapter(emptyList())
         }
     }
-
 }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="OnBoardingNavigationDotsID" type="id" />
+    <item name="OnBoardingNavigationDotsID1" type="id" />
+    <item name="OnBoardingNavigationDotsID2" type="id" />
+    <item name="OnBoardingNavigationDotsID3" type="id" />
+</resources>

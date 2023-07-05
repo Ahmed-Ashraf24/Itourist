@@ -9,10 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        >
-
+        android:layout_height="match_parent">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/GeneralSearchContainerLayout"
@@ -40,7 +37,6 @@
                 android:layout_marginVertical="4dp"
                 android:background="#989898" />
 
-
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/GeneralSearchEditText"
                 android:layout_width="match_parent"
@@ -60,7 +56,6 @@
             android:elevation="2dp"
             android:background="@drawable/semi_rounded"
             android:backgroundTint="@color/white"
-
             app:layout_constraintEnd_toEndOf="@+id/GeneralSearchContainerLayout"
             app:layout_constraintStart_toStartOf="@+id/GeneralSearchContainerLayout"
             app:layout_constraintTop_toBottomOf="@+id/GeneralSearchContainerLayout" />
@@ -72,7 +67,7 @@
             android:text="Categories"
             android:letterSpacing="0.05"
             android:fontFamily="@font/open_sans_semibold"
-            android:textColor="@color/black"
+            android:textColor="#072C3D"
             android:textSize="18sp"
             android:paddingLeft="20dp"
             android:layout_marginTop="48dp"
@@ -90,7 +85,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/StaticCategoriesTextView" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.core.widget.NestedScrollView>

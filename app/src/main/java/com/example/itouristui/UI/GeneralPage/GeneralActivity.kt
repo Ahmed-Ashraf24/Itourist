@@ -8,14 +8,21 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.example.itouristui.FirebaseObj
 import com.example.itouristui.R
 import com.example.itouristui.UI.Dialogs.GpsNotEnabledDialog
+import com.example.itouristui.UI.DisplayMore.RequestsFragment
+import com.example.itouristui.UI.DisplayMore.SettingsFragment
 import com.example.itouristui.iToursit
 import com.example.itouristui.models.SimpleCityDetail
+import com.example.itouristui.models.UserPlainData
 import com.google.android.gms.location.*
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_general.*
@@ -42,6 +49,7 @@ class GeneralActivity : AppCompatActivity() , NavigationView.OnNavigationItemSel
 
         showCustomUI()
         coroScope = CoroutineScope(Dispatchers.Main + Job())
+        FirebaseObj.uid = FirebaseObj.auth.currentUser!!.uid
 
         val homeFragment = HomeFragment()
         val searchFragment = SearchFragment()
@@ -78,6 +86,15 @@ class GeneralActivity : AppCompatActivity() , NavigationView.OnNavigationItemSel
                     IncludedLocationPlaceHolder.visibility = View.GONE
                     GeneralActivityMainConstraint.visibility = View.VISIBLE
 
+
+                    FirebaseObj.fireStore.collection("Users").document(FirebaseObj.uid).run {
+                        get().addOnSuccessListener {
+                            val currentUser = it.toObject(UserPlainData::class.java)
+                            if (currentUser!!.city.isNullOrBlank()){
+                                set(currentUser.copy(city = geoCoding[0].adminArea , country = geoCoding[0].countryName))
+                            }
+                        }
+                    }
 
                     searchFragment.apply { arguments = locationBundle }
                     homeFragment.apply { arguments = locationBundle }
@@ -119,10 +136,7 @@ class GeneralActivity : AppCompatActivity() , NavigationView.OnNavigationItemSel
            }.also{
                 supportFragmentManager.beginTransaction().replace(R.id.GeneralFragmentContainerView, it).commit()
             }
-
         }
-
-
     }
 
 
@@ -131,9 +145,29 @@ class GeneralActivity : AppCompatActivity() , NavigationView.OnNavigationItemSel
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
+            R.id.nav_tour_requests_ID -> {
+                val fragmentManager: FragmentManager = supportFragmentManager
+                val transaction: FragmentTransaction = fragmentManager.beginTransaction()
+                val fragment = RequestsFragment()
+                transaction.replace(R.id.GeneralFragmentContainerView, fragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
 
+                return true
+            }
+
+            R.id.nav_settings_ID -> {
+                val fragmentManager: FragmentManager = supportFragmentManager
+                val transaction: FragmentTransaction = fragmentManager.beginTransaction()
+                val fragment = SettingsFragment()
+                transaction.replace(R.id.GeneralFragmentContainerView, fragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
+
+                return true
+            }
         }
-        return true
+        return false
     }
 
     private fun showCustomUI(){

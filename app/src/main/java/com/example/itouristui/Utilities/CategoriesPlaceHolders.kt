@@ -7,17 +7,17 @@ class CategoriesPlaceHolders {
 
     companion object{
          val categoriesOfPlaces = listOf(
-            CategoriesOfPlaces("shopping", R.drawable.shopping_illustr_undraw,"clothing"),
-            CategoriesOfPlaces("restaurant", R.drawable.restaurent_illustr_undraw,"Restaurant"),
-            CategoriesOfPlaces("market", R.drawable.markets_illustr_undraw,"market"),
-            CategoriesOfPlaces("coffee", R.drawable.coffe_illustr_undraw,"Café/Pub"),
-            CategoriesOfPlaces("points of interest", R.drawable.poi_illustr_undraw,"Tourist Attraction"),
-            CategoriesOfPlaces("gardens", R.drawable.gardens_illustr_undraw,"Park & Recreation Area "),
-            CategoriesOfPlaces("studio", R.drawable.studio_illustr_undraw,"Media Facility"),
-            CategoriesOfPlaces("technological", R.drawable.electronics_illustr_undraw,"electrical"),
-            CategoriesOfPlaces("hospital", R.drawable.hospital_illustr_undraw,"hospital"),
-            CategoriesOfPlaces("jewels", R.drawable.jewllery_illust_undraw,"Jewelry, Clocks & Watches"),
-            CategoriesOfPlaces("governmental", R.drawable.govenmental_illust_undraw,"government"),
+            CategoriesOfPlaces("shopping", R.drawable.shopping_catrgory,"clothing"),
+            CategoriesOfPlaces("restaurant", R.drawable.restaurent_category,"Restaurant"),
+            CategoriesOfPlaces("market", R.drawable.market_catrgory,"market"),
+            CategoriesOfPlaces("coffee", R.drawable.coffee_catrgory,"Café/Pub"),
+            CategoriesOfPlaces("points of interest", R.drawable.points_of_interest_catrgory,"Tourist Attraction"),
+            CategoriesOfPlaces("gardens", R.drawable.gardens_catrgory,"Park & Recreation Area "),
+            CategoriesOfPlaces("studio", R.drawable.studio_catrgory,"Media Facility"),
+            CategoriesOfPlaces("technological", R.drawable.technological_catrgory,"electrical"),
+            CategoriesOfPlaces("hospital", R.drawable.hospital_catrgory,"hospital"),
+            CategoriesOfPlaces("jewels", R.drawable.jewels_catrgory,"Jewelry, Clocks & Watches"),
+            CategoriesOfPlaces("governmental", R.drawable.governmental_catrgory,"government"),
         )
     }
 }
