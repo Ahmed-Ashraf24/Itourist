@@ -18,7 +18,7 @@ class ReviewsRecViewAdapter(val reviews : List<ReviewData>) : RecyclerView.Adapt
         val nameView = view.ReviewerNameTextView
         val locationView = view.reviewlocation
         val textReview = view.ReviewTextView
-
+        val rating = view.ReviewerRatingBar
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewViewHolder {
@@ -29,6 +29,7 @@ class ReviewsRecViewAdapter(val reviews : List<ReviewData>) : RecyclerView.Adapt
         holder.nameView.text = reviews[position].reviewerName
         holder.locationView.text = reviews[position].reviewerLocation
         holder.textReview.text = reviews[position].review
+        holder.rating.rating = reviews[position].reviewRate?.toFloat()?:0f
     }
 
     override fun getItemCount(): Int {

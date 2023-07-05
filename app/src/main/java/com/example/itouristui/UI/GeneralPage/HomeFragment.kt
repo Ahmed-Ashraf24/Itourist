@@ -99,7 +99,9 @@ class HomeFragment : Fragment(){
                 val searchOptionsNearby = SearchOptions(query = "store",searchAreas = setOf(circleGeometry), limit = 20)
                 search.search(searchOptionsNearby, CustomTomtomCallback{ results->
                     val picturesPlaceHolders = arrayOf(R.drawable.closed_stores_pana,R.drawable.closed_stores_cuate)
-                    nearbyAdapter =  GeneralPageRecViewAdapter(results.results,picturesPlaceHolders){ getImportantPlaceData(it) }
+                    nearbyAdapter =  GeneralPageRecViewAdapter(results.results,picturesPlaceHolders){data,resId->
+                        getImportantPlaceData(data,resId)
+                    }
                     NearbyPlacesRecyclerView.adapter =nearbyAdapter
 
                     HomeFragmentShimmer.apply {
@@ -124,8 +126,8 @@ class HomeFragment : Fragment(){
                 val searchOptionsPopular = SearchOptions(query = "Tourist Attraction",searchAreas = setOf(circleGeometry), limit = 20, locale = lang)
                 search.search(searchOptionsPopular, CustomTomtomCallback{ results->
                     val picturesPlaceHolders = arrayOf(R.drawable.travel_selfie_bro,R.drawable.bike_trial_amico)
-                    suggestedAdapter = GeneralPageRecViewAdapter(results.results,picturesPlaceHolders){
-                        getImportantPlaceData(it)
+                    suggestedAdapter = GeneralPageRecViewAdapter(results.results,picturesPlaceHolders){data,resId->
+                        getImportantPlaceData(data,resId)
                     }
                     PopularPlacesRecyclerView.adapter = suggestedAdapter
                 })
@@ -137,21 +139,22 @@ class HomeFragment : Fragment(){
         }?:Toast.makeText(requireContext(),"A Problem has occurred,You may need to restart",Toast.LENGTH_LONG).show()
     }
 
-    private fun getImportantPlaceData(searchResult : SearchResult){
+    private fun getImportantPlaceData(searchResult : SearchResult,resId:Int){
         PlaceImportantData(searchResult.searchResultId.id,
             searchResult.poi?.names?.first()?:"UnKnown Place Name",
             searchResult.address?.run { "$streetName, $localName, $country" }?:"Unknown Address",
             searchResult.distance?.inKilometers().toString().dropLast(5)+" Km",
             searchResult.position.latitude,
             searchResult.position.longitude).also {impPlaceData->
-            displayPlaceInfo(impPlaceData)
+            displayPlaceInfo(impPlaceData,resId)
         }
     }
 
-    private fun displayPlaceInfo(placeImpData : PlaceImportantData){
+    private fun displayPlaceInfo(placeImpData : PlaceImportantData,resId:Int){
         Intent(requireContext(),DisplayActivity::class.java).apply {
             putExtra("SELECTED_DISPLAY_FRAGMENT","PLACE_INFO")
             putExtra("IMPORTANT_PLACE",placeImpData)
+            putExtra("RES_ID",resId)
         }.also {
             startActivity(it)
         }

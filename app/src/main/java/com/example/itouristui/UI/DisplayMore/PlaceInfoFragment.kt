@@ -20,12 +20,17 @@ import com.example.itouristui.models.UserPlainData
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.DocumentSnapshot
 import kotlinx.android.synthetic.main.fragment_item.*
+import kotlinx.android.synthetic.main.review_item.*
 
 class PlaceInfoFragment : Fragment() {
 
-    var overallRate = 0.0
+    var overallRate = 0f
     var numberOfReviews = 0
+    var myRate = 0
+    var myPreviousRate = 0
+    var hasReviewed = false
     lateinit var placeRef : DocumentReference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -50,17 +55,19 @@ class PlaceInfoFragment : Fragment() {
                 PlaceInfoFragmentDistanceTV.text = it.distanceAway
                 placeXID = it.id
             }
+            val resId = it.getInt("RES_ID")
+            PlaceHolderOfPlaceImageView.setImageResource(resId)
+
             placeRef = FirebaseObj.fireStore.collection("Places").document(placeXID)
 
-            var myRate = 3
-            var hasReviewed = false
+
 
             placeRef.run {
                 get().addOnSuccessListener {docSnap->
                     if (docSnap.exists()){
                         setupPreInsertedPlace(docSnap)
                     }else{
-                        insertNewPlace(placeXID)
+                        insertNewPlace()
                     }
                 }
             }
@@ -68,17 +75,19 @@ class PlaceInfoFragment : Fragment() {
 
             ConfirmMyReview.setOnClickListener {
                 if ((PlaceMyReviewEditText.text?.toString()?:"").isNotBlank()){
+                    myRate = ReviewerRangeBar.rightPinValue.toInt()
+                    numberOfReviews += (if (hasReviewed) 0 else 1)
                     placeRef.run {
                         set(
                             hashMapOf(
-                                "Rate" to overallRate-myRate+5,
-                                "Number Of Reviews" to numberOfReviews + (if (hasReviewed) 0 else 1)
+                                "Rate" to (overallRate-myPreviousRate+myRate)/numberOfReviews ,
+                                "Number Of Reviews" to numberOfReviews
                             )
                         )
 
                         collection("Reviews").document(FirebaseObj.uid).set(
                             hashMapOf(
-                                "Rate" to 3,
+                                "Rate" to myRate,
                                 "Review" to PlaceMyReviewEditText.text.toString(),
                                 "Reference" to FirebaseObj.fireStore.collection("Users").document(FirebaseObj.uid)
                             )
@@ -86,6 +95,15 @@ class PlaceInfoFragment : Fragment() {
                             showMyReview(PlaceMyReviewEditText.text.toString())
                         }
                     }
+
+                    FirebaseObj.fireStore.collection("Users").document(FirebaseObj.uid)
+                        .collection("Places Reviews").document(placeXID).set(
+                            hashMapOf(
+                                "Rate" to myRate,
+                                "Review" to PlaceMyReviewEditText.text.toString(),
+                                "Reference" to placeRef
+                            )
+                        )
                 }
             }
 
@@ -118,6 +136,9 @@ class PlaceInfoFragment : Fragment() {
 
     private fun setupPreInsertedPlace(docSnap : DocumentSnapshot){
         docSnap.data!!.also {
+            overallRate = it["Rate"].toString().toFloat()
+            numberOfReviews = it["Number Of Reviews"].toString().toInt()
+
             OverallRateTextView.text = it["Rate"].toString()
 
             val ss = SpannableString(OverallRateTextView.text)
@@ -133,25 +154,48 @@ class PlaceInfoFragment : Fragment() {
         }
     }
 
-    private fun insertNewPlace(xid : String){
+    private fun insertNewPlace(){
         placeRef.run {
             set(hashMapOf(
                     "Rate" to 0.0,
                     "Number Of Reviews" to 0
                 ))
         }
+
+        PlaceMyReviewEditText.visibility = View.VISIBLE
+        ReviewerRangeBar.visibility = View.VISIBLE
+        ConfirmMyReview.visibility = View.VISIBLE
+
     }
 
     private fun showMyReview(review:String){
-        PlaceMyReviewEditText.visibility = View.GONE
-        ConfirmMyReview.visibility = View.GONE
-        PlaceMyReviewTextView.visibility = View.VISIBLE
+
         if (review.isNotBlank()){
+            PlaceMyReviewTextView.visibility = View.VISIBLE
+            MyRating.visibility = View.VISIBLE
+
+            PlaceMyReviewEditText.visibility = View.GONE
+            ReviewerRangeBar.visibility = View.GONE
+            ConfirmMyReview.visibility = View.GONE
+
             PlaceMyReviewTextView.text = review
+            MyRating.rating = myRate.toFloat()
+
         }else{
             placeRef.collection("Reviews").document(FirebaseObj.uid).get().addOnSuccessListener {
                 if (it.exists()){
+                    PlaceMyReviewTextView.visibility = View.VISIBLE
+                    MyRating.visibility = View.VISIBLE
+
+                    hasReviewed = true
+                    myPreviousRate = it.data!!["Rate"].toString().toInt()
                     PlaceMyReviewTextView.text = it.data!!["Review"].toString()
+                    MyRating.rating = myPreviousRate.toFloat()
+
+                }else{
+                    PlaceMyReviewEditText.visibility = View.VISIBLE
+                    ReviewerRangeBar.visibility = View.VISIBLE
+                    ConfirmMyReview.visibility = View.VISIBLE
                 }
             }
         }

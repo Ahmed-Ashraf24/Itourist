@@ -16,6 +16,7 @@ class DisplayActivity : AppCompatActivity() {
             "PLACE_INFO"-> {
                 with(intent){
                     selectedFragmentBundle.putParcelable("IMPORTANT_PLACE",getParcelableExtra("IMPORTANT_PLACE"))
+                    selectedFragmentBundle.putInt("RES_ID",getIntExtra("RES_ID",0))
                 }
                 PlaceInfoFragment().apply {
                     arguments = selectedFragmentBundle

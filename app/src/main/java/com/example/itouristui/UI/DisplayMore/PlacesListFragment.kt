@@ -52,28 +52,29 @@ class PlacesListFragment : Fragment() {
             search.search(searchOptions,CustomTomtomCallback{result->
 
                 recyclerView1.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-                recyclerView1.adapter = CategorySearchResultRecViewAdapter(result.results,resId){
-                    getImportantPlaceData(it)
+                recyclerView1.adapter = CategorySearchResultRecViewAdapter(result.results,resId){data,resId->
+                    getImportantPlaceData(data,resId)
                 }
             })
 
         }
     }
 
-    private fun getImportantPlaceData(searchResult : SearchResult){
+    private fun getImportantPlaceData(searchResult : SearchResult,resId:Int){
         PlaceImportantData(searchResult.searchResultId.id,
             searchResult.poi?.names?.first()?:"UnKnown Place Name",
             searchResult.address?.run { "$streetName, $localName, $country" }?:"Unknown Address",
             searchResult.distance?.inKilometers().toString().dropLast(5)+" Km",
             searchResult.position.latitude,
             searchResult.position.longitude).also { impPlaceData->
-            displayPlaceInfo(impPlaceData)
+            displayPlaceInfo(impPlaceData,resId)
         }
     }
 
-    private fun displayPlaceInfo(placeImpData : PlaceImportantData){
+    private fun displayPlaceInfo(placeImpData : PlaceImportantData,resId:Int){
         Bundle().apply {
             putString("SELECTED_DISPLAY_FRAGMENT","PLACE_INFO")
+            putInt("RES_ID",resId)
             putParcelable("IMPORTANT_PLACE",placeImpData)
         }.also {
             val placeInfoFragment = PlaceInfoFragment().apply {

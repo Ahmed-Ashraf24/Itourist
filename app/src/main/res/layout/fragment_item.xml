@@ -32,12 +32,13 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/PlaceHolderOfPlaceImageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:cropToPadding="true"
                 android:paddingBottom="15dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/mountain_with_camp" />
+                android:src="@drawable/loading_pana" />
         </androidx.cardview.widget.CardView>
 
 
@@ -110,7 +111,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:paddingLeft="8dp"
-            android:text="1000 km"
+            android:text="0.0 km"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:fontFamily="@font/roboto_bold"
@@ -154,7 +155,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:paddingLeft="8dp"
-            android:text="385 Reviews"
+            android:text="0 Reviews"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:fontFamily="@font/roboto_bold"
@@ -202,7 +203,7 @@
             android:layout_marginTop="4dp"
             android:paddingLeft="8dp"
             android:textDirection="ltr"
-            android:text="Shingahi, Tokyo near aqr, China"
+            android:text="No Location To Show"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:fontFamily="@font/roboto_bold"
@@ -353,14 +354,26 @@
                 android:tint="#072C3D" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
+        <TextView
+            android:id="@+id/MyReviewPlaceHolderTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="My Review"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/PlaceInfoFragmentOnMapButton"
+            app:layout_constraintTop_toTopOf="@+id/appCompatImageButton12" />
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView6"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="@dimen/_12sdp"
             app:cardCornerRadius="999dp"
             app:layout_constraintStart_toStartOf="@+id/PlaceInfoFragmentOnMapButton"
-            app:layout_constraintTop_toBottomOf="@+id/PlaceInfoFragmentOnMapButton">
+            app:layout_constraintTop_toBottomOf="@+id/MyReviewPlaceHolderTextView">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="match_parent"
@@ -368,6 +381,7 @@
                 android:src="@drawable/man_pic" />
 
         </androidx.cardview.widget.CardView>
+
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/PlaceMyReviewTextView"
@@ -378,7 +392,7 @@
             android:layout_marginRight="18dp"
             android:fontFamily="@font/dm_sans"
             android:textColor="@color/black"
-            android:visibility="visible"
+            android:visibility="gone"
             app:layout_constraintEnd_toStartOf="@+id/OverallRateTextView"
             app:layout_constraintStart_toEndOf="@+id/cardView6"
             app:layout_constraintTop_toTopOf="@+id/cardView6" />
@@ -389,6 +403,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="18dp"
+            android:visibility="gone"
             android:layout_marginTop="@dimen/_5sdp"
             android:fontFamily="@font/dm_sans"
             android:padding="@dimen/_10sdp"
@@ -407,6 +422,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_2sdp"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="@id/PlaceMyReviewEditText"
+            app:layout_constraintRight_toRightOf="@id/PlaceMyReviewEditText"
+            app:layout_constraintTop_toBottomOf="@id/PlaceMyReviewEditText"/>
+        <com.appyvet.materialrangebar.RangeBar
+            android:id="@+id/ReviewerRangeBar"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            app:mrb_rangeBar="false"
+            app:mrb_tickInterval="1"
+            app:mrb_pinMaxFont="12sp"
+            android:visibility="gone"
+            app:mrb_tickStart="1"
+            app:mrb_pinColor="@color/groupChatAdminText"
+            app:mrb_tickDefaultColor="@color/white"
+            app:mrb_tickEnd="5"
+            app:mrb_connectingLineColor="#092D47"
+            app:mrb_thumbColor="@color/btn_send_disabled"
+            app:mrb_thumbSize="6dp"
             app:layout_constraintLeft_toLeftOf="@id/PlaceMyReviewEditText"
             app:layout_constraintRight_toRightOf="@id/PlaceMyReviewEditText"
             app:layout_constraintTop_toBottomOf="@id/PlaceMyReviewEditText"/>
@@ -415,8 +449,8 @@
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:text="Confirm"
+            android:visibility="gone"
             android:textAllCaps="false"
-            android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginHorizontal="@dimen/_20sdp"
             android:fontFamily="@font/roboto_medium"
             android:letterSpacing="0.02"
@@ -424,7 +458,7 @@
             android:textColor="@color/white"
             app:layout_constraintLeft_toLeftOf="@id/PlaceMyReviewEditText"
             app:layout_constraintRight_toRightOf="@id/PlaceMyReviewEditText"
-            app:layout_constraintTop_toBottomOf="@id/MyRating"/>
+            app:layout_constraintTop_toBottomOf="@id/ReviewerRangeBar"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -11,15 +11,15 @@ import kotlinx.android.synthetic.main.places.view.*
 import java.util.ArrayList
 
 
-class CategorySearchResultRecViewAdapter(var data: List<SearchResult>,val resId : Int, val displayItemListener : (SearchResult)->(Unit)): RecyclerView.Adapter<CategorySearchResultRecViewAdapter.CategorySearchResultViewHolder>() {
+class CategorySearchResultRecViewAdapter(var data: List<SearchResult>,val resId : Int, val displayItemListener : (SearchResult,Int)->(Unit)): RecyclerView.Adapter<CategorySearchResultRecViewAdapter.CategorySearchResultViewHolder>() {
     class CategorySearchResultViewHolder(val view: View): RecyclerView.ViewHolder(view){
         var placenameTV= view.ItemListPlaceNameTV
         var distanceTV =view.ItemListDistTextView
         val placeImg = view.place_image
 
-        fun bind(data : SearchResult , clickListener : (SearchResult)->(Unit) ){
+        fun bind(data : SearchResult,resId:Int , clickListener : (SearchResult,Int)->(Unit) ){
             view.setOnClickListener{
-                clickListener(data)
+                clickListener(data,resId)
             }
         }
 
@@ -31,7 +31,7 @@ class CategorySearchResultRecViewAdapter(var data: List<SearchResult>,val resId 
         holder.placenameTV.text=data[position].poi?.names?.first() ?: "UnKnown"
         holder.distanceTV.text=data[position].distance?.inKilometers().toString().dropLast(5)+" Km"
         holder.placeImg.setImageResource(resId)
-        holder.bind(data[position],displayItemListener)
+        holder.bind(data[position],resId,displayItemListener)
     }
 
     override fun getItemCount(): Int= data.size
