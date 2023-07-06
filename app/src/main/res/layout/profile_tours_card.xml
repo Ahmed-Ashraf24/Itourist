@@ -29,31 +29,33 @@
 
         <com.google.android.material.circularreveal.cardview.CircularRevealCardView
             android:id="@+id/circularRevealCardView"
-            android:layout_width="140dp"
+            android:layout_width="100dp"
             app:cardCornerRadius="20dp"
             android:elevation="2dp"
             android:layout_marginLeft="10dp"
-            android:layout_height="145dp"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.utils.widget.ImageFilterView
-                android:id="@+id/person_image"
+                android:id="@+id/TourCityPicture"
+                android:scaleType="centerCrop"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/caption" />
+              />
 
         </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
 
         <TextView
             android:id="@+id/ItemListPlaceNameTV"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/dm_sans"
             android:gravity="center"
-            android:maxLines="1"
+            android:layout_marginHorizontal="@dimen/_10sdp"
             android:text="Place name"
             android:textColor="@color/black"
             android:textSize="17dp"
@@ -68,42 +70,59 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="12dp"
             android:layout_marginBottom="15dp"
-            android:drawableStart="@drawable/ic_baseline_route_24"
+
             android:drawablePadding="8dp"
             android:drawableTint="@color/black"
             android:fontFamily="@font/open_sans_semibold"
             android:gravity="center"
-            android:text="4km away"
+
             android:textColor="@color/black"
             android:textSize="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="20dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="2dp"
+            android:src="@drawable/lovely"
+            app:layout_constraintBottom_toTopOf="@+id/numberOfLikesInCardTextView"
+            app:layout_constraintEnd_toStartOf="@+id/StaticItemRateTV"
+            app:layout_constraintTop_toTopOf="@+id/StaticItemRateTV" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="20dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="2dp"
+            android:src="@drawable/airplane"
+            app:layout_constraintBottom_toTopOf="@+id/numberOfToursInCardTextView"
+            app:layout_constraintEnd_toStartOf="@+id/StaticItemNoRevsTV"
+            app:layout_constraintTop_toTopOf="@+id/StaticItemNoRevsTV" />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/StaticItemNoRevsTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="15dp"
-            android:drawableStart="@drawable/ic_outline_feed_24"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginTop="30dp"
             android:drawablePadding="8dp"
             android:drawableTint="@color/black"
             android:fontFamily="@font/open_sans_semibold"
             android:gravity="center"
-            android:text="Reviews"
+            android:text="Tours Taken"
             android:textColor="@color/black"
             android:textSize="10dp"
             app:layout_constraintStart_toEndOf="@+id/circularRevealCardView"
             app:layout_constraintTop_toBottomOf="@+id/ItemListPlaceNameTV" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/appCompatTextView3"
+            android:id="@+id/numberOfToursInCardTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
-            android:text="345"
+            android:text="0"
             android:textColor="@color/black"
             android:textSize="10sp"
             app:layout_constraintEnd_toEndOf="@+id/StaticItemNoRevsTV"
@@ -114,14 +133,14 @@
             android:id="@+id/StaticItemRateTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="15dp"
-            android:drawableStart="@drawable/ic_twotone_star_half_24"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginTop="30dp"
             android:drawablePadding="6dp"
             android:drawableTint="@color/black"
             android:fontFamily="@font/open_sans_semibold"
             android:gravity="center"
-            android:text="Rating"
+            android:text="Likes"
             android:textColor="@color/black"
             android:textSize="10dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -130,12 +149,13 @@
             app:layout_constraintTop_toBottomOf="@+id/ItemListPlaceNameTV" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/numberOfLikesInCardTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
-            android:text="4.5"
+            android:text="0"
             android:textColor="@color/black"
             android:textSize="10sp"
             app:layout_constraintEnd_toEndOf="@+id/StaticItemRateTV"

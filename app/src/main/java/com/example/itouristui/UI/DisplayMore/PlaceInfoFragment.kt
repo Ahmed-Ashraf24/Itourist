@@ -20,11 +20,11 @@ import com.example.itouristui.models.UserPlainData
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.DocumentSnapshot
 import kotlinx.android.synthetic.main.fragment_item.*
-import kotlinx.android.synthetic.main.review_item.*
 
 class PlaceInfoFragment : Fragment() {
 
-    var overallRate = 0f
+    var averageRate = 0f
+    var allUsersRateSum = 0
     var numberOfReviews = 0
     var myRate = 0
     var myPreviousRate = 0
@@ -80,7 +80,7 @@ class PlaceInfoFragment : Fragment() {
                     placeRef.run {
                         set(
                             hashMapOf(
-                                "Rate" to (overallRate-myPreviousRate+myRate)/numberOfReviews ,
+                                "Rate" to (allUsersRateSum-myPreviousRate+myRate)/numberOfReviews ,
                                 "Number Of Reviews" to numberOfReviews
                             )
                         )
@@ -135,8 +135,14 @@ class PlaceInfoFragment : Fragment() {
     }
 
     private fun setupPreInsertedPlace(docSnap : DocumentSnapshot){
+        placeRef.collection("Reviews").get().addOnSuccessListener {
+            for (rev in it){
+                allUsersRateSum += rev["Rate"].toString().toInt()
+            }
+        }
+
         docSnap.data!!.also {
-            overallRate = it["Rate"].toString().toFloat()
+            averageRate = it["Rate"].toString().toFloat()
             numberOfReviews = it["Number Of Reviews"].toString().toInt()
 
             OverallRateTextView.text = it["Rate"].toString()
@@ -172,7 +178,9 @@ class PlaceInfoFragment : Fragment() {
 
         if (review.isNotBlank()){
             PlaceMyReviewTextView.visibility = View.VISIBLE
-            MyRating.visibility = View.VISIBLE
+            if (MyRating!=null){
+                MyRating.visibility = View.VISIBLE
+            }
 
             PlaceMyReviewEditText.visibility = View.GONE
             ReviewerRangeBar.visibility = View.GONE

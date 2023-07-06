@@ -17,14 +17,13 @@ import com.bumptech.glide.Glide
 import com.example.itouristui.Adapters.CityPicturesRecyclerViewAdapter
 import com.example.itouristui.Data.Remote.UnsplashData
 import com.example.itouristui.Data.Remote.WikipediaData
+import com.example.itouristui.FirebaseObj
 import com.example.itouristui.R
 import com.example.itouristui.UI.Tours.ToursActivity
 import com.example.itouristui.Utilities.CustomRetrofitCallBack
 import com.example.itouristui.iToursit
 import com.example.itouristui.models.SimpleCityDetail
-import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.*
 import kotlinx.android.synthetic.main.activity_general.*
 import kotlinx.android.synthetic.main.fragment_city_overview.*
 import org.json.JSONArray
@@ -33,12 +32,9 @@ import org.json.JSONObject
 
 class CityOverviewFragment : Fragment() {
 
-    private lateinit var favoriteImageView: AppCompatImageView
     private var isLiked: Boolean = false
-    val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
-    val userDocumentRef: DocumentReference = firestore.collection("Users").document("CURRENT_USER_ID")
-    val likedCitiesCollectionRef: CollectionReference = userDocumentRef.collection("Liked Cities")
-    private lateinit var cityNameTextView: TextView
+    var cityRef : DocumentReference? = null
+    var totalLikes = 0
     data class LikedCity(val name: String)
 
     override fun onCreateView(
@@ -54,9 +50,7 @@ class CityOverviewFragment : Fragment() {
         CityDetailsShimmer.startShimmerAnimation()
         OtherImagesShimmer.startShimmerAnimation()
 
-        cityNameTextView = view.findViewById(R.id.CityNameTextView)
-        favoriteImageView = view.findViewById(R.id.favoriteImageViewID)
-        favoriteImageView.setOnClickListener {
+        favoriteImageViewID.setOnClickListener {
             onFavoriteClicked()
         }
 
@@ -68,6 +62,9 @@ class CityOverviewFragment : Fragment() {
            WikipediaData.wikiApiImp.getClosestResult(cityName.substringBefore(',')).enqueue(
                CustomRetrofitCallBack<String>{
                    val closestCityName = JSONArray(it.body()).getJSONArray(1).getString(0)
+
+                   cityRef = FirebaseObj.fireStore.collection("City").document(closestCityName)
+
                    WikipediaData.wikiApiImp.getCityDataByName(closestCityName).enqueue(
                        CustomRetrofitCallBack<String>{
                            CityDetailsShimmer.apply {
@@ -98,6 +95,7 @@ class CityOverviewFragment : Fragment() {
                                val cityImage = cityImagePage.getJSONObject(0).getJSONObject("thumbnail").getString("source")
                                Glide.with(requireContext()).load(cityImage).into(CityImageView)
                                cityImageExtra.append(cityImage)
+                               fetchFireStoreData(cityImage)
                            }catch (e:JSONException){
                                println("API : inside CityImage Callback , Exception")
                                 CityImageView.setImageResource(R.drawable.notfound_404_error)
@@ -163,41 +161,80 @@ class CityOverviewFragment : Fragment() {
        }
     }
 
-    fun onFavoriteClicked() {
-        isLiked = !isLiked
-        val heartDrawable = if (isLiked) R.drawable.full_heart else R.drawable.heart
-        favoriteImageView.setImageResource(heartDrawable)
-
-        if (isLiked) {
-            addToFavoritesList()
-            addToFirestore()
-        } else {
-            removeFromFavoritesList()
-            removeFromFirestore()
+    private fun fetchFireStoreData(newPic:String){
+        cityRef!!.run {
+            get().addOnSuccessListener {docSnap->
+                if (docSnap.exists()){
+                    setupPreInsertedCity(docSnap)
+                }else{
+                    insertNewCity(newPic)
+                }
+            }
         }
     }
 
-    private fun addToFavoritesList() {
-
+    private fun setupPreInsertedCity(docSnap : DocumentSnapshot){
+        docSnap.data!!.run {
+            totalLikes = get("Liked").toString().toInt()
+            LikedThisPlaceTextView.text = "$totalLikes Love This Place"
+            ToursTakenTextView.text = "${get("Tours")} Tours Taken"
+        }
+        FirebaseObj.fireStore.collection("Users").document(FirebaseObj.uid).
+        collection("Liked Cities").document(cityRef!!.id).get().addOnSuccessListener {
+            isLiked = it.exists()
+            favoriteImageViewID.setImageResource(if (isLiked) R.drawable.full_heart else R.drawable.heart)
+            favoriteImageViewID.visibility = View.VISIBLE
+        }
     }
 
-    private fun addToFirestore() {
-        val newItem = LikedCity(cityNameTextView.toString())
-
-        likedCitiesCollectionRef
-            .add(newItem)
-            .addOnSuccessListener { documentReference ->
-                val newItemId = documentReference.id
-            }
-            .addOnFailureListener { e ->
-                Log.e(TAG, "Failed to add item to Firestore: ${e.message}")
-                Toast.makeText(requireContext(), "Failed to add item: ${e.message}", Toast.LENGTH_SHORT).show()
-            }
+    private fun insertNewCity(newPic: String){
+        cityRef!!.run {
+            set(hashMapOf(
+                "Liked" to 0,
+                "Tours" to 0,
+                "Image" to newPic
+            ))
+        }
+        favoriteImageViewID.visibility = View.VISIBLE
     }
 
-    private fun removeFromFavoritesList() {
+    private fun onFavoriteClicked() {
+        isLiked = !isLiked
+        val heartDrawable = if (isLiked) R.drawable.full_heart else R.drawable.heart
+        favoriteImageViewID.setImageResource(heartDrawable)
+
+        if (isLiked) {
+            addToMyFavouriteCities()
+            incrementLikesOfCity()
+        } else {
+            removeFromMyFavoriteCities()
+            decrementLikesOfCity()
+        }
     }
 
-    private fun removeFromFirestore() {
+    private fun addToMyFavouriteCities() {
+        FirebaseObj.fireStore.collection("Users").document(FirebaseObj.uid).
+        collection("Liked Cities").document(cityRef!!.id).set(hashMapOf(
+            "Reference" to cityRef
+        ))
+    }
+
+    private fun incrementLikesOfCity() {
+      ++totalLikes
+      cityRef!!.set(hashMapOf(
+          "Liked" to totalLikes
+      ), SetOptions.merge())
+    }
+
+    private fun removeFromMyFavoriteCities() {
+        FirebaseObj.fireStore.collection("Users").document(FirebaseObj.uid).
+        collection("Liked Cities").document(cityRef!!.id).delete()
+    }
+
+    private fun decrementLikesOfCity() {
+        --totalLikes
+        cityRef!!.set(hashMapOf(
+            "Liked" to totalLikes
+        ), SetOptions.merge())
     }
 }

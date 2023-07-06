@@ -4,17 +4,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.itouristui.R
+import com.example.itouristui.models.CityData
 import com.example.itouristui.models.PlaceImportantData
-import com.example.itouristui.models.places
-import kotlinx.android.synthetic.main.places.view.*
+
+import kotlinx.android.synthetic.main.places.view.ItemListPlaceNameTV
+import kotlinx.android.synthetic.main.profile_tours_card.view.*
 import java.util.ArrayList
 
 
-class Places_adapter(var data: ArrayList<PlaceImportantData>): RecyclerView.Adapter<Places_adapter.ViewHolder>() {
-    class ViewHolder(view: View): RecyclerView.ViewHolder(view){
-        var placename= view.ItemListPlaceNameTV
-        var distance =view.ItemListDistTextView
+class Places_adapter(var data: ArrayList<CityData>): RecyclerView.Adapter<Places_adapter.ViewHolder>() {
+    class ViewHolder(val view: View): RecyclerView.ViewHolder(view){
+        val placename= view.ItemListPlaceNameTV
+        val toursTaken = view.numberOfToursInCardTextView
+        val likes = view.numberOfLikesInCardTextView
+        val pic = view.TourCityPicture
+
 
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -23,8 +29,10 @@ class Places_adapter(var data: ArrayList<PlaceImportantData>): RecyclerView.Adap
             return ViewHolder(view)
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.placename.text=data[position].nameOfPlace
-        holder.distance.text=data[position].distanceAway
+        holder.placename.text=data[position].name
+        holder.likes.text = data[position].liked.toString()
+        holder.toursTaken.text = data[position].tours.toString()
+        Glide.with(holder.view.context).load(data[position].image).into(holder.pic)
     }
 
     override fun getItemCount(): Int=data.size

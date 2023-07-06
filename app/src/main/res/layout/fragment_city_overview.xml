@@ -58,6 +58,7 @@
                     android:id="@+id/favoriteImageViewID"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
+                    android:visibility="gone"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginTop="@dimen/_10sdp"
@@ -126,9 +127,10 @@
         app:layout_constraintTop_toBottomOf="@id/guideline4" >
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/ToursTakenTextView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="200 Tours Taken"
+            android:text="0 Tours Taken"
             android:letterSpacing="0.03"
             android:layout_marginStart="@dimen/_8sdp"
             android:gravity="center_vertical"
@@ -150,9 +152,10 @@
                 android:background="#9E9C9C"/>
         </androidx.appcompat.widget.LinearLayoutCompat>
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/LikedThisPlaceTextView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="513 Love This Place"
+            android:text="0 Love This Place"
             android:letterSpacing="0.03"
 
             android:gravity="center_vertical"
