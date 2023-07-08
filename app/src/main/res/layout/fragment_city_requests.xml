@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appCompatTextView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:fontFamily="@font/roboto_medium"
+        android:letterSpacing="0.03"
+        android:text="Upcoming Tours in Port Said"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/appCompatImageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:src="@drawable/sort"
+        android:layout_marginEnd="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/appCompatTextView4" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        app:cardCornerRadius="99dp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        app:layout_constraintEnd_toStartOf="@+id/appCompatImageButton"
+        app:layout_constraintStart_toStartOf="@+id/appCompatTextView4"
+        app:layout_constraintTop_toBottomOf="@id/appCompatTextView4"
+        app:strokeColor="#C97C7C7C"
+        app:strokeWidth="1dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:fontFamily="@font/roboto_light"
+            android:hint="Search For ..."
+            android:paddingHorizontal="@dimen/_14sdp"
+            android:paddingVertical="@dimen/_6sdp"
+            android:textColorHint="#2B2B2B"
+            android:textSize="12sp" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/appCompatImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_2sdp"
+
+        android:background="@null"
+        android:src="@drawable/searchstatus"
+        app:layout_constraintBottom_toBottomOf="@+id/materialCardView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/appCompatTextView4"
+        app:layout_constraintTop_toTopOf="@+id/materialCardView2"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/FiltersLayout"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/appCompatImageButton"
+        app:layout_constraintLeft_toLeftOf="@id/materialCardView2"
+        app:layout_constraintStart_toStartOf="@+id/materialCardView2"
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView2">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:strokeWidth="1dp"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            app:cardBackgroundColor="#E0E0E0"
+            app:strokeColor="#C0C0C0"
+            app:cardCornerRadius="99dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="#2B2B2B"
+            android:gravity="center"
+            android:textSize="11sp"
+            android:alpha="0.9"
+            android:paddingVertical="@dimen/_6sdp"
+            android:paddingHorizontal="@dimen/_15sdp"
+            android:text="0 Offer"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:strokeWidth="1dp"
+            android:layout_weight="1"
+            app:cardBackgroundColor="#E0E0E0"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            app:strokeColor="#C0C0C0"
+            app:cardCornerRadius="99dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="#2B2B2B"
+                android:gravity="center"
+                android:textSize="11sp"
+                android:alpha="0.9"
+                android:paddingVertical="@dimen/_6sdp"
+                android:paddingHorizontal="@dimen/_15sdp"
+                android:text="Single"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:strokeWidth="1dp"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            app:cardBackgroundColor="#E0E0E0"
+            app:strokeColor="#C0C0C0"
+            app:cardCornerRadius="99dp" >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="#2B2B2B"
+                android:gravity="center"
+                android:textSize="11sp"
+                android:alpha="0.9"
+                android:paddingVertical="@dimen/_6sdp"
+                android:paddingHorizontal="@dimen/_15sdp"
+                android:text="No Car"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/CityRequestsRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/appCompatImageButton2"
+        app:layout_constraintStart_toStartOf="@+id/appCompatTextView4"
+        app:layout_constraintTop_toBottomOf="@id/FiltersLayout" />
+</androidx.constraintlayout.widget.ConstraintLayout>

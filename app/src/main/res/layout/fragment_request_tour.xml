@@ -392,6 +392,7 @@
                     android:layout_marginBottom="@dimen/_3sdp"
                     android:background="@null"
                     android:clickable="false"
+                    android:text=""
                     android:focusable="false"
                     android:paddingStart="@dimen/_4sdp"
                     android:fontFamily="@font/roboto_light"
@@ -416,6 +417,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/AccompaniedByLayout">
 
                 <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/MaleButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitCenter"
@@ -440,6 +442,7 @@
                 app:layout_constraintTop_toTopOf="@id/AccompaniedByLayout">
 
                 <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/FemaleButton"
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_gravity="center"
@@ -480,6 +483,7 @@
                     android:layout_marginStart="@dimen/_6sdp"
                     android:layout_marginBottom="@dimen/_3sdp"
                     android:background="@null"
+                    android:text=""
                     android:paddingStart="@dimen/_4sdp"
                     android:fontFamily="@font/roboto_light"
                     android:hint="Spoken Languages"
@@ -535,6 +539,7 @@
                     android:layout_marginBottom="@dimen/_3sdp"
                     android:background="@null"
                     android:clickable="false"
+                    android:text=""
                     android:focusable="false"
                     android:paddingStart="@dimen/_4sdp"
                     android:fontFamily="@font/roboto_light"
