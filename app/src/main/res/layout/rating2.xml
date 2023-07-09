@@ -18,13 +18,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <ImageView
+
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/image_gchat_profile_for_rating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginStart="14dp"
         android:contentDescription="User Icon"
-        android:src="@drawable/ic_baseline_person_24"
+        android:src="@drawable/profile_pic"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#696969"
+        app:civ_circle_background_color="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_gchat_date_rating" />
 
@@ -33,15 +37,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="person"
+        android:text="User"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/image_gchat_profile_for_rating"
         app:layout_constraintTop_toBottomOf="@+id/text_gchat_date_rating" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_gchat_message_rating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="315dp"
+        android:layout_height="155dp"
         app:cardBackgroundColor="#eef1f6"
         app:cardCornerRadius="12dp"
         app:cardElevation="0dp"
@@ -55,44 +59,51 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <ImageView
+
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/Rating_profile_other"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:contentDescription="User Icon"
-                android:src="@drawable/ic_baseline_person_24"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="10dp"
+
+                android:src="@drawable/profile_pic"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_gchat_date_other" />
+
         <LinearLayout
             android:id="@+id/layout_gchat_rating_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <androidx.appcompat.widget.AppCompatRatingBar
                 android:id="@+id/rBar"
                 android:layout_width="240dp"
-                android:layout_height="wrap_content"
-
-                android:numStars="5"
-                android:theme="@style/RatingBar"
-
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
                 android:backgroundTint="#74969696"
-                />
+                android:numStars="5"
+                android:theme="@style/RatingBar" />
             <TextView
                 android:id="@+id/person_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="person"
-                android:layout_marginLeft="8dp"
+                android:text="User"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintStart_toEndOf="@+id/image_gchat_profile_other"
                 app:layout_constraintTop_toBottomOf="@+id/text_gchat_date_other" />
             <TextView
                 android:id="@+id/person_description"
                 android:layout_width="240dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
                 android:textColor="@color/black"
                 android:text="An experienced and passionate tour guide,bringing historyto life with captivating storytelling,creating unforgettable travel experiences."
                 android:textSize="12sp"

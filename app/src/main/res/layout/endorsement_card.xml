@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="15dp"
+    android:layout_marginTop="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        app:cardCornerRadius="99dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/profile_pic"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#072C3D"
+            app:civ_circle_background_color="@color/white"/>
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/ReviewerNameTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:fontFamily="@font/dm_sans"
+        android:gravity="left|top"
+        android:letterSpacing="0.07"
+        android:text="User name"
+        android:textColor="#303030"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/materialCardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/materialCardView"
+        app:layout_constraintTop_toTopOf="@+id/materialCardView" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/reviewlocation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_semibold"
+        android:text="Lives in Portsaid"
+        android:textColor="#494949"
+        android:textSize="13sp"
+        android:gravity="center|left"
+        android:drawableTint="#818181"
+        android:drawablePadding="4dp"
+        android:drawableStart="@drawable/ic_outline_location_on_24"
+        android:layout_marginTop="2dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/ReviewerNameTextView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ReviewerNameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/ReviewerNameTextView" />
+
+    <androidx.appcompat.widget.AppCompatRatingBar
+        android:id="@+id/ReviewerRatingBar"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/revDisc"
+        app:layout_constraintTop_toBottomOf="@id/reviewlocation" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/revDisc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="15dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/materialCardView"
+        app:layout_constraintTop_toBottomOf="@id/ReviewerRatingBar">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/ReviewTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginVertical="10dp"
+            android:fontFamily="@font/roboto_medium"
+            android:letterSpacing=".05"
+            android:lineSpacingExtra="3dp"
+            android:text="He is a wonderful tour guide. He took me to all the places I wanted and introduced me more to the city. He also has great intelligence and is highly educated. He literally knows everything about the city. I advise anyone who intends to come to this city to go with him on the tour."
+            android:textColor="@color/black" />
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

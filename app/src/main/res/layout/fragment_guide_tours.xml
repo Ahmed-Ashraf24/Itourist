@@ -13,7 +13,7 @@
         android:text="Personal tours"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:textColor="#072C3D" />
+        android:textColor="#597A76" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ProfileGuideToursRecyclerView"
@@ -33,7 +33,7 @@
         android:text="Work tours"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:textColor="#072C3D" />
+        android:textColor="#597A76" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ProfileGuideWorkRecyclerView"

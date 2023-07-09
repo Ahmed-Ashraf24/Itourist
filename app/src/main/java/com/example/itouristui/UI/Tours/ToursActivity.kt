@@ -22,6 +22,15 @@ class ToursActivity : AppCompatActivity() {
                 }
             }
 
+            "CITY_TOURS"->{
+                with(intent){
+                    selectedFragmentBundle.putString("CITY_NAME",getStringExtra("CITY_NAME"))
+                }
+                CityRequestsFragment().apply {
+                    arguments = selectedFragmentBundle
+                }
+            }
+
             else -> RequestTourFragment()
         }
 

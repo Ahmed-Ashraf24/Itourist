@@ -6,7 +6,7 @@
             <item android:title="Your requests"
                 android:icon="@drawable/baseline_tour_24"
                 android:id="@+id/nav_tour_requests_ID"/>
-            <item android:title="Chat"
+            <item android:title="Chats"
                 android:icon="@drawable/baseline_chat_24"
                 android:id="@+id/nav_chat_ID"/>
         </menu>

@@ -67,10 +67,6 @@ class ProfileFragment : Fragment() {
             ProfilePictureImageView.setOnClickListener {
                 chooseImage()
             }
-
-            ProfileLogoutButtonID.setOnClickListener {
-                showLogoutDialogBox()
-            }
         }
     }
 

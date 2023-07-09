@@ -4,32 +4,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#221D2F">
+    android:fitsSystemWindows="true"
+    android:background="#F5F5F5">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/layout_group_chat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#F5F5F5"
         android:fitsSystemWindows="true"
-        android:orientation="vertical"
-        android:background="#221D2F"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.Toolbar
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/toolbar_gchannel"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:theme="@style/Widget.AppCompat.Toolbar"
             app:popupTheme="@style/Theme.AppCompat.Light">
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/baseline_arrow_back_24"/>
 
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-        </androidx.appcompat.widget.Toolbar>
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/baseline_arrow_back_24_2" />
 
-    </com.google.android.material.appbar.AppBarLayout>
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/userpic"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:contentDescription="User Icon"
+                    android:src="@drawable/profile_pic"
+                    app:civ_border_color="#696969"
+                    app:civ_border_width="2dp"
+                    app:civ_circle_background_color="@color/white" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="7dp"
+                        android:text="User name 1"
+                        android:gravity="center"
+                        android:textColor="#696969"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/lastSeenTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="bottom"
+                        android:textSize="14sp"
+                        android:text="Last seen: 2023-07-01 3:30" />
+
+                </RelativeLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_gchat"
         android:layout_width="match_parent"
@@ -38,7 +90,6 @@
         app:layout_constrainedHeight="true"
         app:layout_constraintBottom_toTopOf="@+id/layout_gchat_chatbox"
         app:layout_constraintTop_toBottomOf="@+id/layout_group_chat" />
-
 
     <RelativeLayout
         android:id="@+id/layout_gchat_chatbox"
@@ -58,7 +109,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toStartOf="@+id/button_gchat_send"
+            android:layout_toStartOf="@+id/ratingbutton"
             android:background="@android:color/transparent"
             android:hint="Enter Message"
             android:inputType="text"
@@ -68,19 +119,21 @@
             android:id="@+id/ratingbutton"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:layout_alignEnd="@+id/edit_gchat_message"
-            android:layout_alignLeft="@+id/button_gchat_send"
+            android:layout_toStartOf="@+id/button_gchat_send"
             android:src="@drawable/ic_baseline_star_rate_24"
             android:background="?attr/selectableItemBackground"
-            android:backgroundTint="@color/colorPrimary" />
+            android:backgroundTint="@color/colorPrimary"
+            android:minWidth="48dp" />
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/button_gchat_send"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/ic_baseline_send_24"
             android:background="?attr/selectableItemBackground"
-            android:textColor="@color/colorPrimary" />
+            android:minWidth="48dp"
+            android:src="@drawable/ic_baseline_send_24"
+            android:textColor="@color/colorPrimary"
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </RelativeLayout>
 

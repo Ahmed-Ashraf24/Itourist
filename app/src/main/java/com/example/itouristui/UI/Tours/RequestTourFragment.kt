@@ -1,5 +1,6 @@
 package com.example.itouristui.UI.Tours
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -32,7 +33,13 @@ class RequestTourFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            activity?.window?.decorView?.systemUiVisibility =
+                View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        }
+
         var cityName = ""
+
         arguments?.let { bundle->
             cityName = bundle.getString("CITY_NAME")!!.substringBefore(',').trim()
             FormCityNameEditText.setText(bundle.getString("CITY_NAME"))
@@ -77,7 +84,7 @@ class RequestTourFragment : Fragment() {
                     (AccompaniedByEditText.text?:"").toString(),
                     (SpokenLanguagesEditText.text?:"").toString(),
                     (CarPreferenceEditText.text?:"").toString(),
-                    "Pending",currentUserRef
+                    "Pending",currentUserRef,0
                     ).also { req->
                         runBlocking {
                             tourRef.set(req).asDeferred().await()

@@ -42,4 +42,8 @@
         <item name="colorControlNormal">@color/normal</item>
         <item name="colorControlActivated">@color/selected</item>
     </style>
+
+    <style name="userModeSwitch" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">#100D4C</item>
+    </style>
 </resources>

@@ -60,8 +60,6 @@ class PlaceInfoFragment : Fragment() {
 
             placeRef = FirebaseObj.fireStore.collection("Places").document(placeXID)
 
-
-
             placeRef.run {
                 get().addOnSuccessListener {docSnap->
                     if (docSnap.exists()){
@@ -152,7 +150,7 @@ class PlaceInfoFragment : Fragment() {
             OverallRateTextView.text = ss
 
             for (i in 1..it["Rate"].toString().substringBefore('.').toInt()){
-                (linearLayoutCompat2.getChildAt(i-1) as androidx.appcompat.widget.AppCompatImageButton).setImageResource(R.drawable.ic_baseline_star_24)
+                (starsLayoutCompat.getChildAt(i-1) as androidx.appcompat.widget.AppCompatImageButton).setImageResource(R.drawable.ic_baseline_star_24)
             }
 
             showMyReview("")

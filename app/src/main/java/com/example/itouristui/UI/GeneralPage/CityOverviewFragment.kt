@@ -54,6 +54,7 @@ class CityOverviewFragment : Fragment() {
             onFavoriteClicked()
         }
 
+        var cityNameExtra = ""
         arguments?.let {bundle->
            val cityName = bundle.getString("CITY","")
            val cityImageExtra = StringBuilder()
@@ -62,7 +63,7 @@ class CityOverviewFragment : Fragment() {
            WikipediaData.wikiApiImp.getClosestResult(cityName.substringBefore(',')).enqueue(
                CustomRetrofitCallBack<String>{
                    val closestCityName = JSONArray(it.body()).getJSONArray(1).getString(0)
-
+                    cityNameExtra = closestCityName
                    cityRef = FirebaseObj.fireStore.collection("City").document(closestCityName)
 
                    WikipediaData.wikiApiImp.getCityDataByName(closestCityName).enqueue(
@@ -133,6 +134,15 @@ class CityOverviewFragment : Fragment() {
 
                }
            )
+
+            ToursTakenTextView.setOnClickListener {
+                Intent(requireContext() , ToursActivity::class.java).apply {
+                    putExtra("SELECTED_TOURS_FRAGMENT","CITY_TOURS")
+                    putExtra("CITY_NAME",cityNameExtra)
+                }.also {
+                    startActivity(it)
+                }
+            }
 
            RequestTourGuideButton.setOnClickListener {
             Intent(requireContext().applicationContext,ToursActivity::class.java).apply {

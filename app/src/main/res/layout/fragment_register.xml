@@ -63,7 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:layout_marginHorizontal="30dp"
-                    android:layout_marginTop="35dp"
+                    android:layout_marginTop="25dp"
                     android:background="@drawable/edittext_with_icon"
                     android:backgroundTint="#00858787"
                     android:gravity="center_vertical"
@@ -111,7 +111,69 @@
                             android:gravity="top"
                             android:hint="Enter your full name"
                             android:textColor="@color/white"
-                            android:textColorHint="#535353"
+                            android:textColorHint="#C5C5C5"
+                            android:textSize="16dp"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayoutCompat8"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginHorizontal="30dp"
+                    android:background="@drawable/edittext_with_icon"
+                    android:backgroundTint="#00858787"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat6">
+
+
+                    <androidx.constraintlayout.utils.widget.ImageFilterView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/baseline_flag_24"
+                        android:tint="@color/white" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="9dp"
+                        android:layout_marginVertical="15dp"
+                        android:background="#1E1E1E" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="4dp"
+                        android:paddingVertical="6dp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:letterSpacing="0.05"
+                            android:text="Nationality"
+                            android:textColor="@color/white" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/nationalityEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:gravity="top"
+                            android:hint="Choose your country"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:textColor="@color/white"
+                            android:textColorHint="#C5C5C5"
                             android:textSize="16dp"
                             tools:ignore="TouchTargetSizeCheck" />
 
@@ -169,11 +231,11 @@
                             android:layout_height="match_parent"
                             android:background="@null"
                             android:gravity="top"
+                            android:hint="iTourist@gmail.com"
                             android:inputType="textEmailAddress"
                             android:maxLines="1"
-                            android:hint="iTourist@gmail.com"
                             android:textColor="@color/white"
-                            android:textColorHint="#535353"
+                            android:textColorHint="#C5C5C5"
                             android:textSize="16dp"
                             tools:ignore="TouchTargetSizeCheck" />
 
@@ -195,7 +257,7 @@
 
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat6">
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat8">
 
 
                     <androidx.constraintlayout.utils.widget.ImageFilterView
@@ -224,6 +286,7 @@
                             android:letterSpacing="0.05"
                             android:text="Phone Number"
                             android:textColor="@color/white" />
+
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -234,33 +297,33 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:background="@null"
-                                app:ccp_autoDetectCountry="true"
-                                app:ccp_contentColor="#E8E8E8"
-                                app:ccp_arrowColor="@color/white"
-                                app:ccp_textGravity="LEFT"
-
-                                app:ccp_defaultNameCode="BR"
-                                app:ccp_textSize="12sp"
                                 android:gravity="center"
                                 android:hint="+20xxxxxxxxx"
                                 android:textColor="@color/white"
                                 android:textColorHint="#535353"
 
+                                app:ccp_arrowColor="@color/white"
+                                app:ccp_autoDetectCountry="true"
+                                app:ccp_contentColor="#E8E8E8"
+                                app:ccp_defaultNameCode="BR"
+                                app:ccp_textGravity="LEFT"
+                                app:ccp_textSize="12sp"
+
                                 tools:ignore="TouchTargetSizeCheck" />
+
                             <androidx.appcompat.widget.AppCompatEditText
                                 android:id="@+id/SignUpPhoneEditText"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
+                                android:background="@null"
+                                android:gravity="center|left"
                                 android:hint="Enter phone no."
                                 android:inputType="phone"
                                 android:maxLines="1"
-                                android:background="@null"
-                                android:gravity="center|left"
                                 android:textColor="@color/white"
                                 android:textColorHint="#C5C5C5"
-                                android:textSize="14sp"/>
+                                android:textSize="14sp" />
                         </androidx.appcompat.widget.LinearLayoutCompat>
-
 
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -445,7 +508,7 @@
                             android:maxLines="1"
                             android:hint="xxxxxxxxxx"
                             android:textColor="@color/white"
-                            android:textColorHint="#535353"
+                            android:textColorHint="#C5C5C5"
                             android:textSize="16dp"
                             tools:ignore="TouchTargetSizeCheck" />
 
@@ -509,7 +572,7 @@
                             android:maxLines="1"
                             android:hint="xxxxxxxxxx"
                             android:textColor="@color/white"
-                            android:textColorHint="#535353"
+                            android:textColorHint="#C5C5C5"
                             android:textSize="16dp"
                             tools:ignore="TouchTargetSizeCheck" />
 
@@ -523,7 +586,7 @@
                     android:id="@+id/SignUpButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="35dp"
+                    android:layout_marginTop="15dp"
                     android:background="@drawable/map_route_button"
                     android:backgroundTint="#D8F1FD"
                     android:fontFamily="@font/roboto_bold"

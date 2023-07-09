@@ -196,7 +196,7 @@
                     android:layout_marginTop="20dp"
                     android:text="Nearby Places"
                     android:fontFamily="@font/open_sans_semibold"
-                    android:textColor="#072C3D"
+                    android:textColor="#597A76"
                     android:textSize="16dp"
                     app:layout_constraintStart_toStartOf="@+id/NearbyPlacesRecyclerView"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -235,7 +235,7 @@
                     android:layout_marginTop="20dp"
                     android:text="Popular places in "
                     android:fontFamily="@font/open_sans_semibold"
-                    android:textColor="#072C3D"
+                    android:textColor="#597A76"
                     android:textSize="16dp"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintEnd_toStartOf="@+id/tVId7"

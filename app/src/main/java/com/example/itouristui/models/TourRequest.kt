@@ -13,5 +13,6 @@ data class TourRequest(
     val spokenLanguages : String?=null,
     val ownsVehicle : String?=null,
     val status : String?=null,
-    val userRef : DocumentReference?=null
+    val userRef : DocumentReference?=null,
+    val numberOfOffers : Int? = null
 )

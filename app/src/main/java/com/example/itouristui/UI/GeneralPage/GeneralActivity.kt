@@ -1,5 +1,6 @@
 package com.example.itouristui.UI.GeneralPage
 
+import android.content.Intent
 import android.content.res.Resources
 import android.location.Geocoder
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +18,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.itouristui.FirebaseObj
 import com.example.itouristui.R
+import com.example.itouristui.UI.ChatusersActivity
 import com.example.itouristui.UI.Dialogs.GpsNotEnabledDialog
 import com.example.itouristui.UI.DisplayMore.RequestsFragment
 import com.example.itouristui.UI.DisplayMore.SettingsFragment
@@ -54,6 +56,7 @@ class GeneralActivity : AppCompatActivity() , NavigationView.OnNavigationItemSel
         val homeFragment = HomeFragment()
         val searchFragment = SearchFragment()
         val profileFragment = ProfileFragment()
+        val toursFragment = ToursFragment()
 
         val locationBundle = Bundle()
         val gpsNotEnabledDialog = GpsNotEnabledDialog()
@@ -132,6 +135,9 @@ class GeneralActivity : AppCompatActivity() , NavigationView.OnNavigationItemSel
                R.id.navSearchButtonId -> searchFragment
 
                R.id.navProfileButtonId -> profileFragment
+
+               R.id.navToursButtonId -> toursFragment
+
                else -> homeFragment
            }.also{
                 supportFragmentManager.beginTransaction().replace(R.id.GeneralFragmentContainerView, it).commit()
@@ -163,6 +169,13 @@ class GeneralActivity : AppCompatActivity() , NavigationView.OnNavigationItemSel
                 transaction.replace(R.id.GeneralFragmentContainerView, fragment)
                 transaction.addToBackStack(null)
                 transaction.commit()
+
+                return true
+            }
+
+            R.id.nav_chat_ID -> {
+                val intent = Intent(applicationContext, ChatusersActivity::class.java)
+                startActivity(intent)
 
                 return true
             }

@@ -68,19 +68,6 @@
                 app:civ_border_color="#100D4C"
                 app:civ_circle_background_color="@color/white"/>
 
-            <ImageButton
-                android:id="@+id/ProfileLogoutButtonID"
-                android:layout_width="19dp"
-                android:layout_height="25dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="68dp"
-                android:background="@null"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.2"
-                app:layout_constraintStart_toEndOf="@+id/ProfilePictureImageView"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/profile_logout" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 

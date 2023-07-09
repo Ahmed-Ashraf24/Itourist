@@ -33,7 +33,7 @@ class GuideToursFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val places=ArrayList<PlaceImportantData>()
-        val place = PlaceImportantData("","pizza pino","23 July St.,PortSaid,Egypt","5 Km" ,0.0,0.0)
+        val place = PlaceImportantData("","Paris","23 July St.,PortSaid,Egypt","5 Km" ,0.0,0.0)
         for (i in 1..10){
             places.add(place)
         }

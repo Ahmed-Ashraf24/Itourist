@@ -136,7 +136,8 @@
             android:gravity="center_vertical"
             android:drawablePadding="@dimen/_10sdp"
             android:drawableStart="@drawable/airplane"
-            android:textColor="#121212"
+            android:drawableTint="#072C3D"
+            android:textColor="#072C3D"
             android:textSize="14sp"
             android:fontFamily="@font/roboto_medium"
             android:layout_weight="2"/>
@@ -161,7 +162,8 @@
             android:gravity="center_vertical"
             android:drawablePadding="@dimen/_10sdp"
             android:drawableStart="@drawable/lovely"
-            android:textColor="#121212"
+            android:drawableTint="#072C3D"
+            android:textColor="#072C3D"
             android:fontFamily="@font/roboto_medium"
             android:layout_weight="2"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -182,10 +184,11 @@
         android:fontFamily="@font/roboto_medium"
         android:letterSpacing="0.01"
         android:text="City Overview"
-        android:textColor="@color/black"
+        android:textColor="#597A76"
         android:textSize="24sp"
         app:layout_constraintHorizontal_bias="0"
         android:drawableEnd="@drawable/infocircle"
+        android:drawableTint="#072C3D"
         android:drawablePadding="@dimen/_10sdp"
         android:layout_marginHorizontal="@dimen/_10sdp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -219,7 +222,7 @@
                 android:textSize="15sp"
                 android:lineSpacingExtra="1dp"
                 android:letterSpacing=".01"
-                android:textColor="#535353"
+                android:textColor="#072C3D"
                 android:visibility="gone"
                 android:fontFamily="@font/roboto_medium"/>
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -255,7 +258,7 @@
                 android:background="@null"
                 android:textAllCaps="false"
                 android:textSize="18sp"
-                android:textColor="#080732"
+                android:textColor="#100D4C"
                 android:layout_weight="1"
                 android:paddingVertical="@dimen/_6sdp"
                 android:text="Request Tour Guide"/>
@@ -271,7 +274,7 @@
             app:strokeWidth="1dp"
             app:cardBackgroundColor="#110F55"
             app:cardElevation="5dp"
-            app:strokeColor="#080732">
+            app:strokeColor="#100D4C">
             <android.widget.ImageButton
                 android:id="@+id/NavToCityButton"
                 android:layout_width="match_parent"
