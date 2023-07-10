@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.itouristui.Adapters.GeneralPageRecViewAdapter
+import com.example.itouristui.Adapters.SearchPlacesInCityAdapter
 import com.example.itouristui.R
 import com.example.itouristui.UI.DisplayMore.DisplayActivity
 import com.example.itouristui.Utilities.CustomTextWatcher
@@ -57,7 +58,7 @@ class HomeFragment : Fragment(){
         NearbyPlacesRecyclerView.layoutManager = LinearLayoutManager(requireContext() , LinearLayoutManager.HORIZONTAL , false)
         PopularPlacesRecyclerView.layoutManager = LinearLayoutManager(requireContext() , LinearLayoutManager.HORIZONTAL , false)
         SuggestedPlacesRecyclerView.layoutManager = LinearLayoutManager(requireContext() , LinearLayoutManager.HORIZONTAL , false)
-
+        HomeSearchRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         val ss: SpannableString = SpannableString("See More")
         val underLineSpan = UnderlineSpan()
@@ -81,37 +82,60 @@ class HomeFragment : Fragment(){
 
             val search= OnlineSearch.create(requireContext(),"iKKlcatVgAGyYIADEYdmhjYFE6DanMP5")
             val circleGeometry = CircleGeometry(GeoPoint(currentLat,currentLon) ,500)
+            val circleGeometryWide = CircleGeometry(GeoPoint(currentLat,currentLon),1000)
             val lang = Locale("ar")
+
+            CurrentLocationSearch.addTextChangedListener(textWatcher)
 
             coroScope.launch {
                 searchStateFlow.collectLatest {
                     delay(1500)
                     if (it.isNotBlank()){
-                        val searchOptions = SearchOptions(query = it,searchAreas = setOf(circleGeometry), limit = 6)
-                        search.search(searchOptions , CustomTomtomCallback{
-
-                        })
+                        try {
+                            val searchOptions = SearchOptions(query = it,searchAreas = setOf(circleGeometryWide), limit = 6)
+                            search.search(searchOptions , CustomTomtomCallback{
+                                HomeSearchRecyclerView.visibility = View.VISIBLE
+                                 val searchAdapter = SearchPlacesInCityAdapter(it.results){data->
+                                    getImportantPlaceData(data,R.drawable.closed_stores_cuate)
+                                }
+                                HomeSearchRecyclerView.adapter = searchAdapter
+                            })
+                        }catch (e:Exception){
+                            e.printStackTrace()
+                        }
+                    }else{
+                        if (HomeSearchRecyclerView!=null){
+                            HomeSearchRecyclerView.visibility = View.GONE
+                        }
                     }
                 }
             }
 
             if (nearbyAdapter==null||iToursit.newSelectedCity){
+
                 val searchOptionsNearby = SearchOptions(query = "store",searchAreas = setOf(circleGeometry), limit = 20)
                 search.search(searchOptionsNearby, CustomTomtomCallback{ results->
                     val picturesPlaceHolders = arrayOf(R.drawable.closed_stores_pana,R.drawable.closed_stores_cuate)
                     nearbyAdapter =  GeneralPageRecViewAdapter(results.results,picturesPlaceHolders){data,resId->
                         getImportantPlaceData(data,resId)
                     }
-                    NearbyPlacesRecyclerView.adapter =nearbyAdapter
-
-                    HomeFragmentShimmer.apply {
-                        stopShimmerAnimation()
-                        visibility = View.GONE
+                    if (NearbyPlacesRecyclerView!=null){
+                        NearbyPlacesRecyclerView.adapter =nearbyAdapter
                     }
 
-                    HomeFragmentNestedLayoutContainer.visibility = View.VISIBLE
+                    HomeFragmentShimmer.apply {
+                        if (this!=null){
+                            stopShimmerAnimation()
+                            visibility = View.GONE
+                        }
+                    }
+                    if (HomeFragmentNestedLayoutContainer!=null){
+                        HomeFragmentNestedLayoutContainer.visibility = View.VISIBLE
+                    }
                     iToursit.newSelectedCity = false
                 })
+
+
             }else{
                 HomeFragmentShimmer.apply {
                     stopShimmerAnimation()
@@ -129,11 +153,16 @@ class HomeFragment : Fragment(){
                     suggestedAdapter = GeneralPageRecViewAdapter(results.results,picturesPlaceHolders){data,resId->
                         getImportantPlaceData(data,resId)
                     }
-                    PopularPlacesRecyclerView.adapter = suggestedAdapter
+                    if (PopularPlacesRecyclerView!=null){
+                        PopularPlacesRecyclerView.adapter = suggestedAdapter
+                    }
                 })
             }else{
                 PopularPlacesRecyclerView.adapter = suggestedAdapter
             }
+
+            tVId5.setOnClickListener { seeMore("store",currentLat,currentLon,R.drawable.closed_stores_cuate) }
+            tVId7.setOnClickListener { seeMore("Tourist Attraction",currentLat,currentLon,R.drawable.travel_selfie_bro) }
 
 
         }?:Toast.makeText(requireContext(),"A Problem has occurred,You may need to restart",Toast.LENGTH_LONG).show()
@@ -158,6 +187,20 @@ class HomeFragment : Fragment(){
         }.also {
             startActivity(it)
         }
+    }
+
+    private fun seeMore(query:String,lat:Double,lon:Double,resId:Int){
+        val displayListOfPlacesIntent = Intent(requireContext(), DisplayActivity::class.java).apply {
+            putExtra("SELECTED_DISPLAY_FRAGMENT", "PLACES_LIST")
+        }
+        displayListOfPlacesIntent.apply {
+            putExtra("SELECTED_CATEGORY",query)
+            putExtra("LAT",lat)
+            putExtra("LON",lon)
+            putExtra("RES_ID",resId)
+        }
+
+        startActivity(displayListOfPlacesIntent)
     }
 
     private val textWatcher = CustomTextWatcher{

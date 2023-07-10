@@ -136,7 +136,8 @@
         android:elevation="2dp"
         android:background="@drawable/semi_rounded"
         android:backgroundTint="@color/white"
-        tools:visibility="invisible"
+        android:layout_marginStart="@dimen/_35sdp"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="@id/linearLayoutId"
         app:layout_constraintEnd_toEndOf="@id/linearLayoutId"
         app:layout_constraintTop_toBottomOf="@id/linearLayoutId"/>

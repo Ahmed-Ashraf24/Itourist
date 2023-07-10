@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.itouristui.R
+import com.example.itouristui.UI.DisplayMore.RequestsFragment
 
 class ToursActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +30,10 @@ class ToursActivity : AppCompatActivity() {
                 CityRequestsFragment().apply {
                     arguments = selectedFragmentBundle
                 }
+            }
+
+            "MY_REQUESTS"->{
+                RequestsFragment()
             }
 
             else -> RequestTourFragment()

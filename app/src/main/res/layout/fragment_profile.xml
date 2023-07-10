@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/profile_background"
+        android:paddingBottom="@dimen/_30sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -21,12 +22,13 @@
 
             <TextView
                 android:id="@+id/ProfileFullNameTextView"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="56dp"
+                android:layout_marginTop="30dp"
                 android:textColor="@color/white"
                 android:textSize="30dp"
+                app:layout_constraintEnd_toStartOf="@+id/ProfilePictureImageView"
                 app:layout_constraintHorizontal_bias="0.34"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -43,30 +45,28 @@
 
             <TextView
                 android:id="@+id/ProfileCurrentLocationTextView"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="1dp"
-
+                android:layout_marginTop="@dimen/_3sdp"
                 android:textColor="@color/white"
                 android:textSize="17dp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView5"
                 app:layout_constraintStart_toEndOf="@+id/imageView5"
-                app:layout_constraintTop_toTopOf="@+id/imageView5" />
+                app:layout_constraintTop_toBottomOf="@id/ProfileFullNameTextView" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/ProfilePictureImageView"
                 android:layout_width="106dp"
                 android:layout_height="135dp"
+                android:src="@drawable/profile_pic"
+                app:civ_border_color="#100D4C"
+                android:layout_marginEnd="@dimen/_30sdp"
+                app:civ_border_width="2dp"
+                app:civ_circle_background_color="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.533"
-                app:layout_constraintStart_toEndOf="@+id/ProfileFullNameTextView"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.875"
-                android:src="@drawable/profile_pic"
-                app:civ_border_width="2dp"
-                app:civ_border_color="#100D4C"
-                app:civ_circle_background_color="@color/white"/>
+                app:layout_constraintVertical_bias="0.875" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>

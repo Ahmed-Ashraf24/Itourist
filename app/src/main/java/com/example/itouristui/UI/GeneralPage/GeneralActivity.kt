@@ -22,6 +22,7 @@ import com.example.itouristui.UI.ChatusersActivity
 import com.example.itouristui.UI.Dialogs.GpsNotEnabledDialog
 import com.example.itouristui.UI.DisplayMore.RequestsFragment
 import com.example.itouristui.UI.DisplayMore.SettingsFragment
+import com.example.itouristui.UI.Tours.ToursActivity
 import com.example.itouristui.iToursit
 import com.example.itouristui.models.SimpleCityDetail
 import com.example.itouristui.models.UserPlainData
@@ -152,13 +153,11 @@ class GeneralActivity : AppCompatActivity() , NavigationView.OnNavigationItemSel
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.nav_tour_requests_ID -> {
-                val fragmentManager: FragmentManager = supportFragmentManager
-                val transaction: FragmentTransaction = fragmentManager.beginTransaction()
-                val fragment = RequestsFragment()
-                transaction.replace(R.id.GeneralFragmentContainerView, fragment)
-                transaction.addToBackStack(null)
-                transaction.commit()
-
+                Intent(this,ToursActivity::class.java).apply {
+                    putExtra("SELECTED_TOURS_FRAGMENT","MY_REQUESTS")
+                }.also {
+                    startActivity(it)
+                }
                 return true
             }
 

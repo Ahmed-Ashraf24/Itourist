@@ -47,7 +47,6 @@ class LoginFragment : Fragment() {
                 .takeIf {
                     it.first.isNotBlank() && it.second.isNotBlank()
                 }?.let { credential->
-                    startActivity(Intent(requireContext() , GeneralActivity::class.java))
                     LogInButton.isEnabled = false
                     FirebaseObj.auth.signInWithEmailAndPassword(credential.first,credential.second)
                         .addOnSuccessListener {

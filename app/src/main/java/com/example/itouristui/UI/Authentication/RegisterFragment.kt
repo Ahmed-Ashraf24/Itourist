@@ -14,11 +14,18 @@ import androidx.fragment.app.Fragment
 import com.example.itouristui.FirebaseObj
 import com.example.itouristui.UI.Dialogs.DatePickerDialog
 import com.example.itouristui.R
+import com.example.itouristui.UI.Dialogs.VerificationCodeDialog
 import com.example.itouristui.UI.GeneralPage.GeneralActivity
 import com.example.itouristui.Utilities.CustomTextWatcher
 import com.example.itouristui.models.UserPlainData
+import com.google.firebase.FirebaseException
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.PhoneAuthCredential
+import com.google.firebase.auth.PhoneAuthOptions
+import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_register.*
+import java.util.concurrent.TimeUnit
 
 
 class RegisterFragment : Fragment() {
@@ -66,7 +73,9 @@ class RegisterFragment : Fragment() {
                                 "","","",""
                             )
                             SignUpButton.isEnabled = true
+
                             savePerson(newUserPlainData)
+
                         }.addOnFailureListener {
                             SignUpButton.isEnabled = true
                             Toast.makeText(requireContext(),it.message,Toast.LENGTH_SHORT).show()
@@ -123,8 +132,49 @@ class RegisterFragment : Fragment() {
     private fun savePerson(userPlainData : UserPlainData){
         dataBase.collection("Users").document(userPlainData.uid!!).set(userPlainData)
             .addOnSuccessListener {
+                verifyPhone(SignUpCCP.fullNumberWithPlus)
+
+
                 Toast.makeText(requireActivity(), "Registration done", Toast.LENGTH_SHORT).show()
+
             }
+    }
+    fun verifyPhone(phonenumber:String){
+        val auth= FirebaseAuth.getInstance()
+        val phoneNumber = phonenumber
+        val options = PhoneAuthOptions.newBuilder(auth)
+            .setPhoneNumber(phoneNumber)
+            .setTimeout(60L, TimeUnit.SECONDS)
+            .setActivity(requireActivity())
+            .setCallbacks(object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+                override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
+                    // OTP verification completed automatically
+                }
+
+                override fun onVerificationFailed(exception: FirebaseException) {
+                    showToast(exception.toString())
+                    // OTP verification failed
+                    // Handle the error
+                }
+
+                override fun onCodeSent(
+                    verificationId: String,
+                    token: PhoneAuthProvider.ForceResendingToken
+                ) {
+                    val dialog= VerificationCodeDialog(verificationId)
+                    dialog.show(this@RegisterFragment.childFragmentManager,"verificationDialog")
+
+
+
+//                    val credential = PhoneAuthProvider.getCredential( verificationId,"")
+//                    FirebaseAuth.getInstance().currentUser?.linkWithCredential(credential)
+
+                }
+            })
+            .build()
+
+        PhoneAuthProvider.verifyPhoneNumber(options)
+
     }
 
 }

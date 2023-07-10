@@ -111,6 +111,15 @@ class SearchFragment : Fragment() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        requireActivity().CustomBottomNavBar.apply {
+            if (visibility == View.GONE){
+                visibility = View.VISIBLE
+            }
+        }
+    }
+
     override fun onDestroy() {
         coroScope.cancel()
         super.onDestroy()

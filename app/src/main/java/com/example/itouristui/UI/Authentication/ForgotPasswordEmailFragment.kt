@@ -29,7 +29,7 @@ class ForgotPasswordEmailFragment : Fragment() {
 
         NavigateToRecoveryOptionsButton.setOnClickListener{
             parentFragmentManager.beginTransaction().
-            replace(R.id.AuthenticationFragmentContainerView , RecoveryOptionsFragment()).addToBackStack(null)
+            replace(R.id.AuthenticationFragmentContainerView , RecoveryOptionsFragment(ForgotPasswordEmailEditText.text.toString().trim())).addToBackStack(null)
                 .commit()
         }
 
