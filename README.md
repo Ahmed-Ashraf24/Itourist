@@ -14,9 +14,6 @@ ITourist is a comprehensive travel guide application designed to enhance the exp
 - **Real-Time Chat**: Connect with other travelers using real-time chat powered by Firebase Realtime Database.
 - **Data Synchronization**: Stores user preferences, favorites, and chat data in Firestore for real-time synchronization.
 
-## Architecture
-
-The ITourist app follows **MVVM (Model-View-ViewModel)** and **Clean Architecture** principles, ensuring scalability, maintainability, and clear separation of concerns.
 
 ### Key Technologies Used:
 - **Firebase Authentication**: Handles user login, registration, and OTP-based verification.
