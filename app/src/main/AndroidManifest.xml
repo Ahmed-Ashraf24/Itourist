@@ -41,8 +41,8 @@
             android:name=".UI.Authentication.AuthenticationActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".UI.GeneralPage.GeneralActivity" />
-        <activity android:name=".UI.ChatusersActivity" />
-        <activity android:name=".UI.ChatActivity" />
+        <activity android:name=".ChatPage.ChatusersActivity" />
+        <activity android:name=".ChatPage.ChatActivity" />
         <activity android:name=".UI.Tours.ToursActivity"
             android:windowSoftInputMode="adjustPan" />
 

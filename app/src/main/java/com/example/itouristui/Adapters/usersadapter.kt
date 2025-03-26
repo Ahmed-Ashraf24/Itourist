@@ -1,15 +1,12 @@
 package com.example.itouristui.Adapters
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.example.itouristui.R
-import com.example.itouristui.UI.userlist
+import com.example.itouristui.ChatPage.userlist
 import com.example.itouristui.models.userslist
-import kotlinx.android.synthetic.main.singleuser.*
 import kotlinx.android.synthetic.main.singleuser.view.*
 
 class usersadapter(val Userslist:ArrayList<userslist>, val listener : (String)->(Unit)) :RecyclerView.Adapter<usersadapter.UserAdapterViewHolder>() {

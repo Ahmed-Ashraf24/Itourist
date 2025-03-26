@@ -1,4 +1,4 @@
-package com.example.itouristui.UI
+package com.example.itouristui.ChatPage
 
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -28,7 +28,7 @@ class ChatActivity : AppCompatActivity() {
         setContentView(R.layout.activity_chat)
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recycler_gchat.layoutManager=layoutManager
-        recycler_gchat.adapter=adapter
+        recycler_gchat.adapter= adapter
 
         messages.add(Message("User","Hello", Others_MESSAGE))
         messages.add(Message("User","Hi", MY_MESSAGE))
@@ -46,7 +46,7 @@ class ChatActivity : AppCompatActivity() {
         }
 
         ratingbutton.setOnClickListener {
-            message=Message("","", rating_message)
+            message =Message("","", rating_message)
             messages.add(message)
             adapter.notifyItemInserted(messages.indexOf(message))
             layout_gchat_chatbox.visibility= View.INVISIBLE

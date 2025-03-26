@@ -4,6 +4,8 @@ plugins {
     id 'kotlin-android-extensions'
     id 'com.google.gms.google-services'
 }
+def properties = new Properties()
+properties.load(new FileInputStream(rootProject.file("local.properties")))
 
 android {
     compileSdkVersion 31
@@ -12,6 +14,7 @@ android {
     defaultConfig {
         applicationId "com.example.itouristui"
         minSdkVersion 23
+        //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 31
         versionCode 1
         versionName "1.0"
@@ -20,10 +23,15 @@ android {
     }
 
     buildTypes {
+
+
         release {
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+     }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -86,6 +94,7 @@ dependencies {
 
     //custom seek bar
     implementation 'com.github.oli107:material-range-bar:1.4.8'
+    implementation 'com.google.firebase:firebase-database-ktx:21.0.0'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

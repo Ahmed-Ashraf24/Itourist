@@ -1,6 +1,7 @@
 package com.example.itouristui.UI.GeneralPage
 
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.SpannableString
@@ -38,6 +39,7 @@ class HomeFragment : Fragment(){
     var suggestedAdapter : GeneralPageRecViewAdapter? = null
     lateinit var coroScope : CoroutineScope
     lateinit var searchStateFlow : MutableStateFlow<String>
+    val apiKey = getApiKey("Tomtom_API_KEY", requireContext())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -214,5 +216,15 @@ class HomeFragment : Fragment(){
         super.onPause()
         HomeFragmentShimmer.stopShimmerAnimation()
     }
-
+    fun getApiKey(keyName: String, context: Context): String {
+        val properties = Properties()
+        return try {
+            val inputStream = context.assets.open("local.properties")
+            properties.load(inputStream)
+            properties.getProperty(keyName, "")
+        } catch (e: Exception) {
+            e.printStackTrace()
+            ""
+        }
+    }
 }

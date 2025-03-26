@@ -1,26 +1,18 @@
 package com.example.itouristui.UI.GeneralPage
 
 import android.content.Intent
-import android.content.res.Resources
 import android.location.Geocoder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Looper
-import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.DrawableCompat
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.itouristui.FirebaseObj
 import com.example.itouristui.R
-import com.example.itouristui.UI.ChatusersActivity
+import com.example.itouristui.ChatPage.ChatusersActivity
 import com.example.itouristui.UI.Dialogs.GpsNotEnabledDialog
-import com.example.itouristui.UI.DisplayMore.RequestsFragment
 import com.example.itouristui.UI.DisplayMore.SettingsFragment
 import com.example.itouristui.UI.Tours.ToursActivity
 import com.example.itouristui.iToursit
@@ -33,8 +25,6 @@ import kotlinx.android.synthetic.main.getting_location_placeholder_layout.*
 import kotlinx.android.synthetic.main.getting_location_placeholder_layout.view.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.collectLatest
-import pl.droidsonroids.gif.GifImageView
 import java.util.*
 
 class GeneralActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener {

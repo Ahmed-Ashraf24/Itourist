@@ -24,7 +24,21 @@ var Dateflag =false
 var Othersflag=true
 class MessageAdapter(var messages:ArrayList<Message>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    fun clearData() {
+        messages.clear()
+        notifyDataSetChanged()
+    }
+    fun rearange(){
+        val dateFormat = SimpleDateFormat("MM/dd/yyyy hh:mm:ss a", Locale.getDefault())
+        messages.sortWith { message1, message2 ->
+            val date1 = dateFormat.parse(message1.date)
+            val date2 = dateFormat.parse(message2.date)
+            date1.compareTo(date2)
 
+        }
+
+
+    }
     class ReceivedMessageHolder(itemview: View) : RecyclerView.ViewHolder(itemview){
         val receivername:TextView = itemview.text_gchat_user_other
         val Receivedmessage: TextView=itemview.text_gchat_message_other
@@ -98,15 +112,15 @@ class MessageAdapter(var messages:ArrayList<Message>): RecyclerView.Adapter<Recy
                 time.isVisible = !time.isVisible
             }
         }
-        fun bind(messageContent:Message){
+        fun bind(messageContent: Message){
             time.isVisible=false
             Mymessage.text=messageContent.message
             val currentTime = Calendar.getInstance().time
             time.text = SimpleDateFormat("h:mm a", Locale.getDefault()).format(currentTime)
             if(!Dateflag){
-            date.text=SimpleDateFormat("MMMM d", Locale.getDefault()).format(currentTime)
-            Dateflag=true
-              }
+                date.text=SimpleDateFormat("MMMM d", Locale.getDefault()).format(currentTime)
+                Dateflag=true
+            }
             else{
                 date.isVisible=false
             }
@@ -152,7 +166,7 @@ class MessageAdapter(var messages:ArrayList<Message>): RecyclerView.Adapter<Recy
 
             else -> throw IllegalArgumentException()
         }
-                        }
+    }
 
     override fun getItemCount(): Int =messages.size
 
