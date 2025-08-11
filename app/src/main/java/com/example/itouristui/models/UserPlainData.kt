@@ -1,5 +1,6 @@
 package com.example.itouristui.models
 
+import android.os.Parcel
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
@@ -14,4 +15,12 @@ data class UserPlainData(
     val profileImg : String?=null,
     val country : String?=null,
     val city : String?=null
-) : Parcelable
+) : Parcelable {
+    override fun describeContents(): Int {
+        TODO("Not yet implemented")
+    }
+
+    override fun writeToParcel(p0: Parcel?, p1: Int) {
+        TODO("Not yet implemented")
+    }
+}

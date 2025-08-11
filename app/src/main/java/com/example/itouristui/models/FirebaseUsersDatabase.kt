@@ -1,6 +1,6 @@
-package com.example.itouristui.models
+package com.example.chatapplicationrealtimedatabase
 
-data class firebaseUsersDatabase(
-    var Conversationid: String = "",
-    var lastmessagetime: String = ""
+data class FirebaseUsersDatabase(
+    var Conversationid : String = "",
+    var lastmessagetime: Long = 0L
 )
