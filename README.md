@@ -30,3 +30,20 @@ Follow these steps to set up and run the ITourist app locally:
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/Ahmed-Ashraf24/ITourist.git
+## 📱 App Screenshots
+
+<p float="left">
+   <img src="https://github.com/Ahmed-Ashraf24/Itourist/blob/main/app/src/main/res/Screens/Auth/sign%20up.png" width="250" />
+   <img src="https://github.com/Ahmed-Ashraf24/Itourist/blob/main/app/src/main/res/Screens/Auth/sign%20in.png" width="250" />
+  <img src="https://github.com/Ahmed-Ashraf24/Itourist/blob/main/app/src/main/res/Screens/Genral/home.png" width="250" />
+  <img src="https://github.com/Ahmed-Ashraf24/Itourist/blob/main/app/src/main/res/Screens/Genral/search.png" width="250" />
+  <img src="https://github.com/Ahmed-Ashraf24/Itourist/blob/main/app/src/main/res/Screens/Genral/place.png" width="250" />
+    <img src="https://github.com/Ahmed-Ashraf24/Itourist/blob/main/app/src/main/res/Screens/Genral/your%20requests.png" width="250" />
+    <img src="https://github.com/Ahmed-Ashraf24/Itourist/blob/main/app/src/main/res/Screens/Chat/chat.png" width="250" />
+    <img src="https://github.com/Ahmed-Ashraf24/Itourist/blob/main/app/src/main/res/Screens/Profile/profile1.png" width="250" />
+    <img src="https://github.com/Ahmed-Ashraf24/Itourist/blob/main/app/src/main/res/Screens/Profile/profile2.png" width="250" />
+    <img src="https://github.com/Ahmed-Ashraf24/Itourist/blob/main/app/src/main/res/Screens/Profile/profile3.png" width="250" />
+        <img src="https://github.com/Ahmed-Ashraf24/Itourist/blob/main/app/src/main/res/Screens/Profile/profile4.png" width="250" />
+
+    
+</p>
